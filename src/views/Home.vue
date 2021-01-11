@@ -2,16 +2,19 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <s-button>测试组件</s-button>
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
+import SButton from "@/components/button";
 
 @Options({
   components: {
-    HelloWorld
+    HelloWorld,
+    SButton
   }
 })
 export default class Home extends Vue {}
