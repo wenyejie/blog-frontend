@@ -2,20 +2,28 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    <s-button>测试组件</s-button>
+    <s-button block loading @click="handleClick">测试组件</s-button>
   </div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { defineComponent } from "vue";
 import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 import SButton from "@/components/button";
 
-@Options({
+export default defineComponent({
+  name: "Home",
   components: {
     HelloWorld,
     SButton
+  },
+  setup() {
+    const handleClick = () => {
+      console.log("test click");
+    };
+    return {
+      handleClick
+    };
   }
-})
-export default class Home extends Vue {}
+});
 </script>
