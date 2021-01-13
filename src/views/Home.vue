@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    <s-button block loading @click="handleClick">测试组件</s-button>
+    <s-button round @click="handleClick">测试组件</s-button>
   </div>
 </template>
 

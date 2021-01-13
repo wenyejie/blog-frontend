@@ -8,4 +8,4 @@
 export const propBooleanDefFalse = {
   type: Boolean,
   default: false
-}
+};
