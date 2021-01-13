@@ -1,0 +1,83 @@
+.s-button {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: #fff;
+  border: 1px solid #dcdfe6;
+  color: #606266;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.3s;
+  font-weight: 500;
+  user-select: none;
+  padding: 9px 19px;
+  font-size: 14px;
+  border-radius: 4px;
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &.is-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-primary {
+    color: #fff;
+    background-color: #409eff;
+    border-color: #409eff;
+
+    &:focus,
+    &:hover {
+      background-color: #66b1ff;
+      border-color: #66b1ff;
+      color: #fff;
+    }
+  }
+
+  &.is-round {
+    border-radius: 20px;
+  }
+
+  &.is-loading {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 1em;
+      height: 1em;
+      border: 2px solid #999;
+      border-bottom-color: #ccc;
+      border-radius: 100%;
+      animation: rotating 1s linear infinite;
+      margin-right: 5px;
+      margin-top: -0.1em;
+    }
+
+    &::after {
+      pointer-events: none;
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: hsla(0, 0%, 100%, 0.35);
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

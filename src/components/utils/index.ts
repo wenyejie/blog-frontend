@@ -5,7 +5,7 @@
  */
 
 // 定义props: {type: Boolean, default: false}
-export const propBooleanDefFalse = {
+export const propBooleanDefFalse = Object.freeze({
   type: Boolean,
   default: false
-};
+});

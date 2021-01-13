@@ -4,7 +4,12 @@
  - @email: wenyejie@foxmail.com
  -->
 <template>
-  <button :class="classes" :type="props.nativeType" :disabled="innerDisabled">
+  <button
+    :class="classes"
+    :type="props.nativeType"
+    :disabled="innerDisabled"
+    :autofocus="props.autofocus"
+  >
     <slot />
   </button>
 </template>
@@ -38,6 +43,9 @@ export default defineComponent({
       validator: (val: string) => {
         return ["lg", "sm", "xs"].includes(val);
       }
+    },
+    icon: {
+      type: String
     },
     block: propBooleanDefFalse,
     loading: propBooleanDefFalse,
@@ -77,79 +85,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-.s-button {
-  display: inline-block;
-  cursor: pointer;
-  line-height: 1.4285714285714286;
-  white-space: nowrap;
-  background-color: #fff;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
-  margin: 0;
-  transition: 0.1s;
-  font-weight: 500;
-  user-select: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  border-radius: 4px;
-
-  &:disabled {
-    pointer-events: none;
-  }
-
-  &.is-block {
-    display: block;
-    width: 100%;
-  }
-
-  &-primary {
-  }
-
-  &.is-round {
-    border-radius: 20px;
-  }
-
-  &.is-loading {
-    position: relative;
-
-    &::before {
-      content: "";
-      display: inline-block;
-      vertical-align: middle;
-      width: 1em;
-      height: 1em;
-      border: 2px solid #999;
-      border-bottom-color: #ccc;
-      border-radius: 100%;
-      animation: rotating 1s linear infinite;
-      margin-right: 5px;
-      margin-top: -0.1em;
-    }
-
-    &::after {
-      pointer-events: none;
-      content: "";
-      position: absolute;
-      left: -1px;
-      top: -1px;
-      right: -1px;
-      bottom: -1px;
-      border-radius: inherit;
-      background-color: hsla(0, 0%, 100%, 0.35);
-    }
-  }
-}
-
-@keyframes rotating {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-</style>
+<style lang="scss" src="./Button.scss"></style>
