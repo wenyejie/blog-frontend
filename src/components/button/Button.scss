@@ -3,7 +3,7 @@
   cursor: pointer;
   white-space: nowrap;
   background-color: #fff;
-  border: 1px solid #dcdfe6;
+  border: 1px solid var(--border-color);
   color: #606266;
   text-align: center;
   box-sizing: border-box;
@@ -13,7 +13,6 @@
   font-weight: 500;
   user-select: none;
   padding: 9px 19px;
-  font-size: 14px;
   border-radius: 4px;
 
   &:disabled {
@@ -25,15 +24,15 @@
     width: 100%;
   }
 
-  &-primary {
+  &--primary {
     color: #fff;
-    background-color: #409eff;
-    border-color: #409eff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
 
     &:focus,
     &:hover {
-      background-color: #66b1ff;
-      border-color: #66b1ff;
+      background-color: var(--primary-light-color);
+      border-color: var(--primary-light-color);
       color: #fff;
     }
   }

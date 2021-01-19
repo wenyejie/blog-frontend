@@ -1,0 +1,18 @@
+@charset "utf-8";
+/**
+ * @author: Storm
+ * @date: 2021/01/13
+ * @email: wenyejie@foxmail.com
+ */
+
+.s-input {
+  display: inline-block;
+
+  &--inner {
+    display: block;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    padding: 9px 19px;
+  }
+}

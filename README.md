@@ -1,5 +1,9 @@
 # vue-next
 
+## size
+
+42, 36, 30, 24
+
 ## Project setup
 ```
 npm install

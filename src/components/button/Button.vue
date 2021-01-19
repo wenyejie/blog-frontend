@@ -6,9 +6,9 @@
 <template>
   <button
     :class="classes"
-    :type="props.nativeType"
+    :type="nativeType"
     :disabled="innerDisabled"
-    :autofocus="props.autofocus"
+    :autofocus="autofocus"
   >
     <slot />
   </button>
@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import { propBooleanDefFalse } from "@/components/utils";
+import { propBooleanDefFalse, propSizeOpts } from "@/components/utils";
 
 const CLS_NAME = "s-button";
 
@@ -38,12 +38,7 @@ export default defineComponent({
         return ["button", "submit", "reset"].includes(val);
       }
     },
-    size: {
-      type: String,
-      validator: (val: string) => {
-        return ["lg", "sm", "xs"].includes(val);
-      }
-    },
+    size: propSizeOpts,
     icon: {
       type: String
     },
@@ -56,20 +51,18 @@ export default defineComponent({
     circle: propBooleanDefFalse
   },
   setup(props) {
-    const classes = computed(() => {
-      return [
-        CLS_NAME,
-        {
-          [`${CLS_NAME}-${props.type}`]: !!props.type,
-          [`${CLS_NAME}-${props.size}`]: !!props.size,
-          "is-block": props.block,
-          "is-loading": props.loading,
-          "is-plain": props.plain,
-          "is-round": props.round,
-          "is-circle": props.circle
-        }
-      ];
-    });
+    const classes = computed(() => [
+      CLS_NAME,
+      {
+        [`${CLS_NAME}--${props.type}`]: !!props.type,
+        [`${CLS_NAME}--${props.size}`]: !!props.size,
+        "is-block": props.block,
+        "is-loading": props.loading,
+        "is-plain": props.plain,
+        "is-round": props.round,
+        "is-circle": props.circle
+      }
+    ]);
 
     // 当按钮被禁用或者loading状态时, 禁用按钮
     const innerDisabled = computed(() => {
@@ -77,7 +70,6 @@ export default defineComponent({
     });
 
     return {
-      props,
       classes,
       innerDisabled
     };
