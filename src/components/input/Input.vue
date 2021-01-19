@@ -8,6 +8,7 @@
     <input
       v-model="innerValue"
       @input="handleInput"
+      @change="handleChange"
       :class="`${CLS_NAME}--inner`"
       :disabled="disabled"
       :readonly="readonly"
@@ -56,11 +57,17 @@ export default defineComponent({
     const innerValue = ref("");
 
     const handleInput = (event: InputEvent) => {
-      emit("input", innerValue);
+      emit("input", event);
     };
+
+    const handleChange = (event: InputEvent) => {
+      emit("change", event);
+    };
+
     return {
       innerValue,
       handleInput,
+      handleChange,
       classes,
       CLS_NAME
     };

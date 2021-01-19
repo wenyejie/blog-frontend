@@ -12,8 +12,19 @@
   transition: 0.3s;
   font-weight: 500;
   user-select: none;
-  padding: 9px 19px;
-  border-radius: 4px;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-major);
+  line-height: 1;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:hover, &:focus {
+    background-color: #efefef;
+    border-color: #E4E7ED;
+  }
 
   &:disabled {
     pointer-events: none;
@@ -24,21 +35,8 @@
     width: 100%;
   }
 
-  &--primary {
-    color: #fff;
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-
-    &:focus,
-    &:hover {
-      background-color: var(--primary-light-color);
-      border-color: var(--primary-light-color);
-      color: #fff;
-    }
-  }
-
   &.is-round {
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
   &.is-loading {
@@ -68,6 +66,90 @@
       bottom: -1px;
       border-radius: inherit;
       background-color: hsla(0, 0%, 100%, 0.35);
+    }
+  }
+
+  &--large {
+    padding: 12px 24px;
+    font-size: 16px;
+    &.is-round {
+      border-radius: 21px;
+    }
+  }
+
+  &--small {
+    padding: 7px 14px;
+    &.is-round {
+      border-radius: 15px;
+    }
+  }
+
+  &--mini {
+    padding: 5px 10px;
+    font-size: 12px;
+    &.is-round {
+      border-radius: 12px;
+    }
+  }
+
+  &--primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--primary-light-color);
+      border-color: var(--primary-light-color);
+    }
+  }
+
+  &--success {
+    color: #fff;
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--success-light-color);
+      border-color: var(--success-light-color);
+    }
+  }
+
+  &--danger {
+    color: #fff;
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--danger-light-color);
+      border-color: var(--danger-light-color);
+    }
+  }
+
+  &--warning {
+    color: #fff;
+    background-color: var(--warning-color);
+    border-color: var(--warning-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--warning-light-color);
+      border-color: var(--warning-light-color);
+    }
+  }
+
+  &--info {
+    color: #fff;
+    background-color: var(--info-color);
+    border-color: var(--info-color);
+
+    &:focus,
+    &:hover {
+      background-color: var(--info-light-color);
+      border-color: var(--info-light-color);
+      color: #fff;
     }
   }
 }
