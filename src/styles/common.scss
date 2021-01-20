@@ -5,13 +5,17 @@ html {
 }
 body {
   font: 14px/1.4285714285714286 Arial, "Helvetica Neue", Helvetica, "PingFang SC", "PingFangSC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
-  color: #202020;
-  background-color: #fff;
+  color: #404040;
+  background-color: #e6e6e6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 a {
-  color: #0062FF;
-  transition: color .3s ease-in-out;
+  color: #21759b;
+  transition: .3s;
+
+  &:hover {
+    color: #0f3647;
+  }
 }

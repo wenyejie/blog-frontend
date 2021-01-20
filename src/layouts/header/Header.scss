@@ -1,0 +1,20 @@
+@charset "utf-8";
+/**
+ * @author: Storm
+ * @date: 2021/01/20
+ * @email: wenyejie@foxmail.com
+ */
+
+.s-header {
+  padding: 24px 0;
+
+  &--title {
+    font-size: 26px;
+    line-height: 48px;
+    font-weight: bold;
+  }
+
+  &--subtitle {
+    color: #757575;
+  }
+}

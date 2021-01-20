@@ -1,0 +1,45 @@
+@charset "utf-8";
+/**
+ * @author: Storm
+ * @date: 2021/01/20
+ * @email: wenyejie@foxmail.com
+ */
+
+.s-article {
+  &--header {
+    margin-bottom: 24px;
+  }
+  &--title {
+    font-size: 22px;
+  }
+
+  &--meta {
+    display: flex;
+    color: #757575;
+    margin-top: 12px;
+
+    &-link {
+      color: #757575;
+      text-decoration: underline;
+    }
+
+    & > dt {
+      margin-right: 3px;
+    }
+
+    & > dt + dd {
+      margin-right: 7px;
+    }
+  }
+
+  &--body {
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 32px;
+
+    p {
+      margin: 2em 0;
+      text-indent: 2em;
+    }
+  }
+}

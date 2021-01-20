@@ -4,6 +4,7 @@
  * @email: wenyejie@foxmail.com
  */
 
-import SInput from "./Input.vue";
+export const SInput = () =>
+  import(/* webpackChunkName: "input" */ "./Input.vue");
 
 export default SInput;
