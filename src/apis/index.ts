@@ -4,7 +4,7 @@
  * @email: wenyejie@foxmail.com
  */
 
-import http from './http'
+import http from '@/cores/http'
 import { AxiosRequestConfig } from 'axios'
 
 interface LoginParams {
