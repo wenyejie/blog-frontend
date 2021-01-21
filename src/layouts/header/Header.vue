@@ -15,18 +15,18 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import SNav from "./nav";
+import { defineComponent } from 'vue'
+import SNav from './nav'
 
 export default defineComponent({
-  name: "SHeader",
+  name: 'SHeader',
   components: {
     SNav
   },
   setup() {
-    return {};
+    return {}
   }
-});
+})
 </script>
 
 <style lang="scss" src="./Header.scss"></style>

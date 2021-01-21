@@ -4,6 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-import SHeader from "./Header.vue";
+import SHeader from './Header.vue'
 
-export default SHeader;
+export default SHeader

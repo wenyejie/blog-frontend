@@ -4,6 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-import SNav from "./Nav.vue";
+import SNav from './Nav.vue'
 
-export default SNav;
+export default SNav

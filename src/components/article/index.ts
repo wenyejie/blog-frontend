@@ -4,7 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-export const SArticle = () =>
-  import(/* webpackChunkName: "article" */ "./Article.vue");
+export const SArticle = () => import(/* webpackChunkName: "article" */ './Article.vue')
 
-export default SArticle;
+export default SArticle

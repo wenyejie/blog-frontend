@@ -20,22 +20,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from "vue";
-import { propBooleanDefFalse, propSizeOpts } from "@/components/utils";
+import { defineComponent, computed, ref } from 'vue'
+import { propBooleanDefFalse, propSizeOpts } from '@/components/utils'
 
-const CLS_NAME = "s-input";
+const CLS_NAME = 's-input'
 
 export default defineComponent({
-  name: "SInput",
+  name: 'SInput',
   props: {
     modelValue: {
       type: String
     },
     type: {
       type: String,
-      default: "text",
+      default: 'text',
       validator: (val: string) => {
-        return ["text", "password", "number"].includes(val);
+        return ['text', 'password', 'number'].includes(val)
       }
     },
     disabled: propBooleanDefFalse,
@@ -44,25 +44,25 @@ export default defineComponent({
     autocomplete: propBooleanDefFalse,
     size: propSizeOpts
   },
-  emits: ["input", "change"],
+  emits: ['input', 'change'],
   setup(props, { emit }) {
     const classes = computed(() => [
       CLS_NAME,
       {
-        "is-disabled": props.disabled,
+        'is-disabled': props.disabled,
         [`${CLS_NAME}--${props.size}`]: !!props.size
       }
-    ]);
+    ])
 
-    const innerValue = ref("");
+    const innerValue = ref('')
 
     const handleInput = (event: InputEvent) => {
-      emit("input", event);
-    };
+      emit('input', event)
+    }
 
     const handleChange = (event: InputEvent) => {
-      emit("change", event);
-    };
+      emit('change', event)
+    }
 
     return {
       innerValue,
@@ -70,9 +70,9 @@ export default defineComponent({
       handleChange,
       classes,
       CLS_NAME
-    };
+    }
   }
-});
+})
 </script>
 
 <style lang="scss" src="./Input.scss"></style>

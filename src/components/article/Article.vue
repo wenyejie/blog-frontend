@@ -33,25 +33,22 @@
     </header>
     <div class="s-article--body">
       <p>
-        Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim
-        convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit
-        dui. Nam sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec,
-        gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum,
-        turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas
-        ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a
-        ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in,
-        nunc. Morbi imperdiet augue quis tellus.
+        Lorem ipsum dolor sit amet, test link adipiscing elit. Nullam dignissim convallis est.
+        Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem. Aliquam libero
+        nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis
+        luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas
+        ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante. Suspendisse
+        quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.
       </p>
 
       <p>
-        Lorem ipsum dolor sit amet, emphasis consectetuer adipiscing elit.
-        Nullam dignissim convallis est. Quisque aliquam. Donec faucibus. Nunc
-        iaculis suscipit dui. Nam sit amet sem. Aliquam libero nisi, imperdiet
-        at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis
-        luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget
-        metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla
-        nonummy. Mauris a ante. Suspendisse quam sem, consequat at, commodo
-        vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.
+        Lorem ipsum dolor sit amet, emphasis consectetuer adipiscing elit. Nullam dignissim
+        convallis est. Quisque aliquam. Donec faucibus. Nunc iaculis suscipit dui. Nam sit amet sem.
+        Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis,
+        massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus.
+        Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. Mauris a ante.
+        Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue
+        quis tellus.
       </p>
     </div>
     <footer class="s-article--footer"></footer>
@@ -59,17 +56,17 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "SArticle",
+  name: 'SArticle',
   props: {
     isLink: {
       type: Boolean,
       default: true
     }
   }
-});
+})
 </script>
 
 <style lang="scss" src="./Article.scss"></style>

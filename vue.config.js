@@ -1,4 +1,4 @@
-process.env.VUE_APP_VERSION = require("./package.json").version;
+process.env.VUE_APP_VERSION = require('./package.json').version
 
 module.exports = {
   css: {
@@ -9,10 +9,21 @@ module.exports = {
     }
   },
   pluginOptions: {
-    "vue-loader": {
+    'vue-loader': {
       compilerOptions: {
         preserveWhitespace: false
       }
     }
+  },
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   }
-};
+}

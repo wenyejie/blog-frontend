@@ -4,38 +4,31 @@
  - @email: wenyejie@foxmail.com
  -->
 <template>
-  <button
-    :class="classes"
-    :type="nativeType"
-    :disabled="innerDisabled"
-    :autofocus="autofocus"
-  >
+  <button :class="classes" :type="nativeType" :disabled="innerDisabled" :autofocus="autofocus">
     <slot />
   </button>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { propBooleanDefFalse, propSizeOpts } from "@/components/utils";
+import { defineComponent, computed } from 'vue'
+import { propBooleanDefFalse, propSizeOpts } from '@/components/utils'
 
-const CLS_NAME = "s-button";
+const CLS_NAME = 's-button'
 
 export default defineComponent({
-  name: "SButton",
+  name: 'SButton',
   props: {
     type: {
       type: String,
       validator: (val: string) => {
-        return ["primary", "success", "warning", "danger", "info"].includes(
-          val
-        );
+        return ['primary', 'success', 'warning', 'danger', 'info'].includes(val)
       }
     },
     nativeType: {
       type: String,
-      default: "button",
+      default: 'button',
       validator: (val: string) => {
-        return ["button", "submit", "reset"].includes(val);
+        return ['button', 'submit', 'reset'].includes(val)
       }
     },
     size: propSizeOpts,
@@ -56,25 +49,25 @@ export default defineComponent({
       {
         [`${CLS_NAME}--${props.type}`]: !!props.type,
         [`${CLS_NAME}--${props.size}`]: !!props.size,
-        "is-block": props.block,
-        "is-loading": props.loading,
-        "is-plain": props.plain,
-        "is-round": props.round,
-        "is-circle": props.circle
+        'is-block': props.block,
+        'is-loading': props.loading,
+        'is-plain': props.plain,
+        'is-round': props.round,
+        'is-circle': props.circle
       }
-    ]);
+    ])
 
     // 当按钮被禁用或者loading状态时, 禁用按钮
     const innerDisabled = computed(() => {
-      return props.loading || props.disabled;
-    });
+      return props.loading || props.disabled
+    })
 
     return {
       classes,
       innerDisabled
-    };
+    }
   }
-});
+})
 </script>
 
 <style lang="scss" src="./Button.scss"></style>

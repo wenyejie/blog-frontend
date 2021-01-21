@@ -4,7 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-export const SButton = () =>
-  import(/* webpackChunkName: "button" */ "./Button.vue");
+export const SButton = () => import(/* webpackChunkName: "button" */ './Button.vue')
 
-export default SButton;
+export default SButton

@@ -4,6 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-import SFooter from "./Footer.vue";
+import SFooter from './Footer.vue'
 
-export default SFooter;
+export default SFooter

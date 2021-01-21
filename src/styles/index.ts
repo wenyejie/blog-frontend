@@ -4,6 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-import "./reset.scss";
-import "./variables.scss";
-import "./common.scss";
+import './reset.scss'
+import './variables.scss'
+import './common.scss'

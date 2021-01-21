@@ -4,3 +4,6 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, never>
   export default component
 }
+
+declare module 'marked'
+declare module 'dompurify'

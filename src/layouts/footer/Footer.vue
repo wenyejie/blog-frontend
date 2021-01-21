@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  name: ""
-};
+  name: ''
+}
 </script>
 
 <style lang="scss">
