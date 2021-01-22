@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 
-const articleRouter: RouteRecordRaw = {
+const tagRouter: RouteRecordRaw = {
   path: '/tag',
   name: 'tag',
   component: () => import(/* webpackChunkName: "r-tag" */ '@/views/Tag.vue'),
@@ -9,4 +9,4 @@ const articleRouter: RouteRecordRaw = {
   }
 }
 
-export default articleRouter
+export default tagRouter
