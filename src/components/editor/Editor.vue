@@ -16,8 +16,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
-import markdown2html from '@/cores/markdown2html.ts'
+import { computed, defineComponent, nextTick, ref, watch } from 'vue'
+import markdown2html, { markdownClean } from '@/cores/markdown2html.ts'
+import prismjs from 'prismjs'
 
 export default defineComponent({
   name: 'SEditor',
@@ -39,15 +40,19 @@ export default defineComponent({
     )
 
     const compiledMarkdown = computed(() => {
+      nextTick(() => {
+        debugger
+        prismjs.highlightAll()
+      })
       return markdown2html(editorValue.value)
     })
 
     const handleInput = () => {
-      emit('update:modelValue', editorValue.value)
+      emit('update:modelValue', markdownClean(editorValue.value))
     }
 
     const handleChange = () => {
-      emit('update:modelValue', editorValue.value)
+      emit('update:modelValue', markdownClean(editorValue.value))
     }
 
     return {

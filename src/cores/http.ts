@@ -18,27 +18,27 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(
-  config => {
+  (config) => {
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
 http.interceptors.response.use(
-  response => {
-    const data = response.data
-    if (isObject(data)) {
-      if (data.code === '000') {
-        return data
+  (response) => {
+    const responseData = response.data
+    if (isObject(responseData)) {
+      if (responseData.code === '000') {
+        return responseData.data
       } else {
-        return Promise.reject(data.message)
+        return Promise.reject(responseData.message)
       }
     }
     return Promise.reject('服务器错误!')
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )

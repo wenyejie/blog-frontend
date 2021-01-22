@@ -7,3 +7,4 @@ declare module '*.vue' {
 
 declare module 'marked'
 declare module 'dompurify'
+declare module 'prismjs'

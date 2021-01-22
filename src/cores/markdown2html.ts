@@ -1,13 +1,19 @@
 import marked from 'marked'
 import createDOMPurify from 'dompurify'
 
-let DOMPurify: any = null
+const DOMPurify = createDOMPurify(window)
 
-export const markdown2html = (markdown: string, options?: any) => {
-  if (DOMPurify === null) {
-    DOMPurify = createDOMPurify(window)
-  }
+interface Markdown2htmlOptions {
+  [propName: string]: never
+}
+
+export const markdown2html = (markdown: string, options?: Markdown2htmlOptions) => {
   return DOMPurify.sanitize(marked(markdown, options))
+}
+
+// 清除markdown中的错误html
+export const markdownClean = (markdown: string) => {
+  return DOMPurify.sanitize(markdown)
 }
 
 export default markdown2html

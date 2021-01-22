@@ -44,7 +44,7 @@ export default defineComponent({
     autocomplete: propBooleanDefFalse,
     size: propSizeOpts
   },
-  emits: ['input', 'change'],
+  emits: ['update:modelValue', 'input', 'change'],
   setup(props, { emit }) {
     const classes = computed(() => [
       CLS_NAME,
@@ -57,6 +57,7 @@ export default defineComponent({
     const innerValue = ref('')
 
     const handleInput = (event: InputEvent) => {
+      emit('update:modelValue', innerValue.value)
       emit('input', event)
     }
 

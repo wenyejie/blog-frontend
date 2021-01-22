@@ -5,26 +5,53 @@
  -->
 <template>
   <div class="article-edit">
-    <s-editor v-model="editorValue" />
+    <fieldset>
+      <legend>创建文章</legend>
 
-    111: {{ editorValue }}
+      <form name="form" @submit.stop>
+        <label>标题: <s-input v-model="form.title"/></label>
 
-    <s-button @click="submitArticle">提交</s-button>
+        <label>分类: <s-input v-model="form.category"/></label>
+
+        <label>标签: <s-input v-model="form.tag"/></label>
+
+        <s-editor v-model="form.content" />
+
+        <s-button @click="submitArticle">提交</s-button>
+      </form>
+    </fieldset>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, reactive } from 'vue'
+import { addArticle } from '@/apis'
 
 export default defineComponent({
   name: 'ArticleEdit',
   setup() {
+    // 表单
+    const form = reactive({
+      title: '',
+      content: '',
+      tag: '',
+      category: ''
+    })
+
     const submitArticle = () => {
-      console.log('提交')
+      console.log('提交文章', form)
+      addArticle(form).then(
+        () => {
+          alert('文章创建成功!')
+        },
+        err => {
+          console.error(err)
+        }
+      )
     }
-    const editorValue = ref('')
+
     return {
-      editorValue,
+      form,
       submitArticle
     }
   }

@@ -4,6 +4,6 @@
  * @email: wenyejie@foxmail.com
  */
 
-export const SEditor = () => import(/* webpackChunkName: "editor" */ './Editor.vue')
+export const SEditor = () => import(/* webpackChunkName: "s-editor" */ './Editor.vue')
 
 export default SEditor
