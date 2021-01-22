@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
-import { addArticle } from '@/apis'
+import { addArticle } from '@/apis/article'
 
 export default defineComponent({
   name: 'ArticleEdit',

@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import { defineComponent, computed, nextTick } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { markdown2html } from '@/cores/markdown2html'
 import { dateFormat } from 'wenyejie'
-import prismjs from 'prismjs'
+import highlight from '@/cores/highlight'
 
 export default defineComponent({
   name: 'SArticle',
@@ -60,9 +60,7 @@ export default defineComponent({
   },
   setup(props) {
     const computedContent = computed(() => {
-      nextTick(() => {
-        prismjs.highlightAll()
-      })
+      highlight()
       return markdown2html(props.data.content)
     })
 

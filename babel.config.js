@@ -4,7 +4,7 @@ module.exports = {
     [
       'prismjs',
       {
-        languages: ['javascript', 'css', 'markdown', 'git', 'html'],
+        languages: ['javascript', 'css', 'markup', 'markdown', 'git', 'html'],
         plugins: ['line-numbers'],
         theme: 'okaidia',
         css: true

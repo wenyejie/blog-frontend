@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
-import { getArticleList } from '@/apis'
+import { getArticleList } from '@/apis/article'
 
 export default defineComponent({
   name: 'Home',
