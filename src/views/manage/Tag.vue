@@ -1,13 +1,13 @@
 <template>
-  <div class="tag">
-    <h1 class="page-title">标签</h1>
-    <form class="tag--add" @submit.prevent>
-      <s-input class="tag--add--input" v-model.trim="newTag" />
+  <div class="manage-tag">
+    <h1 class="page-title">标签管理</h1>
+    <form class="manage-tag--add" @submit.prevent>
+      <s-input class="manage-tag--add--input" v-model.trim="newTag" />
       <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
     </form>
-    <form class="tag--form" @submit.stop>
-      <ul class="tag--list">
-        <li class="tag--item" v-for="(item, index) in tagList" :key="item._id">
+    <form class="manage-tag--form" @submit.stop>
+      <ul class="manage-tag--list">
+        <li class="manage-tag--item" v-for="(item, index) in tagList" :key="item._id">
           <s-input v-model.trim="item.label" />
           <s-button @click="handleDeleteTag(item, index)">删除</s-button>
           <s-button @click="handleUpdateTag(item)">更新</s-button>
@@ -19,19 +19,15 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { getTagList, addTag, updateTag, deleteTag } from '@/apis/tag'
+import { addTag, updateTag, deleteTag } from '@/apis/tag'
+import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'
 
 export default defineComponent({
-  name: 'Tag',
+  name: 'ManageTag',
   setup() {
-    const tagList: Tag[] = reactive([])
-
+    const tagList = fetchTagList()
     const newTag = ref('')
-
-    getTagList().then((list: any) => {
-      tagList.push(...list)
-    })
 
     // 添加标签
     const handleAddTag = () => {
@@ -75,7 +71,7 @@ export default defineComponent({
   margin: 25px 0;
 }
 
-.tag {
+.manage-tag {
   &--add,
   &--item {
     margin-bottom: 15px;

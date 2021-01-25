@@ -8,12 +8,14 @@ import SButton from '@/components/button'
 import SInput from '@/components/input'
 import SArticle from '@/components/article'
 import SEditor from '@/components/editor'
+import SPagination from '@/components/pagination'
 
 const components: any = {
   SButton,
   SInput,
   SArticle,
-  SEditor
+  SEditor,
+  SPagination
 }
 
 for (const key in components) {

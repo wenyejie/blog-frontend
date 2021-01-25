@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import articleRouter from './article'
-import tagRouter from './tag'
-import categoryRouter from './category'
+import manageRouter from './manage'
+import categoryRouters from './category'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -21,8 +21,8 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   articleRouter,
-  tagRouter,
-  categoryRouter
+  ...categoryRouters,
+  manageRouter
 ]
 
 const router = createRouter({

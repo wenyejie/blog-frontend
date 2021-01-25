@@ -24,8 +24,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import { addArticle } from '@/apis/article'
+import fetchTagList from '@/composition/fetchTagList'
+import fetchCategoryList from '@/composition/fetchCategoryList'
 
 export default defineComponent({
   name: 'ArticleEdit',
@@ -37,6 +39,10 @@ export default defineComponent({
       tag: '',
       category: ''
     })
+
+    const tagList = fetchTagList()
+
+    const categoryList = fetchCategoryList()
 
     const submitArticle = () => {
       console.log('提交文章', form)
@@ -52,7 +58,9 @@ export default defineComponent({
 
     return {
       form,
-      submitArticle
+      submitArticle,
+      tagList,
+      categoryList
     }
   }
 })

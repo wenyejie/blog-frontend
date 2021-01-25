@@ -7,7 +7,7 @@ interface Markdown2htmlOptions {
   [propName: string]: never
 }
 
-export const markdown2html = (markdown: string, options?: Markdown2htmlOptions) => {
+export const markdown2html = (markdown = '', options?: Markdown2htmlOptions) => {
   return DOMPurify.sanitize(marked(markdown, options))
 }
 

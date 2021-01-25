@@ -15,6 +15,8 @@
 
 <script>
 import { defineComponent, reactive } from 'vue'
+import { categoryList } from '@/datas'
+
 export default defineComponent({
   name: 'SNav',
   setup() {
@@ -23,6 +25,7 @@ export default defineComponent({
         label: '首页',
         to: '/'
       },
+      ...categoryList.map(item => ({ label: item.label, to: `/${item.label}` })),
       {
         label: '关于',
         to: '/about'
