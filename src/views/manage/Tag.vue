@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { addTag, updateTag, deleteTag } from '@/apis/tag'
 import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'

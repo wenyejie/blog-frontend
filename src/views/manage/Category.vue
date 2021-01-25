@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
 import { Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
