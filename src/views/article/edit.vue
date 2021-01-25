@@ -11,9 +11,16 @@
       <form name="form" @submit.stop>
         <label>标题: <s-input v-model="form.title"/></label>
 
-        <label>分类: <s-input v-model="form.category"/></label>
+        <label
+          >分类:
+          <s-select v-model="form.category" :data="categoryList" placeholder="请选择分类" />
+        </label>
 
-        <label>标签: <s-input v-model="form.tag"/></label>
+        <label
+          >标签: <s-select v-model="form.tag" multiple :data="tagList" placeholder="请选择标签"
+        /></label>
+
+        {{ form.tag }}
 
         <s-editor v-model="form.content" />
 
@@ -36,11 +43,13 @@ export default defineComponent({
     const form = reactive({
       title: '',
       content: '',
-      tag: '',
+      tag: [],
       category: ''
     })
 
     const tagList = fetchTagList()
+
+    console.log(tagList)
 
     const categoryList = fetchCategoryList()
 

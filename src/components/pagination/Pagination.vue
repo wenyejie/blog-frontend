@@ -257,7 +257,7 @@ export default defineComponent({
       }
     }
   },
-
+  emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const innerPageSize = ref(props.pageSize)
 

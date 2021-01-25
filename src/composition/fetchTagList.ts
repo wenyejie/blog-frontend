@@ -6,7 +6,7 @@ export default () => {
 
   const fetchTagList = () => {
     getTagList().then((list: any) => {
-      tagList.value = list
+      tagList.push(...list)
     })
   }
 
