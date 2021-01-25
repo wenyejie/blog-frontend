@@ -1,5 +1,10 @@
 export interface Tag {
-  id?: number
+  id?: string
+  label?: string
+}
+
+export interface Category {
+  id?: string
   label?: string
 }
 

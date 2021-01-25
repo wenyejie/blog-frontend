@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosResponse } from 'axios'
+import { AxiosRequestConfig } from 'axios'
 import http from '@/cores/http'
 import { Tag, Pagination } from '@/statement'
 
@@ -9,10 +9,7 @@ export const updateTag = (data: Tag, config?: AxiosRequestConfig) => {
 
 // 新增标签
 export const addTag = (data: Tag, config?: AxiosRequestConfig) => {
-  return http.post('/tag/add', data, config).then((response) => {
-    debugger
-    return response
-  })
+  return http.post('/tag/add', data, config)
 }
 
 // 删除标签

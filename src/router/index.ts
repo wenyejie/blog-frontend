@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import article from '@/router/article'
-import tag from '@/router/tag'
+import articleRouter from './article'
+import tagRouter from './tag'
+import categoryRouter from './category'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,8 +20,9 @@ const routes: Array<RouteRecordRaw> = [
       title: '关于'
     }
   },
-  article,
-  tag
+  articleRouter,
+  tagRouter,
+  categoryRouter
 ]
 
 const router = createRouter({

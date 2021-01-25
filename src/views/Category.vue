@@ -1,13 +1,13 @@
 <template>
   <div class="tag">
-    <h1 class="page-title">标签</h1>
+    <h1 class="page-title">分类</h1>
     <form class="tag--add" @submit.prevent>
-      <s-input class="tag--add--input" v-model.trim="newTag" />
+      <s-input class="tag--add--input" v-model.trim="newCategory" />
       <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
     </form>
     <form class="tag--form" @submit.stop>
       <ul class="tag--list">
-        <li class="tag--item" v-for="(item, index) in tagList" :key="item._id">
+        <li class="tag--item" v-for="(item, index) in categoryList" :key="item._id">
           <s-input v-model.trim="item.label" />
           <s-button @click="handleDeleteTag(item, index)">删除</s-button>
           <s-button @click="handleUpdateTag(item)">更新</s-button>
@@ -19,47 +19,47 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
-import { getTagList, addTag, updateTag, deleteTag } from '@/apis/tag'
-import { Tag } from '@/statement'
+import { getCategoryList, addCategory, updateCategory, deleteCategory } from '@/apis/category'
+import { Category } from '@/statement'
 
 export default defineComponent({
   name: 'Tag',
   setup() {
-    const tagList: Tag[] = reactive([])
+    const categoryList: Category[] = reactive([])
 
-    const newTag = ref('')
+    const newCategory = ref('')
 
-    getTagList().then((list: any) => {
-      tagList.push(...list)
+    getCategoryList().then((list: any) => {
+      categoryList.push(...list)
     })
 
-    // 添加标签
+    // 添加分类
     const handleAddTag = () => {
-      addTag({ label: newTag.value }).then((tag: any) => {
-        alert('标签添加成功')
-        tagList.push(tag)
-        newTag.value = ''
+      addCategory({ label: newCategory.value }).then((tag: any) => {
+        alert('分类添加成功')
+        categoryList.push(tag)
+        newCategory.value = ''
       })
     }
 
-    // 更新标签
-    const handleUpdateTag = (item: Tag) => {
-      updateTag(item).then(() => {
-        alert('标签更新成功')
+    // 更新分类
+    const handleUpdateTag = (item: Category) => {
+      updateCategory(item).then(() => {
+        alert('分类更新成功')
       })
     }
 
-    // 删除标签
-    const handleDeleteTag = (item: Tag, index: number) => {
-      deleteTag(item).then(() => {
-        alert('标签移除成功')
-        tagList.splice(index, 1)
+    // 删除分类
+    const handleDeleteTag = (item: Category, index: number) => {
+      deleteCategory(item).then(() => {
+        alert('分类移除成功')
+        categoryList.splice(index, 1)
       })
     }
 
     return {
-      newTag,
-      tagList,
+      newCategory,
+      categoryList,
       handleAddTag,
       handleUpdateTag,
       handleDeleteTag
