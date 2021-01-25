@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 import { propBooleanDefFalse, propSizeOpts } from '@/components/utils'
 
 const CLS_NAME = 's-input'
@@ -55,6 +55,13 @@ export default defineComponent({
     ])
 
     const innerValue = ref(props.modelValue)
+
+    watch(
+      () => props.modelValue,
+      value => {
+        innerValue.value = value
+      }
+    )
 
     const handleInput = (event: InputEvent) => {
       emit('update:modelValue', innerValue.value)

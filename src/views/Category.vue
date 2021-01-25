@@ -1,16 +1,18 @@
 <template>
-  <div class="tag">
+  <div class="category">
     <h1 class="page-title">分类</h1>
-    <form class="tag--add" @submit.prevent>
-      <s-input class="tag--add--input" v-model.trim="newCategory" />
-      <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
+    <form class="category--add" @submit.prevent>
+      <s-input class="category--add--input" v-model.trim="newCategory" />
+      <s-button native-type="submit" class="category--add--btn" @click="handleAddCategory"
+        >添加</s-button
+      >
     </form>
-    <form class="tag--form" @submit.stop>
-      <ul class="tag--list">
-        <li class="tag--item" v-for="(item, index) in categoryList" :key="item._id">
+    <form class="category--form" @submit.stop>
+      <ul class="category--list">
+        <li class="category--item" v-for="(item, index) in categoryList" :key="item._id">
           <s-input v-model.trim="item.label" />
-          <s-button @click="handleDeleteTag(item, index)">删除</s-button>
-          <s-button @click="handleUpdateTag(item)">更新</s-button>
+          <s-button @click="handleDeleteCategory(item, index)">删除</s-button>
+          <s-button @click="handleUpdateCategory(item)">更新</s-button>
         </li>
       </ul>
     </form>
@@ -23,7 +25,7 @@ import { getCategoryList, addCategory, updateCategory, deleteCategory } from '@/
 import { Category } from '@/statement'
 
 export default defineComponent({
-  name: 'Tag',
+  name: 'Category',
   setup() {
     const categoryList: Category[] = reactive([])
 
@@ -34,25 +36,21 @@ export default defineComponent({
     })
 
     // 添加分类
-    const handleAddTag = () => {
-      addCategory({ label: newCategory.value }).then((tag: any) => {
-        alert('分类添加成功')
-        categoryList.push(tag)
+    const handleAddCategory = () => {
+      addCategory({ label: newCategory.value }).then((category: any) => {
+        categoryList.push(category)
         newCategory.value = ''
       })
     }
 
     // 更新分类
-    const handleUpdateTag = (item: Category) => {
-      updateCategory(item).then(() => {
-        alert('分类更新成功')
-      })
+    const handleUpdateCategory = (item: Category) => {
+      updateCategory(item)
     }
 
     // 删除分类
-    const handleDeleteTag = (item: Category, index: number) => {
+    const handleDeleteCategory = (item: Category, index: number) => {
       deleteCategory(item).then(() => {
-        alert('分类移除成功')
         categoryList.splice(index, 1)
       })
     }
@@ -60,9 +58,9 @@ export default defineComponent({
     return {
       newCategory,
       categoryList,
-      handleAddTag,
-      handleUpdateTag,
-      handleDeleteTag
+      handleAddCategory,
+      handleUpdateCategory,
+      handleDeleteCategory
     }
   }
 })
@@ -75,7 +73,7 @@ export default defineComponent({
   margin: 25px 0;
 }
 
-.tag {
+.category {
   &--add,
   &--item {
     margin-bottom: 15px;
