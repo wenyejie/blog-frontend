@@ -54,7 +54,7 @@ export default defineComponent({
       }
     ])
 
-    const innerValue = ref('')
+    const innerValue = ref(props.modelValue)
 
     const handleInput = (event: InputEvent) => {
       emit('update:modelValue', innerValue.value)

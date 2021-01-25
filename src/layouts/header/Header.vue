@@ -6,8 +6,8 @@
 <template>
   <header class="s-header">
     <hgroup>
-      <h1 class="s-header--title">小业业的博客</h1>
-      <h2 class="s-header--subtitle">一个前端开发者的技术博客</h2>
+      <h1 class="s-header--title">{{ title }}</h1>
+      <h2 class="s-header--subtitle">{{ subtitle }}</h2>
     </hgroup>
 
     <s-nav />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import SNav from './nav'
 
 export default defineComponent({
@@ -24,7 +24,12 @@ export default defineComponent({
     SNav
   },
   setup() {
-    return {}
+    const title = ref(process.env.VUE_APP_TITLE)
+    const subtitle = ref(process.env.VUE_APP_SUBTITLE)
+    return {
+      title,
+      subtitle
+    }
   }
 })
 </script>

@@ -9,12 +9,14 @@
   padding: 24px 0;
 
   &--title {
-    font-size: 26px;
+    font-size: 36px;
     line-height: 48px;
     font-weight: bold;
   }
 
   &--subtitle {
     color: #757575;
+    font-size: 18px;
+    margin-top: 10px;
   }
 }
