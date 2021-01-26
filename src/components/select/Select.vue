@@ -1,5 +1,11 @@
 <template>
-  <select v-model="innerValue" :class="classes" class="s-select" @change="handleChange">
+  <select
+    v-model="innerValue"
+    :size="nativeSize"
+    :class="classes"
+    class="s-select"
+    @change="handleChange"
+  >
     <option v-if="placeholder" disabled value="">{{ placeholder }}</option>
     <slot>
       <template v-if="data">
@@ -17,25 +23,21 @@
 
 <script>
 import { defineComponent, ref, watch, computed } from 'vue'
+import { propSizeOpts, formEleDefProps } from '@/composition/formElement'
 
 export default defineComponent({
   name: 'SSelect',
   props: {
-    placeholder: {
-      type: String,
-      default: '请选择'
-    },
+    ...formEleDefProps,
     modelValue: {
-      type: [String, Number]
+      type: [String, Number, Array]
     },
     // 大小
-    size: {
-      type: String,
-      default: undefined,
-      validator(val) {
-        return ['lg', 'sm', 'xs'].includes(val)
-      }
-    },
+    size: propSizeOpts,
+
+    // 原始属性
+    nativeSize: [String, Number],
+
     // 是否为块级元素
     block: {
       type: Boolean,
@@ -71,7 +73,7 @@ export default defineComponent({
 
     const classes = computed(() => {
       return {
-        [`s-select-${props.size}`]: !!props.size,
+        [`is-${props.size}`]: !!props.size,
         [`s-select-block`]: !!props.block
       }
     })

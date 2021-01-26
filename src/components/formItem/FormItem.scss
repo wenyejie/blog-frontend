@@ -1,0 +1,26 @@
+.s-form-item {
+  margin-bottom: 2em;
+
+  &.in-left,
+  &.in-right {
+    display: flex;
+  }
+
+  &.in-right {
+    text-align: right;
+  }
+
+  &.is-inline {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &--label {
+    line-height: 36px;
+    margin-right: .75em;
+  }
+
+  &--content {
+    flex: 1;
+  }
+}

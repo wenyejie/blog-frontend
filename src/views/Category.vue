@@ -1,6 +1,5 @@
 <template>
   <div class="category">
-    1111
     <s-article />
     <s-pagination />
   </div>

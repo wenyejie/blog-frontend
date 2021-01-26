@@ -7,9 +7,9 @@
 
 .s-editor {
   display: flex;
-  align-items: auto;
   align-content: stretch;
   height: 600px;
+  border: 1px solid var(--border-color);
 
   &--input {
     flex: 1;
@@ -25,12 +25,7 @@
 
   &--preview {
     flex: 1;
-    padding: 0 20px;
     overflow-y: auto;
-
-    h1 {
-      font-size: 24px;
-      font-weight: bold;
-    }
+    padding: 20px;
   }
 }

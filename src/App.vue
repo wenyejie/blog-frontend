@@ -10,6 +10,7 @@ import SHeader from '@/layouts/header'
 import SFooter from '@/layouts/footer'
 
 export default defineComponent({
+  name: 'App',
   components: {
     SHeader,
     SFooter

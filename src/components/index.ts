@@ -10,6 +10,8 @@ import SArticle from '@/components/article'
 import SEditor from '@/components/editor'
 import SPagination from '@/components/pagination'
 import SSelect from '@/components/select'
+import SForm from '@/components/form'
+import SFormItem from '@/components/formItem'
 
 const components: any = {
   SButton,
@@ -17,7 +19,9 @@ const components: any = {
   SArticle,
   SEditor,
   SPagination,
-  SSelect
+  SSelect,
+  SForm,
+  SFormItem
 }
 
 for (const key in components) {

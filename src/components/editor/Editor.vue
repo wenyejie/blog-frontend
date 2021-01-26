@@ -10,6 +10,12 @@
       v-model="editorValue"
       @input="handleInput"
       @change="handleChange"
+      :name="name"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :required="required"
+      :readonly="readonly"
+      :autocomplete="autocomplete"
     ></textarea>
     <div class="s-editor--preview" v-html="compiledMarkdown"></div>
   </div>
@@ -19,6 +25,7 @@
 import { computed, defineComponent, ref, watch } from 'vue'
 import markdown2html, { markdownClean } from '@/cores/markdown2html.ts'
 import highlight from '@/cores/highlight'
+import { formEleDefProps } from '@/composition/formElement'
 
 export default defineComponent({
   name: 'SEditor',
@@ -27,7 +34,8 @@ export default defineComponent({
     modelValue: {
       type: String,
       default: ''
-    }
+    },
+    ...formEleDefProps
   },
   setup(props, { emit }) {
     const editorValue = ref('')

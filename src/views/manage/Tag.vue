@@ -65,12 +65,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.page-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 25px 0;
-}
-
 .manage-tag {
   &--add,
   &--item {

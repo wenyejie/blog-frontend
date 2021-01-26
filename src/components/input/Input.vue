@@ -6,10 +6,12 @@
 <template>
   <div :class="classes">
     <input
+      :name="name"
       v-model="innerValue"
       @input="handleInput"
       @change="handleChange"
       :class="`${CLS_NAME}--inner`"
+      :placeholder="placeholder"
       :disabled="disabled"
       :readonly="readonly"
       :required="required"
@@ -21,7 +23,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref, watch } from 'vue'
-import { propBooleanDefFalse, propSizeOpts } from '@/components/utils'
+import { propSizeOpts, formEleDefProps } from '@/composition/formElement'
 
 const CLS_NAME = 's-input'
 
@@ -29,7 +31,7 @@ export default defineComponent({
   name: 'SInput',
   props: {
     modelValue: {
-      type: String
+      type: [String, Number]
     },
     type: {
       type: String,
@@ -38,11 +40,8 @@ export default defineComponent({
         return ['text', 'password', 'number'].includes(val)
       }
     },
-    disabled: propBooleanDefFalse,
-    readonly: propBooleanDefFalse,
-    required: propBooleanDefFalse,
-    autocomplete: propBooleanDefFalse,
-    size: propSizeOpts
+    size: propSizeOpts,
+    ...formEleDefProps
   },
   emits: ['update:modelValue', 'input', 'change'],
   setup(props, { emit }) {
