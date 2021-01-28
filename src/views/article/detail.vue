@@ -11,6 +11,7 @@
 import { defineComponent, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
+import { setPageTitle } from '@/utils'
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
@@ -19,6 +20,7 @@ export default defineComponent({
 
     getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(result => {
       Object.assign(article, result)
+      setPageTitle(article.title)
     })
 
     return {

@@ -13,17 +13,17 @@
       <dl class="s-article--meta" v-if="!plain">
         <dt class="s-article--dt">分类:</dt>
         <dd>
-          <router-link class="s-article--meta-link" :to="`/category/${data.category._id}`">{{
-            data.category.label
-          }}</router-link>
+          <router-link class="s-article--meta-link" :to="`/category/${data.category._id}`"
+            >{{ data.category.label }}
+          </router-link>
         </dd>
         <dt class="s-article--dt">标签:</dt>
         <dd>
           <template v-for="(item, index) in data.tags" :key="item._id">
-            <router-link class="s-article--meta-link" :to="`/tag/${item._id}`">{{
-              item.label
-            }}</router-link
-            ><template v-if="index < data.tags.length - 1">, </template>
+            <router-link class="s-article--meta-link" :to="`/tag/${item._id}`"
+              >{{ item.label }}
+            </router-link>
+            <template v-if="index < data.tags.length - 1">,</template>
           </template>
         </dd>
         <dt class="s-article--dt">作者:</dt>
@@ -31,14 +31,22 @@
         <dt class="s-article--dt">创建时间:</dt>
         <dd>
           <router-link class="s-article--meta-link" to="/">
-            <time datetime="2021-01-20 11:44:19">{{ createTime }}</time>
+            <time :datetime="createTime">{{ createTime }}</time>
           </router-link>
         </dd>
-        <dt class="s-article--dt">更新时间:</dt>
+        <template v-if="updateTime">
+          <dt class="s-article--dt">更新时间:</dt>
+          <dd>
+            <router-link class="s-article--meta-link" to="/">
+              <time :datetime="updateTime">{{ updateTime }}</time>
+            </router-link>
+          </dd>
+        </template>
+        <dt>操作:</dt>
         <dd>
-          <router-link class="s-article--meta-link" to="/">
-            <time datetime="2021-01-20 11:44:19">{{ updateTime }}</time>
-          </router-link>
+          <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
+            >编辑</router-link
+          >
         </dd>
       </dl>
     </header>
@@ -72,11 +80,11 @@ export default defineComponent({
     })
 
     const updateTime = computed(() => {
-      return dateFormat(props.data.utime)
+      return props.data.utime && dateFormat(props.data.utime, 'YYYY-MM-DD')
     })
 
     const createTime = computed(() => {
-      return dateFormat(props.data.ctime)
+      return dateFormat(props.data.ctime, 'YYYY-MM-DD')
     })
 
     return {

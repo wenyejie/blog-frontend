@@ -65,7 +65,7 @@ export default defineComponent({
       category: null
     })
 
-    const articleFormElem = ref(null)
+    const articleFormElem = ref()
 
     const route = useRoute()
 
@@ -77,6 +77,7 @@ export default defineComponent({
       addArticle(articleForm).then(
         () => {
           alert('文章创建成功!')
+          articleFormElem.value.reset()
         },
         err => {
           console.error(err)
@@ -101,13 +102,16 @@ export default defineComponent({
 
     // 当本地存在缓存数据时, 载入当前缓存
     const localArticleForm = localArticleEdit()
-    if (localArticleForm && localArticleForm._id === route.query.articleid) {
+    if (localArticleForm && localArticleForm._id === route.query.id) {
       Object.assign(articleForm, localArticleForm)
     }
 
-    if (route.query._id) {
-      getArticleDetail({ _id: Number.parseInt(route.query.articleid) }).then(result => {
+    if (route.query.id) {
+      getArticleDetail({ _id: Number.parseInt(route.query.id) }).then(result => {
+        result.category = result?.category?._id
+        result.tags = result?.tags.map(tag => tag._id)
         Object.assign(articleForm, result)
+        console.log(articleForm)
       })
     }
 

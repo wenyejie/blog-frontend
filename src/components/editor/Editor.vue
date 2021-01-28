@@ -38,12 +38,15 @@ export default defineComponent({
     ...formEleDefProps
   },
   setup(props, { emit }) {
-    const editorValue = ref('')
+    const editorValue = ref(props.modelValue)
 
     watch(
       () => props.modelValue,
       (value: string) => {
         editorValue.value = value
+      },
+      {
+        immediate: true
       }
     )
 

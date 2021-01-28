@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { setPageTitle } from '@/utils'
 import articleRouter from './article'
 import manageRouter from './manage'
 import categoryRouters from './category'
@@ -37,13 +38,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // console.log(to, from, next)
-  let title = ''
-  if (to.meta.title) {
-    title = to.meta.title + ' - '
-  }
-  title += process.env.VUE_APP_TITLE
-  document.title = title
+  setPageTitle(to.meta.title)
   next()
 })
 

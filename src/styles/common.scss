@@ -26,3 +26,16 @@ a {
   margin: 15px 0 25px;
   border-bottom: 1px solid var(--border-color);
 }
+
+code {
+  font-size: 87.5%;
+  color: #e83e8c;
+}
+
+kbd {
+  padding: .2rem .4rem;
+  font-size: 87.5%;
+  color: #fff;
+  background-color: #212529;
+  border-radius: .2rem;
+}

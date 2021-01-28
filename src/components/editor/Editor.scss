@@ -8,7 +8,6 @@
 .s-editor {
   display: flex;
   align-content: stretch;
-  height: 600px;
   border: 1px solid var(--border-color);
 
   &--input {
@@ -25,7 +24,6 @@
 
   &--preview {
     flex: 1;
-    overflow-y: auto;
     padding: 20px;
   }
 }
