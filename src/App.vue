@@ -27,5 +27,6 @@ export default defineComponent({
   padding: 0 40px;
   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
   border-radius: var(--border-radius);
+  min-width: 1200px;
 }
 </style>
