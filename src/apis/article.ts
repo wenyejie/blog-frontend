@@ -13,7 +13,7 @@ export const getArticleList = (data?: any, config: AxiosRequestConfig = {}) => {
 }
 
 // 获取文章详情
-export const getArticle = (data?: any, config: AxiosRequestConfig = {}) => {
+export const getArticleDetail = (data?: any, config: AxiosRequestConfig = {}) => {
   config.params = data
   return http.get('/article/detail', config)
 }

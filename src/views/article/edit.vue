@@ -47,7 +47,7 @@
 <script lang="ts">
 import { defineComponent, reactive, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { addArticle } from '@/apis/article'
+import { addArticle, getArticleDetail } from '@/apis/article'
 import fetchTagList from '@/composition/fetchTagList'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
@@ -101,8 +101,14 @@ export default defineComponent({
 
     // 当本地存在缓存数据时, 载入当前缓存
     const localArticleForm = localArticleEdit()
-    if (localArticleForm && localArticleForm._id === route.query._id) {
+    if (localArticleForm && localArticleForm._id === route.query.articleid) {
       Object.assign(articleForm, localArticleForm)
+    }
+
+    if (route.query._id) {
+      getArticleDetail({ _id: Number.parseInt(route.query.articleid) }).then(result => {
+        Object.assign(articleForm, result)
+      })
     }
 
     return {

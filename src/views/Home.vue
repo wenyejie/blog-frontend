@@ -13,8 +13,8 @@ export default defineComponent({
   setup() {
     const articleList: any[] = reactive([])
 
-    getArticleList().then((list: any) => {
-      return articleList.push(...list)
+    getArticleList().then((result: any) => {
+      return articleList.push(...result.list)
     })
 
     return {

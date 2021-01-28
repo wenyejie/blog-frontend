@@ -5,8 +5,8 @@ export default () => {
   const tagList: any = reactive([])
 
   const fetchTagList = () => {
-    getTagList().then((list: any) => {
-      tagList.push(...list)
+    getTagList().then((result: any) => {
+      tagList.push(...result.list)
     })
   }
 

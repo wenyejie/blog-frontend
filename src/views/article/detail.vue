@@ -4,24 +4,22 @@
  - @email: wenyejie@foxmail.com
  -->
 <template>
-  <s-article class="article-detail" :plain="false" :data="article" />
+  <s-article v-if="article._id" class="article-detail" :plain="false" :data="article" />
 </template>
 
 <script>
 import { defineComponent, reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import { getArticle } from '@/apis/article'
+import { getArticleDetail } from '@/apis/article'
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
     const route = useRoute()
     const article = reactive({})
 
-    getArticle({ _id: Number.parseInt(route.params.id) }).then(result => {
+    getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(result => {
       Object.assign(article, result)
     })
-
-    console.log(route.params)
 
     return {
       article

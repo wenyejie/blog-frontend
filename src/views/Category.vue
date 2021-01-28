@@ -1,6 +1,8 @@
 <template>
   <div class="category">
+    <h1 class="page-title">{{ pageTitle }}</h1>
     <s-article v-for="item in articleList" :key="item._id" :data="item" />
+    <div class="category--nodata" v-if="articleList.length === 0">暂无数据...</div>
     <s-pagination v-model="page" :totalSize="totalSize" v-if="articleList.length" />
   </div>
 </template>
@@ -18,6 +20,7 @@ export default defineComponent({
     const pageSize = ref(10)
     const page = ref(1)
     const totalSize = ref(0)
+    const pageTitle = ref(route.meta.title)
 
     const fetchArticleList = () => {
       getArticleList({ category: route.meta._id }).then(result => {
@@ -28,11 +31,19 @@ export default defineComponent({
       })
     }
 
-    watch(() => route.path, fetchArticleList, {
-      immediate: true
-    })
+    watch(
+      () => route.path,
+      () => {
+        fetchArticleList()
+        pageTitle.value = route.meta.title
+      },
+      {
+        immediate: true
+      }
+    )
 
     return {
+      pageTitle,
       page,
       pageSize,
       totalSize,

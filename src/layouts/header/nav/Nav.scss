@@ -31,8 +31,8 @@
 
 
     &.router-link-exact-active {
-      font-weight: bold;
       color: #000;
+      transform: scale(1.1);
     }
   }
 }

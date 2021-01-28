@@ -6,7 +6,7 @@
     class="s-select"
     @change="handleChange"
   >
-    <option v-if="placeholder" disabled value="">{{ placeholder }}</option>
+    <option v-if="placeholder" disabled :value="null">{{ placeholder }}</option>
     <slot>
       <template v-if="data">
         <option

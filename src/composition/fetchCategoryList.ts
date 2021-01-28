@@ -5,8 +5,8 @@ export default () => {
   const categoryList: any = reactive([])
 
   const fetchTagList = () => {
-    getCategoryList().then((list: any) => {
-      categoryList.push(...list)
+    getCategoryList().then((result: any) => {
+      categoryList.push(...result.list)
     })
   }
 
