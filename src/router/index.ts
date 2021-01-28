@@ -22,7 +22,13 @@ const routes: Array<RouteRecordRaw> = [
   },
   articleRouter,
   ...categoryRouters,
-  manageRouter
+  manageRouter,
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'error404',
+    component: () => import(/* webpackChunkName: "r-404" */ '@/views/error/404.vue')
+  }
 ]
 
 const router = createRouter({
