@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
 import { setPageTitle } from '@/utils'
@@ -18,10 +18,18 @@ export default defineComponent({
     const route = useRoute()
     const article = reactive({})
 
-    getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(result => {
-      Object.assign(article, result)
-      setPageTitle(article.title)
-    })
+    watch(
+      () => route.params.id,
+      () => {
+        getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(result => {
+          Object.assign(article, result)
+          setPageTitle(article.title)
+        })
+      },
+      {
+        immediate: true
+      }
+    )
 
     return {
       article
