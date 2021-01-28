@@ -1,4 +1,4 @@
-import { session, local } from 'wenyejie'
+import { local } from 'wenyejie'
 import { ARTICLE_EDIT } from './namespace'
 
 // 文章编辑

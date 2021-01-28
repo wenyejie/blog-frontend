@@ -23,11 +23,11 @@
             <router-link class="s-article--meta-link" :to="`/tag/${item._id}`"
               >{{ item.label }}
             </router-link>
-            <template v-if="index < data.tags.length - 1">,</template>
+            <template v-if="index < data.tags.length - 1">,&nbsp;</template>
           </template>
         </dd>
         <dt class="s-article--dt">作者:</dt>
-        <dd>@{{ data.author }}</dd>
+        <dd>{{ data.author }}</dd>
         <dt class="s-article--dt">创建时间:</dt>
         <dd>
           <router-link class="s-article--meta-link" to="/">

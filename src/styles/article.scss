@@ -99,11 +99,10 @@
   }
 
   blockquote {
-    margin-bottom: 24px;
-    margin-bottom: 1.714285714rem;
+    margin: 24px 0;
     padding: 24px;
-    padding: 1.714285714rem;
-    font-style: italic;
+    border-left: 10px solid var(--border-color);
+    background: #eef0f4;
   }
 
   blockquote p:last-child {

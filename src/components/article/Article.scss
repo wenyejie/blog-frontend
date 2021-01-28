@@ -6,6 +6,17 @@
  */
 
 .s-article {
+
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 50px;
+  padding-bottom: 24px;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   &--header {
     margin-bottom: 24px;
   }

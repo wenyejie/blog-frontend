@@ -28,7 +28,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',
-    component: () => import(/* webpackChunkName: "r-error-404" */ '@/views/error/404.vue')
+    component: () => import(/* webpackChunkName: "r-error-404" */ '@/views/error/404.vue'),
+    meta: {
+      title: '404 Not Found'
+    }
   }
 ]
 
@@ -36,6 +39,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+if (process.env.NODE_ENV === 'development') {
+  router.addRoute({
+    path: '/demo',
+    name: 'demo',
+    component: () => import(/* webpackChunkName: "r-demo" */ '@/views/demo/index.vue'),
+    meta: {
+      title: 'demo'
+    }
+  })
+}
 
 router.beforeEach((to, from, next) => {
   setPageTitle(to.meta.title)

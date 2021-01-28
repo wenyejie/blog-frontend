@@ -9,6 +9,7 @@
   display: flex;
   align-content: stretch;
   border: 1px solid var(--border-color);
+  min-height: 350px;
 
   &--input {
     flex: 1;

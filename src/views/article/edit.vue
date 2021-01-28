@@ -7,7 +7,7 @@
   <div class="article-edit">
     <h1 class="page-title">{{ articleForm._id ? '编辑' : '新增' }}文章</h1>
 
-    <s-form ref="articleFormElem" name="articleForm" @submit="handleSubmit">
+    <s-form ref="articleFormRef" name="articleForm" @submit="handleSubmit">
       <s-form-item label="标题:">
         <s-input name="title" required v-model.trim="articleForm.title" />
       </s-form-item>
@@ -37,7 +37,7 @@
       </s-form-item>
 
       <s-form-item label-width="2em">
-        <s-button native-type="reset" @click="handleRest">重置</s-button>
+        <s-button native-type="reset">重置</s-button>
         <s-button native-type="submit">提交</s-button>
       </s-form-item>
     </s-form>
@@ -65,7 +65,7 @@ export default defineComponent({
       category: null
     })
 
-    const articleFormElem = ref()
+    const articleFormRef = reactive()
 
     const route = useRoute()
 
@@ -77,16 +77,13 @@ export default defineComponent({
       addArticle(articleForm).then(
         () => {
           alert('文章创建成功!')
-          articleFormElem.value.reset()
+          localArticleEdit(null)
+          articleFormRef.value.$el.reset()
         },
         err => {
           console.error(err)
         }
       )
-    }
-
-    const handleRest = () => {
-      console.log('rest')
     }
 
     // 自动存储当前文章
@@ -111,14 +108,12 @@ export default defineComponent({
         result.category = result?.category?._id
         result.tags = result?.tags.map(tag => tag._id)
         Object.assign(articleForm, result)
-        console.log(articleForm)
       })
     }
 
     return {
-      articleFormElem,
+      articleFormRef,
       articleForm,
-      handleRest,
       handleSubmit,
       tagList,
       categoryList
