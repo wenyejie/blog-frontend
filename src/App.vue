@@ -1,6 +1,6 @@
 <template>
   <s-header />
-  <router-view class="s-body" />
+  <s-body><router-view /></s-body>
   <s-footer />
 </template>
 
@@ -8,10 +8,12 @@
 import { defineComponent } from 'vue'
 import SHeader from '@/layout/header'
 import SFooter from '@/layout/footer'
+import SBody from '@/layout/body/body.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
+    SBody,
     SHeader,
     SFooter
   }

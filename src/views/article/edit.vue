@@ -5,7 +5,7 @@
  -->
 <template>
   <div class="article-edit">
-    <h1 class="page-title">新增文章</h1>
+    <h1 class="page-title">{{ articleForm._id ? '编辑' : '新增' }}文章</h1>
 
     <s-form ref="articleFormElem" name="articleForm" @submit="handleSubmit">
       <s-form-item label="标题:">
