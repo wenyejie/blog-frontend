@@ -28,7 +28,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',
-    component: () => import(/* webpackChunkName: "r-404" */ '@/views/error/404.vue')
+    component: () => import(/* webpackChunkName: "r-error-404" */ '@/views/error/404.vue')
   }
 ]
 
