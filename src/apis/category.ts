@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
-import http from '@/cores/http'
+import http from '@/core/http'
 import { Tag, Category } from '@/statement'
 
 // 更新分类

@@ -6,8 +6,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import SHeader from '@/layouts/header'
-import SFooter from '@/layouts/footer'
+import SHeader from '@/layout/header'
+import SFooter from '@/layout/footer'
 
 export default defineComponent({
   name: 'App',

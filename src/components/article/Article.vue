@@ -57,9 +57,9 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
-import { markdown2html } from '@/cores/markdown2html'
+import { markdown2html } from '@/core/markdown2html'
 import { dateFormat } from 'wenyejie'
-import highlight from '@/cores/highlight'
+import highlight from '@/core/highlight'
 
 export default defineComponent({
   name: 'SArticle',

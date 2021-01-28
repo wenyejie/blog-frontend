@@ -23,8 +23,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from 'vue'
-import markdown2html, { markdownClean } from '@/cores/markdown2html.ts'
-import highlight from '@/cores/highlight'
+import markdown2html, { markdownClean } from '@/core/markdown2html.ts'
+import highlight from '@/core/highlight'
 import { formEleDefProps } from '@/composition/formElement'
 
 export default defineComponent({

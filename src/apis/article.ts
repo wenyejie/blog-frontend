@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from 'axios'
-import http from '@/cores/http'
+import http from '@/core/http'
 
 // 增加文章
 export const addArticle = (data: any, config?: AxiosRequestConfig) => {
