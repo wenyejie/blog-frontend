@@ -7,7 +7,7 @@
   <div class="article-edit">
     <h1 class="page-title">新增文章</h1>
 
-    <s-form ref="articleFormElem" name="articleForm">
+    <s-form ref="articleFormElem" name="articleForm" @submit="handleSubmit">
       <s-form-item label="标题:">
         <s-input name="title" required v-model.trim="articleForm.title" />
       </s-form-item>
@@ -25,7 +25,7 @@
         <s-select
           name="tag"
           required
-          v-model="articleForm.tag"
+          v-model="articleForm.tags"
           multiple
           :data="tagList"
           :nativeSize="tagList.length"
@@ -36,9 +36,9 @@
         <s-editor name="content" required v-model="articleForm.content" />
       </s-form-item>
 
-      <s-form-item label=" ">
+      <s-form-item label-width="2em">
         <s-button native-type="reset" @click="handleRest">重置</s-button>
-        <s-button native-type="submit" @click="handleSubmit">提交</s-button>
+        <s-button native-type="submit">提交</s-button>
       </s-form-item>
     </s-form>
   </div>
@@ -61,8 +61,8 @@ export default defineComponent({
     const articleForm = reactive({
       title: '',
       content: '',
-      tag: [],
-      category: ''
+      tags: [],
+      category: null
     })
 
     const articleFormElem = ref(null)
@@ -74,15 +74,14 @@ export default defineComponent({
     const categoryList = fetchCategoryList()
 
     const handleSubmit = () => {
-      console.log('提交文章', articleForm, articleFormElem.value)
-      // addArticle(articleForm).then(
-      //   () => {
-      //     alert('文章创建成功!')
-      //   },
-      //   err => {
-      //     console.error(err)
-      //   }
-      // )
+      addArticle(articleForm).then(
+        () => {
+          alert('文章创建成功!')
+        },
+        err => {
+          console.error(err)
+        }
+      )
     }
 
     const handleRest = () => {
@@ -102,7 +101,7 @@ export default defineComponent({
 
     // 当本地存在缓存数据时, 载入当前缓存
     const localArticleForm = localArticleEdit()
-    if (localArticleForm._id === route.query._id) {
+    if (localArticleForm && localArticleForm._id === route.query._id) {
       Object.assign(articleForm, localArticleForm)
     }
 

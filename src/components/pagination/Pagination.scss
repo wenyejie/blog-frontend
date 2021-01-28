@@ -1,23 +1,23 @@
 .s-pagination {
   display: flex;
-  &-center {
+  &.in-center {
     justify-content: center;
   }
-  &-right {
+  &.in-right {
     justify-content: flex-end;
   }
-  &-left {
+  &.in-left {
     justify-content: flex-start;
   }
-  ul {
+  > ul {
     display: flex;
     flex-wrap: wrap;
   }
   li:not(:last-child) {
     margin-right: 10px;
   }
-  &-item,
-  &-elevator input {
+  &--item,
+  &--elevator > input {
     height: 34px;
     line-height: 32px;
     min-width: 34px;
@@ -27,7 +27,7 @@
     color: #666;
     border: 1px solid #dddee1;
   }
-  &-item {
+  &--item {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:not(.disabled):hover {
@@ -44,23 +44,23 @@
       color: #ffffff;
     }
   }
-  &-sizer {
+  &--sizer {
     font-family: serif;
   }
-  & &-elevator {
+  &--elevator {
     border: none;
     padding: 0 0 0 5px;
   }
-  &-elevator {
-    input {
+  &--elevator {
+    & > input {
       margin: 0 10px;
       width: 58px;
     }
   }
-  &-info {
+  &--info {
     line-height: 28px;
   }
-  &-disabled {
+  &.is-disabled {
     cursor: not-allowed;
     position: relative;
     &:before {

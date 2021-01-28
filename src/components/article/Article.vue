@@ -7,27 +7,34 @@
   <article class="s-article">
     <header class="s-article--header">
       <h1 class="s-article--title">
-        <router-link v-if="isLink" to="/">{{ data.title }}</router-link>
+        <router-link v-if="plain" :to="`/article/${data._id}`">{{ data.title }}</router-link>
         <template v-else>{{ data.title }}</template>
       </h1>
-      <dl class="s-article--meta">
+      <dl class="s-article--meta" v-if="!plain">
         <dt class="s-article--dt">分类:</dt>
         <dd>
-          <router-link class="s-article--meta-link" to="/">{{ data.category }}</router-link>
+          <router-link class="s-article--meta-link" :to="`/category/${data.category._id}`">{{
+            data.category.label
+          }}</router-link>
         </dd>
         <dt class="s-article--dt">标签:</dt>
         <dd>
-          <router-link class="s-article--meta-link" to="/">{{ data.tag }}</router-link>
+          <template v-for="(item, index) in data.tags" :key="item._id">
+            <router-link class="s-article--meta-link" :to="`/tag/${item._id}`">{{
+              item.label
+            }}</router-link
+            ><template v-if="index < data.tags.length - 1">, </template>
+          </template>
         </dd>
         <dt class="s-article--dt">作者:</dt>
         <dd>@{{ data.author }}</dd>
-        <dt class="s-article--dt">创建日期:</dt>
+        <dt class="s-article--dt">创建时间:</dt>
         <dd>
           <router-link class="s-article--meta-link" to="/">
             <time datetime="2021-01-20 11:44:19">{{ createTime }}</time>
           </router-link>
         </dd>
-        <dt class="s-article--dt">更新日期:</dt>
+        <dt class="s-article--dt">更新时间:</dt>
         <dd>
           <router-link class="s-article--meta-link" to="/">
             <time datetime="2021-01-20 11:44:19">{{ updateTime }}</time>
@@ -49,7 +56,7 @@ import highlight from '@/cores/highlight'
 export default defineComponent({
   name: 'SArticle',
   props: {
-    isLink: {
+    plain: {
       type: Boolean,
       default: true
     },

@@ -32,7 +32,7 @@ export default defineComponent({
     // 添加标签
     const handleAddTag = () => {
       addTag({ label: newTag.value }).then((tag: any) => {
-        alert('标签添加成功')
+        console.log('标签添加成功')
         tagList.push(tag)
         newTag.value = ''
       })
@@ -41,14 +41,14 @@ export default defineComponent({
     // 更新标签
     const handleUpdateTag = (item: Tag) => {
       updateTag(item).then(() => {
-        alert('标签更新成功')
+        console.log('标签更新成功')
       })
     }
 
     // 删除标签
     const handleDeleteTag = (item: Tag, index: number) => {
       deleteTag(item).then(() => {
-        alert('标签移除成功')
+        console.log('标签移除成功')
         tagList.splice(index, 1)
       })
     }

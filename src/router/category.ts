@@ -5,14 +5,13 @@ const component: RouteComponent = () =>
   import(/* webpackChunkName: "r-category" */ '@/views/Category.vue')
 
 const categoryRouters: RouteRecordRaw[] = categoryList.map(({ label, _id }) => {
+  const lowercaseLabel = label.toLocaleLowerCase()
   return {
-    path: `/${label}`,
-    name: label,
+    path: `/${lowercaseLabel}`,
+    name: lowercaseLabel,
     component,
     meta: {
-      title: label
-    },
-    props: {
+      title: label,
       _id
     }
   }

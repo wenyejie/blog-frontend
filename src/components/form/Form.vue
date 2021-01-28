@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit"><slot /></form>
+  <form @submit="handleSubmit"><slot /></form>
 </template>
 
 <script>
@@ -29,13 +29,15 @@ export default defineComponent({
   },
   emits: ['submit'],
   setup(props, { emit }) {
-    const handleSubmit = () => {
-      emit('submit')
+    const handleSubmit = event => {
+      emit('submit', event)
+      event.preventDefault()
     }
 
     provide('formLabelWidth', ref(props.labelWidth))
     provide('formLabelPosition', ref(props.labelPosition))
     provide('formSize', ref(props.size))
+    provide('formHasLabel', ref(props.hasLabel))
 
     return {
       handleSubmit
