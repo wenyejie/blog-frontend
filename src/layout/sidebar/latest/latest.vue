@@ -13,7 +13,7 @@
 <script>
 import { defineComponent, reactive } from 'vue'
 import SSidebarItem from '../sidebarItem'
-import { getArticleList } from '@/apis/article'
+import { getArticleLatest } from '@/apis/article'
 
 export default defineComponent({
   name: 'SLatest',
@@ -21,8 +21,8 @@ export default defineComponent({
   setup() {
     const articleList = reactive([])
 
-    getArticleList().then(result => {
-      articleList.push(...result.list)
+    getArticleLatest().then(list => {
+      articleList.push(...list)
     })
 
     return {

@@ -25,9 +25,9 @@ export default defineComponent({
         label: '首页',
         to: '/'
       },
-      ...categoryList.map(item => ({
-        label: item.label,
-        to: `/${item.label.toLocaleLowerCase()}`
+      ...categoryList.map(name => ({
+        label: name,
+        to: `/category/${name}`
       })),
       {
         label: '关于',

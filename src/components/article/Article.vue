@@ -13,14 +13,16 @@
       <dl class="s-article--meta" v-if="!plain">
         <dt class="s-article--dt">分类:</dt>
         <dd>
-          <router-link class="s-article--meta-link" :to="`/category/${data.category._id}`"
+          <router-link
+            class="s-article--meta-link"
+            :to="`/category/${data.category.label.toLocaleLowerCase()}`"
             >{{ data.category.label }}
           </router-link>
         </dd>
         <dt class="s-article--dt">标签:</dt>
         <dd>
           <template v-for="(item, index) in data.tags" :key="item._id">
-            <router-link class="s-article--meta-link" :to="`/tag/${item._id}`"
+            <router-link class="s-article--meta-link" :to="`/tag/${item.label.toLocaleLowerCase()}`"
               >{{ item.label }}
             </router-link>
             <template v-if="index < data.tags.length - 1">,&nbsp;</template>

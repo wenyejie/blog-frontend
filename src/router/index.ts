@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { setPageTitle } from '@/utils'
 import articleRouter from './article'
 import manageRouter from './manage'
-import categoryRouters from './category'
+import categoryRouter from './category'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   articleRouter,
-  ...categoryRouters,
+  categoryRouter,
   manageRouter,
 
   {
@@ -40,6 +40,7 @@ const router = createRouter({
   routes
 })
 
+// 如果是开发环境则加入demo, 便于测试
 if (process.env.NODE_ENV === 'development') {
   router.addRoute({
     path: '/demo',

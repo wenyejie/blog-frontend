@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <h1 class="page-title">{{ pageTitle }}</h1>
+    <h1 class="page-title category--title">{{ pageTitle }}</h1>
     <s-article v-for="item in articleList" :key="item._id" :data="item" />
     <div class="category--nodata" v-if="articleList.length === 0">暂无数据...</div>
     <s-pagination v-model="page" :totalSize="totalSize" v-if="articleList.length" />
@@ -20,10 +20,10 @@ export default defineComponent({
     const pageSize = ref(10)
     const page = ref(1)
     const totalSize = ref(0)
-    const pageTitle = ref(route.meta.title)
+    const pageTitle = ref('')
 
     const fetchArticleList = () => {
-      getArticleList({ category: route.meta._id }).then(result => {
+      getArticleList({ categoryName: route.params.categoryName }).then(result => {
         articleList.value = result.list
         pageSize.value = result.pageSize
         page.value = result.page - 1
@@ -35,7 +35,7 @@ export default defineComponent({
       () => route.path,
       () => {
         fetchArticleList()
-        pageTitle.value = route.meta.title
+        pageTitle.value = route.params.categoryName
       },
       {
         immediate: true
@@ -53,4 +53,10 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.category {
+  &--title {
+    text-transform: uppercase;
+  }
+}
+</style>

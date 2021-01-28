@@ -1,9 +1,10 @@
 import { RouteRecordRaw } from 'vue-router'
+import main from '@/views/main.vue'
 
 const articleRouter: RouteRecordRaw = {
   path: '/article',
   name: 'article',
-  component: () => import(/* webpackChunkName: "r-article-main" */ '@/views/article/main.vue'),
+  component: main,
   meta: {
     title: '文章'
   },

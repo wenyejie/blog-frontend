@@ -1,8 +1,9 @@
 import { RouteRecordRaw } from 'vue-router'
+import main from '@/views/main.vue'
 
 const manageRouter: RouteRecordRaw = {
   path: '/manage',
-  component: () => import(/* webpackChunkName: "r-manage-main" */ '@/views/manage/Main.vue'),
+  component: main,
   children: [
     {
       path: '',
@@ -18,15 +19,6 @@ const manageRouter: RouteRecordRaw = {
       component: () => import(/* webpackChunkName: "r-manage-tag" */ '@/views/manage/Tag.vue'),
       meta: {
         title: '标签管理'
-      }
-    },
-    {
-      path: 'category',
-      name: 'manageCategory',
-      component: () =>
-        import(/* webpackChunkName: "r-manage-category" */ '@/views/manage/Category.vue'),
-      meta: {
-        title: '分类管理'
       }
     }
   ]

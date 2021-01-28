@@ -26,7 +26,7 @@ import { Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 
 export default defineComponent({
-  name: 'ManageCategory',
+  name: 'Category',
   setup() {
     const categoryList = fetchCategoryList()
 

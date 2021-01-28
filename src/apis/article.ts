@@ -17,3 +17,8 @@ export const getArticleDetail = (data?: any, config: AxiosRequestConfig = {}) =>
   config.params = data
   return http.get('/article/detail', config)
 }
+
+// 获取最新文章
+export const getArticleLatest = (config: AxiosRequestConfig = {}) => {
+  return http.get('/article/latest', config)
+}
