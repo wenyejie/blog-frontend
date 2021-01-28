@@ -72,9 +72,7 @@ export default defineComponent({
   }
 }
 
-::v-deep {
-  .s-input {
-    margin-right: 10px;
-  }
+.s-input {
+  margin-right: 10px;
 }
 </style>

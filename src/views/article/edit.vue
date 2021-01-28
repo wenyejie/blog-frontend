@@ -44,7 +44,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, reactive, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { addArticle, getArticleDetail } from '@/apis/article'
