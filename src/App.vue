@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 import SHeader from '@/layout/header'
 import SFooter from '@/layout/footer'
-import SBody from '@/layout/body/body.vue'
+import SBody from '@/layout/body'
 
 export default defineComponent({
   name: 'App',

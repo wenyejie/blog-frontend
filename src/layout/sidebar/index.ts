@@ -1,3 +1,4 @@
-import SSidebar from './sidebar.vue'
+import { defineAsyncComponent } from 'vue'
+const SSidebar = () => import(/* webpackChunkName: 's-sidebar' */ './sidebar.vue')
 
-export default SSidebar
+export default defineAsyncComponent(SSidebar)

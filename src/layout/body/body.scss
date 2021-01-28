@@ -1,1 +1,7 @@
-.s-body {}
+.s-body {
+  display: flex;
+}
+
+.s-main {
+  flex-grow: 1;
+}

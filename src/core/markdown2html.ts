@@ -11,7 +11,7 @@ export const markdown2html = (markdown = '', options?: Markdown2htmlOptions) => 
   return DOMPurify.sanitize(marked(markdown, options))
 }
 
-// 清除markdown中的错误html
+// 清除markdown中的错误或者是有恶意的html
 export const markdownClean = (markdown: string) => {
   return DOMPurify.sanitize(markdown)
 }

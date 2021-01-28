@@ -1,11 +1,15 @@
 <template>
-  <aside class="s-sidebar">sidebar</aside>
+  <aside class="s-sidebar">
+    <s-latest />
+  </aside>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import SLatest from '@/layout/sidebar/latest'
 export default defineComponent({
-  name: 'SSidebar'
+  name: 'SSidebar',
+  components: { SLatest }
 })
 </script>
 
