@@ -28,7 +28,7 @@ export default defineComponent({
     size: propSizeOpts,
     message: String
   },
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const formLabelWidth = inject('formLabelWidth')
     const formLabelPosition = inject('formLabelPosition')
     const formSize = inject('formSize')
@@ -59,6 +59,7 @@ export default defineComponent({
       if (props.message) {
         return props.message
       }
+      return ''
     })
 
     const labelStyles = computed(() => {
