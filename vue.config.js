@@ -22,13 +22,6 @@ module.exports = {
       compilerOptions: {
         preserveWhitespace: false
       }
-    },
-    'html-webpack-plugin': {
-      title: 'wenyejie',
-      meta: {},
-      options: {
-        title: 'wenyejie'
-      }
     }
   },
   devServer: {

@@ -3,6 +3,8 @@
 ## service-worker
 
 "register-service-worker": "^1.7.1",
+"@vue/cli-plugin-pwa": "^4.5.11",
+"vue-class-component": "^8.0.0-0",
 
 ## mavonEditor
 
