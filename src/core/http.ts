@@ -5,8 +5,6 @@
  */
 
 import axios from 'axios'
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-// @ts-ignore
 import { isObject } from 'wenyejie'
 
 const http = axios.create({
@@ -18,27 +16,27 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(
-  config => {
+  (config) => {
     return config
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )
 
 http.interceptors.response.use(
-  response => {
+  (response) => {
     const responseData = response.data
     if (isObject(responseData)) {
       if (responseData.code === '000') {
         return responseData.data
       } else {
-        return Promise.reject(responseData.message)
+        return Promise.reject(responseData)
       }
     }
     return Promise.reject('服务器错误!')
   },
-  error => {
+  (error) => {
     return Promise.reject(error)
   }
 )

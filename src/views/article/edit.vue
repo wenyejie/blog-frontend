@@ -7,7 +7,7 @@
   <div class="article-edit">
     <h1 class="page-title">{{ articleForm._id ? '编辑' : '新增' }}文章</h1>
 
-    <s-form ref="articleFormRef" name="articleForm" @submit="handleSubmit">
+    <s-form ref="articleFormRef" name="articleForm" @submit="handleSubmit" @reset="handleReset">
       <s-form-item label="标题:">
         <s-input name="title" required v-model.trim="articleForm.title" />
       </s-form-item>
@@ -53,17 +53,20 @@ import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
 import SFormItem from '@/components/formItem/FormItem.vue'
 
+// 默认的文章表单
+const DEFAULT_ARTICLE_FORM = {
+  title: '',
+  content: '',
+  tags: [],
+  category: null
+}
+
 export default defineComponent({
   name: 'ArticleEdit',
   components: { SFormItem },
   setup() {
     // 表单
-    const articleForm = reactive({
-      title: '',
-      content: '',
-      tags: [],
-      category: null
-    })
+    const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
 
     const articleFormRef = reactive()
 
@@ -84,6 +87,10 @@ export default defineComponent({
           console.error(err)
         }
       )
+    }
+
+    const handleReset = () => {
+      Object.assign(articleForm, DEFAULT_ARTICLE_FORM)
     }
 
     // 自动存储当前文章
@@ -115,6 +122,7 @@ export default defineComponent({
       articleFormRef,
       articleForm,
       handleSubmit,
+      handleReset,
       tagList,
       categoryList
     }

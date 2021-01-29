@@ -13,7 +13,7 @@ export const addCategory = (data: Tag, config?: AxiosRequestConfig) => {
 }
 
 // 删除分类
-export const deleteCategory = (data: Tag, config: AxiosRequestConfig = {}) => {
+export const deleteCategory = (data: any, config: AxiosRequestConfig = {}) => {
   config.data = data
   return http.delete('/category/delete', config)
 }

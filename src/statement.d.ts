@@ -1,10 +1,10 @@
 export interface Tag {
-  id?: string
+  _id?: string
   label?: string
 }
 
 export interface Category {
-  id?: string
+  _id?: string
   label?: string
 }
 

@@ -46,10 +46,20 @@ export default defineComponent({
     }
 
     // 删除分类
-    const handleDeleteCategory = (item: Category, index: number) => {
-      deleteCategory(item).then(() => {
-        categoryList.splice(index, 1)
-      })
+    const handleDeleteCategory = (item: Category, index: number, reconfirm = false) => {
+      deleteCategory({ _id: item._id, reconfirm }).then(
+        () => {
+          categoryList.splice(index, 1)
+        },
+        response => {
+          // 如果分类下有文章并且确认删除
+          if (response?.code === '005001') {
+            if (window.confirm(response?.message)) {
+              handleDeleteCategory(item, index, true)
+            }
+          }
+        }
+      )
     }
 
     return {

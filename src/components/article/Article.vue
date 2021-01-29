@@ -14,7 +14,7 @@
         <dt class="s-article--dt">分类:</dt>
         <dd>
           <router-link
-            class="s-article--meta-link"
+            class="s-article--meta-link s-article--category"
             :to="`/category/${data.category.label.toLocaleLowerCase()}`"
             >{{ data.category.label }}
           </router-link>
