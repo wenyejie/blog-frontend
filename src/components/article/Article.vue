@@ -48,8 +48,8 @@
         <dd>
           <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
             >编辑</router-link
-          >
-          <a class="s-article--meta-link" @click="handleDelete">删除</a>
+          >,
+          <a class="s-article--meta-link" href="javascript:;" @click="handleDelete">删除</a>
         </dd>
       </dl>
     </header>
@@ -60,6 +60,7 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { markdown2html } from '@/core/markdown2html'
 import { dateFormat } from 'wenyejie'
 import highlight from '@/core/highlight'
@@ -94,7 +95,7 @@ export default defineComponent({
     // 删除文章
     const handleDelete = () => {
       deleteArticle({ _id: props?.data?._id }).then(() => {
-        console.log('删除成功')
+        useRouter().go(-1)
       })
     }
 

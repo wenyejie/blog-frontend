@@ -9,7 +9,7 @@
 
 <script>
 import { defineComponent, reactive, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
 import { setPageTitle } from '@/utils'
 export default defineComponent({
@@ -21,10 +21,16 @@ export default defineComponent({
     watch(
       () => route.params.id,
       () => {
-        getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(result => {
-          Object.assign(article, result)
-          setPageTitle(article.title)
-        })
+        getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(
+          result => {
+            Object.assign(article, result)
+            setPageTitle(article.title)
+          },
+          error => {
+            alert(error.message)
+            useRouter().go(-1)
+          }
+        )
       },
       {
         immediate: true
