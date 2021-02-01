@@ -61,6 +61,7 @@
 <script>
 import { defineComponent, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { markdown2html } from '@/core/markdown2html'
 import { dateFormat } from 'wenyejie'
 import highlight from '@/core/highlight'
@@ -79,6 +80,7 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const store = useStore()
     const computedContent = computed(() => {
       highlight()
       return markdown2html(props.data.content)
@@ -95,6 +97,7 @@ export default defineComponent({
     // 删除文章
     const handleDelete = () => {
       deleteArticle({ _id: props?.data?._id }).then(() => {
+        store.dispatch('articleLatest')
         useRouter().go(-1)
       })
     }

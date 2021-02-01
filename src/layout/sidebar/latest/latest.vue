@@ -11,19 +11,19 @@
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, computed } from 'vue'
+import { useStore } from 'vuex'
 import SSidebarItem from '../sidebarItem'
-import { getArticleLatest } from '@/apis/article'
 
 export default defineComponent({
   name: 'SLatest',
   components: { SSidebarItem },
   setup() {
-    const articleList = reactive([])
-
-    getArticleLatest().then(list => {
-      articleList.push(...list)
+    const store = useStore()
+    const articleList = computed(() => {
+      return store.state.article.latest
     })
+    store.dispatch('articleLatest')
 
     return {
       articleList
