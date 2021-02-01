@@ -18,7 +18,13 @@ export const getArticleDetail = (data?: any, config: AxiosRequestConfig = {}) =>
   return http.get('/article/detail', config)
 }
 
-// 获取最新文章
+// 获取最新十条文章
 export const getArticleLatest = (config: AxiosRequestConfig = {}) => {
   return http.get('/article/latest', config)
+}
+
+// 删除文章
+export const deleteArticle = (data?: any, config: AxiosRequestConfig = {}) => {
+  config.data = data
+  return http.delete('/article/delete', config)
 }

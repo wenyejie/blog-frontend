@@ -49,6 +49,7 @@
           <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
             >编辑</router-link
           >
+          <a class="s-article--meta-link" @click="handleDelete">删除</a>
         </dd>
       </dl>
     </header>
@@ -62,6 +63,7 @@ import { defineComponent, computed } from 'vue'
 import { markdown2html } from '@/core/markdown2html'
 import { dateFormat } from 'wenyejie'
 import highlight from '@/core/highlight'
+import { deleteArticle } from '@/apis/article'
 
 export default defineComponent({
   name: 'SArticle',
@@ -82,17 +84,25 @@ export default defineComponent({
     })
 
     const updateTime = computed(() => {
-      return props.data.utime && dateFormat(props.data.utime, 'YYYY-MM-DD')
+      return props?.data?.utime && dateFormat(props?.data?.utime, 'YYYY-MM-DD')
     })
 
     const createTime = computed(() => {
       return dateFormat(props.data.ctime, 'YYYY-MM-DD')
     })
 
+    // 删除文章
+    const handleDelete = () => {
+      deleteArticle({ _id: props?.data?._id }).then(() => {
+        console.log('删除成功')
+      })
+    }
+
     return {
       computedContent,
       updateTime,
-      createTime
+      createTime,
+      handleDelete
     }
   }
 })
