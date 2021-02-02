@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { propBooleanDefFalse, propSizeOpts } from '@/components/utils'
+import { formEleDefProps, propSizeOpts } from '@/composition/formElement'
 
 const CLS_NAME = 's-button'
 
@@ -32,16 +32,13 @@ export default defineComponent({
       }
     },
     size: propSizeOpts,
-    icon: {
-      type: String
-    },
-    block: propBooleanDefFalse,
-    loading: propBooleanDefFalse,
-    disabled: propBooleanDefFalse,
-    plain: propBooleanDefFalse,
-    round: propBooleanDefFalse,
-    autofocus: propBooleanDefFalse,
-    circle: propBooleanDefFalse
+    icon: String,
+    block: Boolean,
+    loading: Boolean,
+    plain: Boolean,
+    round: Boolean,
+    circle: Boolean,
+    ...formEleDefProps
   },
   setup(props) {
     const classes = computed(() => [
