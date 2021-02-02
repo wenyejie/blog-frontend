@@ -16,7 +16,7 @@ const manageRouter: RouteRecordRaw = {
     {
       path: 'tag',
       name: 'manageTag',
-      component: () => import(/* webpackChunkName: "r-manage-tag" */ '@/views/manage/Tag.vue'),
+      component: () => import(/* webpackChunkName: "r-manage-tag" */ '@/views/tag/Tag.vue'),
       meta: {
         title: '标签管理',
         neeAuth: true

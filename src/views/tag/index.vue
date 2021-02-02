@@ -1,13 +1,13 @@
 <template>
-  <div class="manage-tag">
+  <div class="tag">
     <h1 class="page-title">标签管理</h1>
-    <form class="manage-tag--add" @submit.prevent>
-      <s-input class="manage-tag--add--input" v-model.trim="newTag" />
+    <form class="tag--add" @submit.prevent>
+      <s-input class="tag--add--input" v-model.trim="newTag" />
       <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
     </form>
-    <form class="manage-tag--form" @submit.stop>
-      <ul class="manage-tag--list">
-        <li class="manage-tag--item" v-for="(item, index) in tagList" :key="item._id">
+    <form class="tag--form" @submit.stop>
+      <ul class="tag--list">
+        <li class="tag--item" v-for="(item, index) in tagList" :key="item._id">
           <s-input v-model.trim="item.label" />
           <s-button @click="handleDeleteTag(item, index)">删除</s-button>
           <s-button @click="handleUpdateTag(item)">更新</s-button>
@@ -24,7 +24,7 @@ import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'
 
 export default defineComponent({
-  name: 'ManageTag',
+  name: 'Tag',
   setup() {
     const tagList = fetchTagList()
     const newTag = ref('')
@@ -65,7 +65,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.manage-tag {
+.tag {
   &--add,
   &--item {
     margin-bottom: 15px;
