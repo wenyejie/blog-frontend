@@ -4,16 +4,14 @@
  * @email: wenyejie@foxmail.com
  */
 
-// 定义props: {type: Boolean, default: false}
-export const propBooleanDefFalse = {
-  type: Boolean,
-  default: false
-}
+import { isNumber } from 'wenyejie'
+const rNumber = /^\d+$/
 
-// size默认配置
-export const propSizeOpts = {
-  type: String,
-  validator: (val: string) => {
-    return ['large', 'small', 'mini'].includes(val)
+// 把输入转换为css长度单位
+export const toCSSUnit = (length: string | number) => {
+  if (isNumber(length) || rNumber.test(length as string)) {
+    return length + 'px'
+  } else {
+    return length
   }
 }

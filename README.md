@@ -1,5 +1,16 @@
 # vue-next
 
+# type
+
+message: {
+  type: [String, Object] as PropType<string | MessageVM>,
+  default: '',
+},
+onClose: {
+  type: Function as PropType<() => void>,
+  required: true,
+},
+
 ## service-worker
 
 "register-service-worker": "^1.7.1",

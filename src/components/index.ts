@@ -1,9 +1,4 @@
-/**
- * @author: Storm
- * @date: 2021/01/19
- * @email: wenyejie@foxmail.com
- */
-import { defineAsyncComponent } from 'vue'
+import { defineAsyncComponent, defineComponent } from 'vue'
 import SButton from '@/components/button'
 import SInput from '@/components/input'
 import SArticle from '@/components/article'
@@ -12,6 +7,10 @@ import SPagination from '@/components/pagination'
 import SSelect from '@/components/select'
 import SForm from '@/components/form'
 import SFormItem from '@/components/formItem'
+import SDialog from '@/components/dialog'
+import SBackdrop from '@/components/backdrop'
+import SMessage from '@/components/message'
+import SIcon from '@/components/icon'
 
 const components: any = {
   SButton,
@@ -21,11 +20,19 @@ const components: any = {
   SPagination,
   SSelect,
   SForm,
-  SFormItem
+  SFormItem,
+  SDialog,
+  SBackdrop,
+  SMessage,
+  SIcon
 }
 
 for (const key in components) {
-  components[key] = defineAsyncComponent(components[key])
+  if (components[key].isSync) {
+    components[key] = defineComponent(components[key])
+  } else {
+    components[key] = defineAsyncComponent(components[key])
+  }
 }
 
 export default {
@@ -33,5 +40,12 @@ export default {
     for (const key in components) {
       app.component(key, components[key])
     }
+
+    // message
+    app.config.globalProperties.$message = SMessage
+    app.config.globalProperties.$success = SMessage.success
+    app.config.globalProperties.$info = SMessage.info
+    app.config.globalProperties.$danger = SMessage.danger
+    app.config.globalProperties.$warning = SMessage.warning
   }
 }

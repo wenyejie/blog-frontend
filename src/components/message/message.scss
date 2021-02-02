@@ -1,0 +1,51 @@
+.s-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--info-bgc);
+  border-color: var(--info-bdc);
+  border-radius: var(--border-radius);
+  color: var(--info-color);
+  padding: 15px;
+  width: 380px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+  transition: all .3s ease-out;
+  display: flex;
+  align-items: center;
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+
+  &--icon {
+    margin-right: .5em;
+    line-height: 1;
+  }
+
+  &.is-success {
+    color: var(--success-color);
+    background-color: var(--success-bgc);
+    border-color: var(--success-bdc);
+  }
+
+  &.is-info {
+    color: var(--info-color);
+    background-color: var(--info-bgc);
+    border-color: var(--info-bdc);
+  }
+
+  &.is-danger {
+    color: var(--danger-color);
+    background-color: var(--danger-bgc);
+    border-color: var(--danger-bdc);
+  }
+
+  &.is-warning {
+    color: var(--warning-color);
+    background-color: var(--warning-bgc);
+    border-color: var(--warning-bdc);
+  }
+}

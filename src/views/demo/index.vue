@@ -3,10 +3,13 @@
   <s-form ref="formRef">
     <s-input name="name" v-model="formData.name" />
   </s-form>
+  <s-message message="文章提交成功!" />
+  <s-icon type="info" />
 </template>
 
 <script>
 import { defineComponent, reactive, ref } from 'vue'
+import SMessage from '@/components/message'
 export default defineComponent({
   name: 'demo',
   setup() {
@@ -15,8 +18,10 @@ export default defineComponent({
       name: 'wneyejie'
     })
 
+    // console.log(SMessage)
+    SMessage.success('你好')
+
     setTimeout(() => {
-      console.log(formRef, formRef.value)
       formRef.value.$el.reset()
     }, 1000)
 
