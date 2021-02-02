@@ -9,7 +9,7 @@ import SForm from '@/components/form'
 import SFormItem from '@/components/formItem'
 import SDialog from '@/components/dialog'
 import SBackdrop from '@/components/backdrop'
-import SMessage from '@/components/message'
+import message, { SMessage } from '@/components/message'
 import SIcon from '@/components/icon'
 
 const components: any = {
@@ -42,10 +42,10 @@ export default {
     }
 
     // message
-    app.config.globalProperties.$message = SMessage
-    app.config.globalProperties.$success = SMessage.success
-    app.config.globalProperties.$info = SMessage.info
-    app.config.globalProperties.$danger = SMessage.danger
-    app.config.globalProperties.$warning = SMessage.warning
+    app.config.globalProperties.$message = message
+    app.config.globalProperties.$success = message.$success
+    app.config.globalProperties.$info = message.$info
+    app.config.globalProperties.$danger = message.$danger
+    app.config.globalProperties.$warning = message.$warning
   }
 }

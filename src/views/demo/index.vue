@@ -9,7 +9,7 @@
 
 <script>
 import { defineComponent, reactive, ref } from 'vue'
-import SMessage from '@/components/message'
+import { $success } from '@/components/message'
 export default defineComponent({
   name: 'demo',
   setup() {
@@ -19,7 +19,7 @@ export default defineComponent({
     })
 
     // console.log(SMessage)
-    SMessage.success('你好')
+    $success('你好')
 
     setTimeout(() => {
       formRef.value.$el.reset()

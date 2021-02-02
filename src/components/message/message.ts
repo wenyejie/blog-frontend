@@ -58,7 +58,7 @@ const getInstance = (opts: MessageProps) => {
   return instance
 }
 
-const initInstance = (message = '', opts: MessageProps = {}) => {
+const handleMessage = (message = '', opts: MessageProps = {}) => {
   opts.message = message
   return new Promise((resolve) => {
     const vm = getInstance(opts)
@@ -67,21 +67,21 @@ const initInstance = (message = '', opts: MessageProps = {}) => {
   })
 }
 
-SMessage.success = (message = '', opts: MessageProps = {}) => {
+handleMessage.$success = (message: string, opts: MessageProps = {}) => {
   opts.type = MessageTypes.SUCCESS
-  return initInstance(message, opts)
+  return handleMessage(message, opts)
 }
-SMessage.info = (message = '', opts: MessageProps = {}) => {
+handleMessage.$info = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.INFO
-  return initInstance(message, opts)
+  return handleMessage(message, opts)
 }
-SMessage.danger = (message = '', opts: MessageProps = {}) => {
+handleMessage.$danger = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.DANGER
-  return initInstance(message, opts)
+  return handleMessage(message, opts)
 }
-SMessage.warning = (message = '', opts: MessageProps = {}) => {
+handleMessage.$warning = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.WARNING
-  return initInstance(message, opts)
+  return handleMessage(message, opts)
 }
 
-export default SMessage
+export default handleMessage

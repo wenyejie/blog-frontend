@@ -1,8 +1,10 @@
-import SMessage from './message'
+import message from './message'
+export const SMessage = () => import(/* webpackChunkName: 's-message' */ './message.vue')
 
-export const success = SMessage.success
-export const info = SMessage.info
-export const danger = SMessage.danger
-export const warning = SMessage.warning
+export const $message = message
+export const $success = message.$success
+export const $info = message.$info
+export const $danger = message.$danger
+export const $warning = message.$warning
 
-export default SMessage
+export default message
