@@ -11,6 +11,12 @@ onClose: {
   required: true,
 },
 
+interface SquareConfig {
+  color?: string;
+  width?: number;
+  [propName: string]: any;
+}
+
 ## service-worker
 
 "register-service-worker": "^1.7.1",

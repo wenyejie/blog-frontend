@@ -1,25 +1,24 @@
-import { AxiosRequestConfig } from 'axios'
 import http from '@/core/http'
-import { Tag, Category } from '@/statement'
+import { Category, AxiosCustomRequestConfig } from '@/statement'
 
 // 更新分类
-export const updateCategory = (data: Tag, config?: AxiosRequestConfig) => {
+export const updateCategory = (data: Category, config?: AxiosCustomRequestConfig) => {
   return http.put('/category/update', data, config)
 }
 
 // 新增分类
-export const addCategory = (data: Tag, config?: AxiosRequestConfig) => {
+export const addCategory = (data: Category, config?: AxiosCustomRequestConfig) => {
   return http.post('/category/add', data, config)
 }
 
 // 删除分类
-export const deleteCategory = (data: any, config: AxiosRequestConfig = {}) => {
+export const deleteCategory = (data: Category, config: AxiosCustomRequestConfig = {}) => {
   config.data = data
   return http.delete('/category/delete', config)
 }
 
 // 获取分类列表
-export const getCategoryList = (data?: Category, config: AxiosRequestConfig = {}) => {
+export const getCategoryList = (data?: Category, config: AxiosCustomRequestConfig = {}) => {
   config.data = data
   return http.get('/category/list', config)
 }

@@ -24,7 +24,6 @@ const routes: Array<RouteRecordRaw> = [
   },
   articleRouter,
   categoryRouter,
-  manageRouter,
   tagRouter,
   {
     path: '/:pathMatch(.*)*',

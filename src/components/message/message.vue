@@ -38,7 +38,7 @@ export default defineComponent({
   },
   emits: ['destroy', 'update:modelValue'],
   setup(props, { emit }) {
-    let timer
+    let timer: any = null
     const innerVisible = ref(props.modelValue)
     const classes = computed(() => ({
       [`is-${props.type}`]: !!props.type

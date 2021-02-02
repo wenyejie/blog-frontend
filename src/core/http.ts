@@ -7,6 +7,7 @@
 import axios from 'axios'
 import { $danger } from '@/components/message'
 import { isObject, isArray, isString } from 'wenyejie'
+import { AxiosCustomResponse } from '@/statement'
 
 const NETWORK_ERR_MSG = '网络错误!'
 const SERVICE_ERR_MSG = '服务器错误!'
@@ -30,7 +31,7 @@ http.interceptors.request.use(
 )
 
 http.interceptors.response.use(
-  (response: any) => {
+  (response: AxiosCustomResponse) => {
     const responseData = response.data
     if (!isObject(responseData)) {
       return Promise.reject(SERVICE_ERR_MSG)
@@ -43,7 +44,7 @@ http.interceptors.response.use(
     const { disabledTip } = response.config
     if (
       disabledTip !== true ||
-      (isArray(disabledTip) && !disabledTip.includes(code)) ||
+      (isArray(disabledTip) && !(disabledTip as any).includes(code)) ||
       (isString(disabledTip) && disabledTip !== code)
     ) {
       $danger(message || SERVICE_ERR_MSG)
