@@ -67,19 +67,19 @@ const handleMessage = (message = '', opts: MessageProps = {}) => {
   })
 }
 
-handleMessage.$success = (message: string, opts: MessageProps = {}) => {
+handleMessage.success = (message: string, opts: MessageProps = {}) => {
   opts.type = MessageTypes.SUCCESS
   return handleMessage(message, opts)
 }
-handleMessage.$info = (message = '', opts: MessageProps = {}) => {
+handleMessage.info = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.INFO
   return handleMessage(message, opts)
 }
-handleMessage.$danger = (message = '', opts: MessageProps = {}) => {
+handleMessage.danger = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.DANGER
   return handleMessage(message, opts)
 }
-handleMessage.$warning = (message = '', opts: MessageProps = {}) => {
+handleMessage.warning = (message = '', opts: MessageProps = {}) => {
   opts.type = MessageTypes.WARNING
   return handleMessage(message, opts)
 }

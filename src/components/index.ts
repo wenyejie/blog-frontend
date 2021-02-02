@@ -43,9 +43,9 @@ export default {
 
     // message
     app.config.globalProperties.$message = message
-    app.config.globalProperties.$success = message.$success
-    app.config.globalProperties.$info = message.$info
-    app.config.globalProperties.$danger = message.$danger
-    app.config.globalProperties.$warning = message.$warning
+    app.config.globalProperties.$success = message.success
+    app.config.globalProperties.$info = message.info
+    app.config.globalProperties.$danger = message.danger
+    app.config.globalProperties.$warning = message.warning
   }
 }

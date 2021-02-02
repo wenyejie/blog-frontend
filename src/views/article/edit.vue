@@ -1,8 +1,3 @@
-<!--
- - @author: Storm
- - @date: 2021/01/20
- - @email: wenyejie@foxmail.com
- -->
 <template>
   <div class="article-edit">
     <h1 class="page-title">{{ articleForm._id ? '编辑' : '新增' }}文章</h1>
@@ -45,13 +40,13 @@
 </template>
 
 <script>
-import { defineComponent, reactive, watch, ref } from 'vue'
+import { defineComponent, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { addArticle, getArticleDetail } from '@/apis/article'
 import fetchTagList from '@/composition/fetchTagList'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
-import SFormItem from '@/components/formItem/FormItem.vue'
+import $message from '@/components/message'
 
 // 默认的文章表单
 const DEFAULT_ARTICLE_FORM = {
@@ -63,7 +58,6 @@ const DEFAULT_ARTICLE_FORM = {
 
 export default defineComponent({
   name: 'ArticleEdit',
-  components: { SFormItem },
   setup() {
     // 表单
     const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
@@ -79,12 +73,12 @@ export default defineComponent({
     const handleSubmit = () => {
       addArticle(articleForm).then(
         () => {
-          alert('文章创建成功!')
+          $message.success('文章创建成功!')
           localArticleEdit(null)
           articleFormRef.value.$el.reset()
         },
         err => {
-          console.error(err)
+          $message.success(err?.message)
         }
       )
     }
