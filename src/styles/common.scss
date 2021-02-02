@@ -5,7 +5,7 @@ html {
 }
 body {
   font: 14px/1.4285714285714286 Arial, "Helvetica Neue", Helvetica, "PingFang SC", "PingFangSC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
-  color: #404040;
+  color: var(--major-color);
   background-color: #e6e6e6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,7 +25,6 @@ a {
   font-weight: bold;
   padding-bottom: 10px;
   margin: 10px 0 25px;
-  /*border-bottom: 1px solid var(--border-color);*/
 
   &::before {
     content: '#';

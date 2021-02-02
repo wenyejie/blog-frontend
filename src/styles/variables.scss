@@ -6,6 +6,14 @@
  */
 
 :root {
+
+  /*主要颜色*/
+  --major-color: #404040;
+
+  /* 次要颜色 */
+  --minor-color: #606266;
+
+  /* 边框颜色 */
   --border-color: #dcdfe6;
 
   /* primary */
@@ -15,18 +23,26 @@
   /* success */
   --success-color: #67C23A;
   --success-light-color: #85ce61;
+  --success-bgc: #f0f9eb;
+  --success-bdc: #e1f3d8;
 
   /* warning */
   --warning-color: #E6A23C;
   --warning-light-color: #ebb563;
+  --warning-bgc: #fdf6ec;
+  --warning-bdc: #faecd8;
 
   /* danger */
   --danger-color: #F56C6C;
   --danger-light-color: #f78989;
+  --danger-bgc: #fef0f0;
+  --danger-bdc: #fde2e2;
 
   /* info */
   --info-color: #909399;
   --info-light-color: #a6a9ad;
+  --info-bgc: #edf2fc;
+  --info-bdc: #EBEEF5;
 
   /* placeholder */
   --placeholder-color: #c0c4cc;
@@ -36,4 +52,6 @@
 
   /* font-size-default */
   --font-size-major: 14px;
+  --font-size-large: 18px;
+  --font-size-mini: 12px;
 }
