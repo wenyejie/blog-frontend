@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import { $danger } from '@/components/message'
-import { isObject } from 'wenyejie'
+import { isObject, isArray, isString } from 'wenyejie'
 
 const NETWORK_ERR_MSG = '网络错误!'
 const SERVICE_ERR_MSG = '服务器错误!'
@@ -30,21 +30,25 @@ http.interceptors.request.use(
 )
 
 http.interceptors.response.use(
-  (response) => {
+  (response: any) => {
     const responseData = response.data
-    if (isObject(responseData)) {
-      if (responseData.code === '000') {
-        return responseData.data
-      } else {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
-        if (response.config.errTips !== false) {
-          $danger(responseData.message || SERVICE_ERR_MSG)
-        }
-        return Promise.reject(responseData)
-      }
+    if (!isObject(responseData)) {
+      return Promise.reject(SERVICE_ERR_MSG)
     }
-    return Promise.reject(SERVICE_ERR_MSG)
+    if (responseData.code === '000') {
+      return responseData.data
+    }
+
+    const { code, message } = responseData
+    const { disabledTip } = response.config
+    if (
+      disabledTip !== true ||
+      (isArray(disabledTip) && !disabledTip.includes(code)) ||
+      (isString(disabledTip) && disabledTip !== code)
+    ) {
+      $danger(message || SERVICE_ERR_MSG)
+    }
+    return Promise.reject(responseData)
   },
   (error) => {
     $danger(error.message || SERVICE_ERR_MSG)
