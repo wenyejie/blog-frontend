@@ -21,6 +21,9 @@ export default defineComponent({
     watch(
       () => route.params.id,
       () => {
+        if (route.name !== 'articleDetail') {
+          return
+        }
         getArticleDetail({ _id: Number.parseInt(route.params.id) }).then(
           result => {
             Object.assign(article, result)

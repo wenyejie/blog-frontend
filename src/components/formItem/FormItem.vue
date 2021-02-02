@@ -11,6 +11,7 @@
 <script>
 import { defineComponent, inject, computed } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
+import { toCSSUnit } from '../utils.ts'
 export default defineComponent({
   name: 'SFormItem',
   props: {
@@ -64,9 +65,7 @@ export default defineComponent({
 
     const labelStyles = computed(() => {
       return {
-        width: Number.isSafeInteger(innerLabelWidth.value)
-          ? `${innerLabelWidth.value}px`
-          : innerLabelWidth.value
+        width: toCSSUnit(innerLabelWidth.value)
       }
     })
 

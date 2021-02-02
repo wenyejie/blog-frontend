@@ -6,7 +6,7 @@ export const propSizeOpts = {
   }
 }
 
-export const formEleDefProps = Object.freeze({
+export const formEleDefProps = {
   name: String,
   disabled: Boolean,
   required: Boolean,
@@ -19,4 +19,4 @@ export const formEleDefProps = Object.freeze({
       return ['on', 'off'].includes(val)
     }
   }
-})
+}

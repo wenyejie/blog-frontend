@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <s-article v-for="item in articleList" :key="item._id" :data="item" />
-  </div>
+  <s-article v-for="item in articleList" :key="item._id" :data="item" />
 </template>
 
 <script lang="ts">

@@ -22,7 +22,7 @@ export default defineComponent({
   setup() {
     const navList = reactive([
       {
-        label: '首页',
+        label: 'home',
         to: '/'
       },
       ...categoryList.map(name => ({
@@ -30,7 +30,7 @@ export default defineComponent({
         to: `/category/${name}`
       })),
       {
-        label: '关于',
+        label: 'about',
         to: '/about'
       }
     ])

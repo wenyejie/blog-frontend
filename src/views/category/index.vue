@@ -24,6 +24,7 @@ import { defineComponent, ref } from 'vue'
 import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
 import { Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
+import SMessage from '@/components/message'
 
 export default defineComponent({
   name: 'Category',
@@ -35,6 +36,7 @@ export default defineComponent({
     // 添加分类
     const handleAddCategory = () => {
       addCategory({ label: newCategory.value }).then((category: any) => {
+        SMessage.success('添加成功')
         categoryList.push(category)
         newCategory.value = ''
       })
@@ -42,7 +44,9 @@ export default defineComponent({
 
     // 更新分类
     const handleUpdateCategory = (item: Category) => {
-      updateCategory(item)
+      updateCategory(item).then(() => {
+        SMessage.success('更新成功')
+      })
     }
 
     // 删除分类
@@ -50,6 +54,7 @@ export default defineComponent({
       deleteCategory({ _id: item._id, reconfirm }).then(
         () => {
           categoryList.splice(index, 1)
+          SMessage.success('删除成功')
         },
         response => {
           // 如果分类下有文章并且确认删除

@@ -14,16 +14,15 @@ const articleRouter: RouteRecordRaw = {
       name: 'articleDetail',
       component: () =>
         import(/* webpackChunkName: "r-article-detail" */ '@/views/article/detail.vue'),
-      meta: {
-        title: '文章详情'
-      }
+      meta: {}
     },
     {
       path: 'edit',
       name: 'articleEdit',
       component: () => import(/* webpackChunkName: "r-article-edit" */ '@/views/article/edit.vue'),
       meta: {
-        title: '文章编辑'
+        title: '文章编辑',
+        neeAuth: true
       }
     }
   ]

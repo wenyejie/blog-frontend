@@ -1,7 +1,5 @@
 <template>
-  <div class="about">
-    <h1 class="about--title page-title">关于</h1>
+  <h1 class="about--title page-title">关于</h1>
 
-    <p>一个前端开发工程师</p>
-  </div>
+  <p>一个前端开发工程师</p>
 </template>
