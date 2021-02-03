@@ -1,0 +1,13 @@
+.s-tag {
+  &--list {
+    display: flex;
+  }
+  &--item::after {
+    content: ',';
+    margin-right: .5em;
+  }
+
+  &--item:last-child::after {
+    display: none;
+  }
+}

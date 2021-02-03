@@ -6,15 +6,11 @@
  */
 
 .s-article {
+  margin-top: 50px;
 
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 50px;
-  padding-bottom: 24px;
-
-  &:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  & + & {
+    border-top: 1px solid var(--border-color);
+    padding-top: 50px;
   }
 
   &--header {
@@ -22,6 +18,9 @@
   }
   &--title {
     font-size: 28px;
+    & > a {
+      color: var(--major-color);
+    }
   }
 
   &--category {

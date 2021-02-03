@@ -23,7 +23,7 @@ export default defineComponent({
     const pageTitle = ref('')
 
     const fetchArticleList = () => {
-      getArticleList({ tagName: route.params.tagName }).then(result => {
+      getArticleList({ tagName: pageTitle.value }).then(result => {
         articleList.value = result.list
         pageSize.value = result.pageSize
         page.value = result.page - 1
@@ -34,8 +34,8 @@ export default defineComponent({
     watch(
       () => route.path,
       () => {
-        fetchArticleList()
         pageTitle.value = route.params.tagName
+        fetchArticleList()
       },
       {
         immediate: true

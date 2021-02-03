@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, computed } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useStore } from 'vuex'
 import SSidebarItem from '../sidebarItem'
 

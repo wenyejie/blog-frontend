@@ -10,6 +10,7 @@ export interface Category {
   label?: string
   updating?: boolean
   deleting?: boolean
+  reconfirm?: boolean
 }
 
 export interface Pagination {
@@ -22,14 +23,10 @@ export interface AxiosCustomRequestConfig extends AxiosRequestConfig {
   disabledTip?: boolean | string | string[]
 }
 
-export interface AxiosCustomRequestConfig extends AxiosRequestConfig {
-  disabledTip?: boolean | string | string[]
-}
-
 export interface AxiosCustomResponse extends AxiosResponse {
   config: AxiosCustomRequestConfig
 }
 
 export interface AxiosResponseData {
-  [propName: string]: any;
+  [propName: string]: any
 }
