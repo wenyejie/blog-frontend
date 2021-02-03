@@ -35,7 +35,7 @@ const newInstance = (opts: MessageProps) => {
         modelValue: this.visible,
         type: this.type,
         message: this.message,
-        'update:modelValue': this.handleUpdateModelValue
+        'onUpdate:modelValue': this.handleUpdateModelValue
       })
     }
   }).mount(el)
