@@ -4,7 +4,7 @@
  - @email: wenyejie@foxmail.com
  -->
 <template>
-  <footer class="s-footer">Powered by NodeJS + Express + MongoDB + Vue3; author: @wenyejie</footer>
+  <footer class="s-footer">Powered by NodeJS + Express + MongoDB + Vue3; Author: @wenyejie</footer>
 </template>
 
 <script>
