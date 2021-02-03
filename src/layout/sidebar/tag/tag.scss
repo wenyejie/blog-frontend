@@ -1,6 +1,7 @@
 .s-tag {
   &--list {
     display: flex;
+    flex-wrap: wrap;
   }
   &--item::after {
     content: ',';
@@ -9,5 +10,18 @@
 
   &--item:last-child::after {
     display: none;
+  }
+
+  &--count {
+    font-weight: bold;
+    padding: 0 2px;
+    &::before {
+      content: "(";
+      font-weight: normal;
+    }
+    &::after {
+      content: ")";
+      font-weight: normal;
+    }
   }
 }
