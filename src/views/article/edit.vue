@@ -19,7 +19,6 @@
       <s-form-item label="标签:">
         <s-select
           name="tag"
-          required
           v-model="articleForm.tags"
           multiple
           :data="tagList"
@@ -53,7 +52,7 @@ const DEFAULT_ARTICLE_FORM = {
   title: '',
   content: '',
   tags: [],
-  category: null
+  category: 7
 }
 
 export default defineComponent({
