@@ -80,7 +80,7 @@ export default defineComponent({
     // 表单
     const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
 
-    const articleFormRef = reactive(null)
+    const articleFormRef = reactive({})
 
     const route = useRoute()
 

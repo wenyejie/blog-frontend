@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
       title: '关于'
     }
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackChunkName: 'r-login' */ '@/views/login/login.vue')
+  },
   articleRouter,
   categoryRouter,
   tagRouter,

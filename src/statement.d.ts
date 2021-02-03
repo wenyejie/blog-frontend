@@ -31,3 +31,12 @@ export interface AxiosCustomResponse extends AxiosResponse {
 export interface AnyObject {
   [propName: string]: any
 }
+
+export interface LoginParams {
+  account: string
+  password: string
+}
+
+export interface User {
+  userName: string
+}
