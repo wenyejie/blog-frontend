@@ -3,6 +3,7 @@ import { AxiosRequestConfig, AxiosResponse } from 'axios'
 export interface Tag {
   _id?: number
   label?: string
+  count?: number
 }
 
 export interface Category {
@@ -27,6 +28,6 @@ export interface AxiosCustomResponse extends AxiosResponse {
   config: AxiosCustomRequestConfig
 }
 
-export interface AxiosResponseData {
+export interface AnyObject {
   [propName: string]: any
 }

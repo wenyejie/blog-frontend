@@ -5,7 +5,7 @@ const state = {
 }
 
 const mutations = {
-  articleLatest(state, list) {
+  articleLatest(state: any, list: any) {
     if (Array.isArray(list)) {
       state.latest = list
     }
@@ -14,15 +14,15 @@ const mutations = {
 
 const actions = {
   // 获取最新的文章列表
-  articleLatest({ commit }) {
-    getArticleLatest().then((list) => {
+  articleLatest({ commit }: any) {
+    getArticleLatest().then((list: any) => {
       commit('articleLatest', list)
     })
   }
 }
 
 const getters = {
-  articleLatest(state) {
+  articleLatest(state: any) {
     return state.latest
   }
 }

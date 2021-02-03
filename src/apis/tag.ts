@@ -1,5 +1,5 @@
 import http from '@/core/http'
-import { Tag, Pagination, AxiosCustomRequestConfig } from '@/statement'
+import { Tag, Pagination, AxiosCustomRequestConfig, AnyObject } from '@/statement'
 
 // 更新标签
 export const updateTag = (data: Tag, config?: AxiosCustomRequestConfig) => {
@@ -21,4 +21,9 @@ export const deleteTag = (data: Tag, config: AxiosCustomRequestConfig = {}) => {
 export const getTagList = (data?: Pagination, config: AxiosCustomRequestConfig = {}) => {
   config.data = data
   return http.get('/tag/list', config)
+}
+
+export const getTagCount = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
+  config.data = data
+  return http.get('/tag/count', config)
 }
