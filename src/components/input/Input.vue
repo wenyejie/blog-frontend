@@ -16,6 +16,7 @@
       :readonly="readonly"
       :required="required"
       :autocomplete="autocomplete"
+      :autofocus="autofocus"
       :type="type"
     />
   </div>
@@ -37,7 +38,7 @@ export default defineComponent({
       type: String,
       default: 'text',
       validator: (val: string) => {
-        return ['text', 'password', 'number'].includes(val)
+        return ['text', 'password', 'number', 'tel', 'email'].includes(val)
       }
     },
     size: propSizeOpts,
