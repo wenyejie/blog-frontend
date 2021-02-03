@@ -10,6 +10,10 @@ const articleRouter: RouteRecordRaw = {
   },
   children: [
     {
+      path: '',
+      redirect: { name: 'articleEdit' }
+    },
+    {
       path: ':id',
       name: 'articleDetail',
       component: () =>
