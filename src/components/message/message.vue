@@ -49,14 +49,15 @@ export default defineComponent({
     })
 
     const handleAfterLeave = () => {
-      innerVisible.value = false
       emit('update:modelValue', false)
       emit('destroy')
     }
 
     const startCountdown = () => {
       if (props.duration) {
-        timer = setTimeout(handleAfterLeave, props.duration)
+        timer = setTimeout(() => {
+          innerVisible.value = false
+        }, props.duration)
       }
     }
 
