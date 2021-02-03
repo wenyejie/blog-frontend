@@ -30,6 +30,18 @@
         <s-editor name="content" required v-model="articleForm.content" />
       </s-form-item>
 
+      <s-form-item label="状态:">
+        <s-select
+          name="state"
+          placeholder="请选择文章状态"
+          v-model="articleForm.state"
+          :data="articleStates"
+          valueKey="value"
+          required
+        >
+        </s-select>
+      </s-form-item>
+
       <s-form-item label-width="2em">
         <s-button native-type="reset">重置</s-button>
         <s-button native-type="submit">提交</s-button>
@@ -46,22 +58,29 @@ import fetchTagList from '@/composition/fetchTagList'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
 import $message from '@/components/message'
+import { articleStates } from '@/datas'
 
 // 默认的文章表单
 const DEFAULT_ARTICLE_FORM = {
   title: '',
   content: '',
   tags: [],
+  state: 1,
   category: 7
 }
 
 export default defineComponent({
   name: 'ArticleEdit',
+  data() {
+    return {
+      articleStates
+    }
+  },
   setup() {
     // 表单
     const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
 
-    const articleFormRef = reactive()
+    const articleFormRef = reactive(null)
 
     const route = useRoute()
 
