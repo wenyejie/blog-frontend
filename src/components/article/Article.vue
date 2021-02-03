@@ -28,18 +28,18 @@
             <template v-if="index < data.tags.length - 1">,&nbsp;</template>
           </template>
         </dd>
-        <dt class="s-article--dt">浏览量:</dt>
+        <dt class="s-article--dt">浏览:</dt>
         <dd>{{ data.views }}</dd>
         <dt class="s-article--dt">作者:</dt>
         <dd>{{ data.author }}</dd>
-        <dt class="s-article--dt">创建时间:</dt>
+        <dt class="s-article--dt">发布:</dt>
         <dd>
           <router-link class="s-article--meta-link" to="/">
             <time :datetime="createTime">{{ createTime }}</time>
           </router-link>
         </dd>
         <template v-if="updateTime">
-          <dt class="s-article--dt">更新时间:</dt>
+          <dt class="s-article--dt">更新:</dt>
           <dd>
             <router-link class="s-article--meta-link" to="/">
               <time :datetime="updateTime">{{ updateTime }}</time>

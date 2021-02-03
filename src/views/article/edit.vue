@@ -41,7 +41,7 @@
 <script>
 import { defineComponent, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { addArticle, getArticleDetail } from '@/apis/article'
+import { addArticle, getArticleDetail, updateArticle } from '@/apis/article'
 import fetchTagList from '@/composition/fetchTagList'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
@@ -69,10 +69,10 @@ export default defineComponent({
 
     const categoryList = fetchCategoryList()
 
-    const handleSubmit = () => {
+    const handleAddArticle = () => {
       addArticle(articleForm).then(
         () => {
-          $message.success('文章创建成功!')
+          $message.success('文章发布成功!')
           localArticleEdit(null)
           articleFormRef.value.$el.reset()
         },
@@ -80,6 +80,20 @@ export default defineComponent({
           $message.success(err?.message)
         }
       )
+    }
+
+    const handleUpdateArticle = () => {
+      updateArticle(articleForm).then(() => {
+        $message.success('文章更新成功!')
+      })
+    }
+
+    const handleSubmit = () => {
+      if (articleForm._id) {
+        handleUpdateArticle()
+      } else {
+        handleAddArticle()
+      }
     }
 
     const handleReset = () => {

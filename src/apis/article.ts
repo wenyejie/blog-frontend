@@ -1,5 +1,5 @@
 import http from '@/core/http'
-import { AxiosCustomRequestConfig } from '@/statement'
+import { AxiosCustomRequestConfig, AnyObject } from '@/statement'
 
 // 增加文章
 export const addArticle = (data: any, config?: AxiosCustomRequestConfig) => {
@@ -27,4 +27,8 @@ export const getArticleLatest = (config: AxiosCustomRequestConfig = {}) => {
 export const deleteArticle = (data?: any, config: AxiosCustomRequestConfig = {}) => {
   config.data = data
   return http.delete('/article/delete', config)
+}
+
+export const updateArticle = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
+  return http.put('/article/update', data, config)
 }
