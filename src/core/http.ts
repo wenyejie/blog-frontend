@@ -6,7 +6,7 @@
 
 import axios from 'axios'
 import { $danger } from '@/components/message'
-import { isObject, isArray, isString } from 'wenyejie'
+import { isObject, isArray, isString, isBoolean } from 'wenyejie'
 import { useRouter } from 'vue-router'
 import { AxiosCustomResponse } from '@/statement'
 import { localToken } from '@/storages'
@@ -49,8 +49,9 @@ http.interceptors.response.use(
       return data
     }
     const { disabledTip } = response.config
+    debugger
     if (
-      disabledTip !== true ||
+      (isBoolean(disabledTip) && disabledTip !== true) ||
       (isArray(disabledTip) && !(disabledTip as any).includes(code)) ||
       (isString(disabledTip) && disabledTip !== code)
     ) {
