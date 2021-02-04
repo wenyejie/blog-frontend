@@ -22,6 +22,7 @@ import { defineComponent, ref } from 'vue'
 import { addTag, updateTag, deleteTag } from '@/apis/tag'
 import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'
+import $message from '@/components/message'
 
 export default defineComponent({
   name: 'Tag',
@@ -32,7 +33,7 @@ export default defineComponent({
     // 添加标签
     const handleAddTag = () => {
       addTag({ label: newTag.value }).then((tag: any) => {
-        console.log('标签添加成功')
+        $message.success('标签添加成功')
         tagList.push(tag)
         newTag.value = ''
       })
@@ -41,14 +42,14 @@ export default defineComponent({
     // 更新标签
     const handleUpdateTag = (item: Tag) => {
       updateTag(item).then(() => {
-        console.log('标签更新成功')
+        $message.success('标签更新成功')
       })
     }
 
     // 删除标签
     const handleDeleteTag = (item: Tag, index: number) => {
       deleteTag(item).then(() => {
-        console.log('标签移除成功')
+        $message.success('标签删除成功')
         tagList.splice(index, 1)
       })
     }

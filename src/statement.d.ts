@@ -40,3 +40,8 @@ export interface LoginParams {
 export interface User {
   userName: string
 }
+
+export interface LoginResponse {
+  token: string
+  account: string
+}

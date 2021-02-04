@@ -1,8 +1,11 @@
 import http from '@/core/http'
-import { AxiosCustomRequestConfig, AnyObject, LoginParams, User } from '@/statement'
+import { AxiosCustomRequestConfig, AnyObject, LoginParams, LoginResponse } from '@/statement'
 
 // 登录
-export const login = (data: LoginParams, config?: AxiosCustomRequestConfig): Promise<User> => {
+export const login = (
+  data: LoginParams,
+  config?: AxiosCustomRequestConfig
+): Promise<LoginResponse> => {
   return http.post('/user/login', data, config)
 }
 

@@ -7,7 +7,9 @@
 import axios from 'axios'
 import { $danger } from '@/components/message'
 import { isObject, isArray, isString } from 'wenyejie'
+import { useRouter } from 'vue-router'
 import { AxiosCustomResponse } from '@/statement'
+import { localToken } from '@/storages'
 
 const NETWORK_ERR_MSG = '网络错误!'
 const SERVICE_ERR_MSG = '服务器错误!'
@@ -22,9 +24,14 @@ const http = axios.create({
 
 http.interceptors.request.use(
   (config) => {
+    const token = localToken()
+    if (token) {
+      config.headers[process.env.VUE_APP_AXIOS_TOKEN_KEY] = token
+    }
     return config
   },
   (error) => {
+    debugger
     $danger((error && error.message) || NETWORK_ERR_MSG)
     return Promise.reject(error)
   }
@@ -36,11 +43,10 @@ http.interceptors.response.use(
     if (!isObject(responseData)) {
       return Promise.reject(SERVICE_ERR_MSG)
     }
-    if (responseData.code === '000') {
-      return responseData.data
+    const { code, message, data } = responseData
+    if (code === '000') {
+      return data
     }
-
-    const { code, message } = responseData
     const { disabledTip } = response.config
     if (
       disabledTip !== true ||
@@ -48,6 +54,10 @@ http.interceptors.response.use(
       (isString(disabledTip) && disabledTip !== code)
     ) {
       $danger(message || SERVICE_ERR_MSG)
+    }
+    // token失效
+    if (code === '001002') {
+      useRouter().push('/login')
     }
     return Promise.reject(responseData)
   },

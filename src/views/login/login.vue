@@ -24,7 +24,7 @@
     </s-form-item>
     <s-form-item labelWidth="2em">
       <s-button native-type="reset">重置</s-button>
-      <s-button native-type="submit">登录</s-button>
+      <s-button native-type="submit" :disabled="logging">登录</s-button>
     </s-form-item>
   </s-form>
 </template>
@@ -34,11 +34,14 @@ import { defineComponent, ref, reactive } from 'vue'
 import { login } from '@/apis/user'
 import { LoginParams } from '@/statement'
 import encrypt from '@/core/encrypt'
+import { localToken, localUserInfo } from '@/storages'
+import { $success } from '@/components/message'
 
 const DEFAULT_LOGIN_FORM: LoginParams = {
   account: '',
   password: ''
 }
+
 export default defineComponent({
   name: 'Login',
   setup() {
@@ -49,10 +52,16 @@ export default defineComponent({
     const handleLoginSubmit = () => {
       const params = { ...loginForm }
       params.password = encrypt(params.password)
-      console.log(params)
-      login(loginForm).then(user => {
-        console.log(user)
-      })
+      logging.value = true
+      login(params)
+        .then(response => {
+          localToken(response.token)
+          localUserInfo(response)
+          $success('登录成功!')
+        })
+        .finally(() => {
+          logging.value = false
+        })
     }
 
     return {
