@@ -1,4 +1,4 @@
-import { local } from 'wenyejie'
+import { local, nullProtoObject } from 'wenyejie'
 import { ARTICLE_EDIT, TOKEN, USER_INFO } from './namespace'
 import { AnyObject } from '@/statement'
 
@@ -9,10 +9,10 @@ export const localArticleEdit = (data?: AnyObject | null) => {
 
 // 保存token
 export const localToken = (data?: string | null) => {
-  return local(TOKEN, data)
+  return local(TOKEN, data) || ''
 }
 
 // 用户信息
 export const localUserInfo = (data?: AnyObject | null) => {
-  return local(USER_INFO, data)
+  return local(USER_INFO, data) || nullProtoObject()
 }

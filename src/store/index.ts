@@ -5,7 +5,7 @@ import { localUserInfo } from '@/storages'
 
 export default createStore({
   state: {
-    userInfo: localUserInfo() || {}
+    userInfo: localUserInfo()
   },
   mutations: {
     userInfo(state: any, info: any) {
