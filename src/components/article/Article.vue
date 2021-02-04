@@ -62,7 +62,7 @@
   </article>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import store from '@/store'
@@ -92,7 +92,7 @@ export default defineComponent({
     const isLogin = computed(() => store.getters.isLogin)
 
     const updateTime = computed(() => {
-      return props?.data?.utime && dateFormat(props?.data?.utime, 'YYYY-MM-DD')
+      return dateFormat(props.data.utime, 'YYYY-MM-DD')
     })
 
     const createTime = computed(() => {
@@ -101,7 +101,7 @@ export default defineComponent({
 
     // 删除文章
     const handleDelete = () => {
-      deleteArticle({ _id: props?.data?._id }).then(() => {
+      deleteArticle({ _id: props.data._id }).then(() => {
         store.dispatch('articleLatest')
         useRouter().go(-1)
       })

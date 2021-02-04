@@ -28,7 +28,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
-import { Category } from '@/statement'
+import { AnyObject, Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import { $success } from '@/components/message'
 
@@ -44,7 +44,7 @@ export default defineComponent({
     const handleAddCategory = () => {
       adding.value = true
       addCategory({ label: newCategory.value })
-        .then((category: any) => {
+        .then((category: AnyObject) => {
           $success('添加成功')
           categoryList.push(category)
           newCategory.value = ''
@@ -77,8 +77,8 @@ export default defineComponent({
           },
           response => {
             // 如果分类下有文章并且确认删除
-            if (response?.code === '005001') {
-              if (window.confirm(response?.message)) {
+            if (response.code === '005001') {
+              if (window.confirm(response.message)) {
                 handleDeleteCategory(item, index, true)
               }
             }

@@ -32,7 +32,7 @@ const Dialog = function (opts: any = {}) {
 
   return {
     close: () => {
-      // vm?.component?.proxy?.visible = false
+      // vm.component.proxy.visible = false
       console.log('close')
     }
   }

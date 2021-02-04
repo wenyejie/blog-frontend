@@ -50,8 +50,8 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, reactive, watch, ref } from 'vue'
+<script lang="ts">
+import { defineComponent, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { addArticle, getArticleDetail, updateArticle } from '@/apis/article'
 import fetchTagList from '@/composition/fetchTagList'
@@ -60,9 +60,11 @@ import { localArticleEdit } from '@/storages'
 import $message from '@/components/message'
 import { articleStates } from '@/datas'
 import router from '@/router'
+import { AnyObject, Tag } from '@/statement'
 
 // 默认的文章表单
 const DEFAULT_ARTICLE_FORM = {
+  _id: 0,
   title: '',
   content: '',
   tags: [],
@@ -89,19 +91,19 @@ export default defineComponent({
 
     const handleAddArticle = () => {
       addArticle(articleForm).then(
-        article => {
+        (article: AnyObject) => {
           $message.success('文章发布成功!')
           localArticleEdit(null)
           router.push(`/article/${article._id}`)
         },
         err => {
-          $message.success(err?.message)
+          $message.success(err.message)
         }
       )
     }
 
     const handleUpdateArticle = () => {
-      updateArticle(articleForm).then(article => {
+      updateArticle(articleForm).then((article: AnyObject) => {
         $message.success('文章更新成功!')
         localArticleEdit(null)
         router.push(`/article/${article._id}`)
@@ -138,11 +140,13 @@ export default defineComponent({
     }
 
     if (route.query.id) {
-      getArticleDetail({ _id: Number.parseInt(route.query.id) }).then(result => {
-        result.category = result?.category?._id
-        result.tags = result?.tags.map(tag => tag._id)
-        Object.assign(articleForm, result)
-      })
+      getArticleDetail({ _id: Number.parseInt(route.query.id as string) }).then(
+        (result: AnyObject) => {
+          result.category = result.category._id
+          result.tags = result.tags.map((tag: Tag) => tag._id)
+          Object.assign(articleForm, result)
+        }
+      )
     }
 
     return {
