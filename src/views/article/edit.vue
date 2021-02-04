@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, watch } from 'vue'
+import { defineComponent, reactive, watch, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { addArticle, getArticleDetail, updateArticle } from '@/apis/article'
 import fetchTagList from '@/composition/fetchTagList'
@@ -59,6 +59,7 @@ import fetchCategoryList from '@/composition/fetchCategoryList'
 import { localArticleEdit } from '@/storages'
 import $message from '@/components/message'
 import { articleStates } from '@/datas'
+import router from '@/router'
 
 // 默认的文章表单
 const DEFAULT_ARTICLE_FORM = {
@@ -80,7 +81,7 @@ export default defineComponent({
     // 表单
     const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
 
-    const articleFormRef = reactive({})
+    const articleFormRef = ref(null)
 
     const route = useRoute()
 
@@ -90,10 +91,11 @@ export default defineComponent({
 
     const handleAddArticle = () => {
       addArticle(articleForm).then(
-        () => {
+        article => {
           $message.success('文章发布成功!')
           localArticleEdit(null)
           articleFormRef.value.$el.reset()
+          router.push(`/article${article._id}`)
         },
         err => {
           $message.success(err?.message)

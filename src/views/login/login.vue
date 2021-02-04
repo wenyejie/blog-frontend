@@ -47,7 +47,7 @@ export default defineComponent({
   name: 'Login',
   setup() {
     const logging = ref(false)
-    const loginFormRef = reactive({})
+    const loginFormRef = ref(null)
     const loginForm = reactive(Object.assign({}, DEFAULT_LOGIN_FORM))
 
     const handleLoginSubmit = () => {
