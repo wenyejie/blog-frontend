@@ -104,10 +104,11 @@ export default defineComponent({
     }
 
     const handleUpdateArticle = () => {
-      updateArticle(articleForm).then(() => {
+      updateArticle(articleForm).then(article => {
         $message.success('文章更新成功!')
         localArticleEdit(null)
         articleFormRef.value.$el.reset()
+        router.push(`/article${article._id}`)
       })
     }
 
