@@ -1,10 +1,6 @@
 <template>
   <div class="tag">
     <h1 class="page-title">标签管理</h1>
-    <form class="tag--add" @submit.prevent>
-      <s-input class="tag--add--input" v-model.trim="newTag" />
-      <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
-    </form>
     <form class="tag--form" @submit.stop>
       <ul class="tag--list">
         <li class="tag--item" v-for="(item, index) in tagList" :key="item._id">
@@ -13,6 +9,10 @@
           <s-button @click="handleUpdateTag(item)">更新</s-button>
         </li>
       </ul>
+    </form>
+    <form class="tag--add" @submit.prevent>
+      <s-input class="tag--add--input" v-model.trim="newTag" />
+      <s-button native-type="submit" class="tag--add--btn" @click="handleAddTag">添加</s-button>
     </form>
   </div>
 </template>
@@ -75,9 +75,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tag {
-  &--add,
+  &--list {
+    margin: 0 -15px;
+  }
   &--item {
-    margin-bottom: 15px;
+    margin: 0 15px 15px;
+  }
+
+  &--list {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 

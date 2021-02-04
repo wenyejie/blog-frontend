@@ -1,19 +1,9 @@
 <template>
-  <div class="manage-category">
+  <div class="category">
     <h1 class="page-title">分类管理</h1>
-    <form class="manage-category--add" @submit.prevent>
-      <s-input class="manage-category--add--input" v-model.trim="newCategory" />
-      <s-button
-        native-type="submit"
-        class="category--add--btn"
-        :disabled="adding"
-        @click="handleAddCategory"
-        >添加</s-button
-      >
-    </form>
-    <form class="manage-category--form" @submit.stop>
-      <ul class="manage-category--list">
-        <li class="manage-category--item" v-for="(item, index) in categoryList" :key="item._id">
+    <form class="category--form" @submit.stop>
+      <ul class="category--list">
+        <li class="category--item" v-for="(item, index) in categoryList" :key="item._id">
           <s-input v-model.trim="item.label" />
           <s-button :disabled="item.disabled" @click="handleDeleteCategory(item, index)"
             >删除</s-button
@@ -21,6 +11,16 @@
           <s-button :disabled="item.disabled" @click="handleUpdateCategory(item)">更新</s-button>
         </li>
       </ul>
+    </form>
+    <form class="category--add" @submit.prevent>
+      <s-input class="category--add--input" v-model.trim="newCategory" />
+      <s-button
+        native-type="submit"
+        class="category--add--btn"
+        :disabled="adding"
+        @click="handleAddCategory"
+        >添加</s-button
+      >
     </form>
   </div>
 </template>
@@ -102,10 +102,17 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.manage-category {
-  &--add,
+.category {
+  &--list {
+    margin: 0 -15px;
+  }
   &--item {
-    margin-bottom: 15px;
+    margin: 0 15px 15px;
+  }
+
+  &--list {
+    display: flex;
+    flex-wrap: wrap;
   }
 }
 
