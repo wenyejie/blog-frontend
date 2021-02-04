@@ -19,8 +19,13 @@ export const getArticleDetail = (data?: any, config: AxiosCustomRequestConfig = 
 }
 
 // 获取最新十条文章
-export const getArticleLatest = (config: AxiosCustomRequestConfig = {}) => {
+export const getArticleLatest = (config?: AxiosCustomRequestConfig) => {
   return http.get('/article/latest', config)
+}
+
+// 获取最热门的十条文章
+export const getArticleHottest = (config?: AxiosCustomRequestConfig) => {
+  return http.get('article/hottest', config)
 }
 
 // 删除文章

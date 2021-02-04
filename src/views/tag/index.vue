@@ -23,6 +23,7 @@ import { addTag, updateTag, deleteTag } from '@/apis/tag'
 import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'
 import $message from '@/components/message'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'Tag',
@@ -30,12 +31,18 @@ export default defineComponent({
     const tagList = fetchTagList()
     const newTag = ref('')
 
+    const changeTagCount = () => {
+      const store = useStore()
+      store.dispatch('getTagCount')
+    }
+
     // 添加标签
     const handleAddTag = () => {
       addTag({ label: newTag.value }).then((tag: any) => {
         $message.success('标签添加成功')
         tagList.push(tag)
         newTag.value = ''
+        changeTagCount()
       })
     }
 
@@ -43,6 +50,7 @@ export default defineComponent({
     const handleUpdateTag = (item: Tag) => {
       updateTag(item).then(() => {
         $message.success('标签更新成功')
+        changeTagCount()
       })
     }
 
@@ -51,6 +59,7 @@ export default defineComponent({
       deleteTag(item).then(() => {
         $message.success('标签删除成功')
         tagList.splice(index, 1)
+        changeTagCount()
       })
     }
 
