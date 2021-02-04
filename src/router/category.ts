@@ -13,7 +13,8 @@ const categoryRouter: RouteRecordRaw = {
       name: 'category',
       component: () => import(/* webpackChunkName: 'r-category' */ '@/views/category/index.vue'),
       meta: {
-        title: '分类管理'
+        title: '分类管理',
+        needAuth: true
       }
     },
     {

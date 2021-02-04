@@ -46,13 +46,15 @@
             </router-link>
           </dd>
         </template>
-        <dt>操作:</dt>
-        <dd>
-          <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
-            >编辑</router-link
-          >,
-          <a class="s-article--meta-link" href="javascript:;" @click="handleDelete">删除</a>
-        </dd>
+        <template v-if="isLogin">
+          <dt>操作:</dt>
+          <dd>
+            <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
+              >编辑</router-link
+            >,
+            <a class="s-article--meta-link" href="javascript:;" @click="handleDelete">删除</a>
+          </dd>
+        </template>
       </dl>
     </header>
     <div class="s-article--body" v-html="computedContent"></div>
@@ -88,6 +90,8 @@ export default defineComponent({
       return markdown2html(props.data.content)
     })
 
+    const isLogin = computed(() => store.getters.isLogin)
+
     const updateTime = computed(() => {
       return props?.data?.utime && dateFormat(props?.data?.utime, 'YYYY-MM-DD')
     })
@@ -105,6 +109,7 @@ export default defineComponent({
     }
 
     return {
+      isLogin,
       computedContent,
       updateTime,
       createTime,

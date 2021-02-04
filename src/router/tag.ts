@@ -13,7 +13,8 @@ const tagRouter: RouteRecordRaw = {
       name: 'tag',
       component: () => import(/* webpackChunkName: 'r-tag' */ '@/views/tag/index.vue'),
       meta: {
-        title: '标签管理'
+        title: '标签管理',
+        needAuth: true
       }
     },
     {
