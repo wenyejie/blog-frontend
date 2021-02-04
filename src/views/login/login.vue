@@ -36,7 +36,7 @@ import { LoginParams } from '@/statement'
 import encrypt from '@/core/encrypt'
 import { localToken, localUserInfo } from '@/storages'
 import { $success } from '@/components/message'
-import { useStore } from 'vuex'
+import store from '@/store'
 
 const DEFAULT_LOGIN_FORM: LoginParams = {
   account: '',
@@ -49,7 +49,6 @@ export default defineComponent({
     const logging = ref(false)
     const loginFormRef = reactive({})
     const loginForm = reactive(Object.assign({}, DEFAULT_LOGIN_FORM))
-    const store = useStore()
 
     const handleLoginSubmit = () => {
       const params = { ...loginForm }

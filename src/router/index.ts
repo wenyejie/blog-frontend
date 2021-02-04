@@ -3,10 +3,8 @@ import { setPageTitle } from '@/utils'
 import articleRouter from './article'
 import categoryRouter from './category'
 import tagRouter from './tag'
-import { useStore } from 'vuex'
+import store from '@/store'
 import $message from '@/components/message'
-
-const store = useStore()
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -64,7 +62,7 @@ router.beforeEach((to, from, next) => {
   // 判断路由是否有权限, 当然更好的做法是根据用户权限载入相关路由
   if (to.meta.neeAuth && !store.getters.isLogin) {
     $message.warning('你没有该路由权限, 请先登录')
-    next('/login')
+    return next('/login')
   }
   setPageTitle(to.meta.title)
   next()

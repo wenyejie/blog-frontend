@@ -23,7 +23,7 @@ import { addTag, updateTag, deleteTag } from '@/apis/tag'
 import fetchTagList from '@/composition/fetchTagList'
 import { Tag } from '@/statement'
 import $message from '@/components/message'
-import { useStore } from 'vuex'
+import store from '@/store'
 
 export default defineComponent({
   name: 'Tag',
@@ -32,7 +32,6 @@ export default defineComponent({
     const newTag = ref('')
 
     const changeTagCount = () => {
-      const store = useStore()
       store.dispatch('getTagCount')
     }
 

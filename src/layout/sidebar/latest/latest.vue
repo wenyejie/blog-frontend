@@ -12,14 +12,13 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
-import { useStore } from 'vuex'
+import store from '@/store'
 import SSidebarItem from '../sidebarItem'
 
 export default defineComponent({
   name: 'SLatest',
   components: { SSidebarItem },
   setup() {
-    const store = useStore()
     const articleList = computed(() => store.getters.articleLatest)
     store.dispatch('articleLatest')
 

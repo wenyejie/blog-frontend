@@ -12,14 +12,13 @@
 
 <script>
 import { computed, defineComponent } from 'vue'
-import { useStore } from 'vuex'
+import store from '@/store'
 import SSidebarItem from '../sidebarItem'
 
 export default defineComponent({
   name: 'STag',
   components: { SSidebarItem },
   setup() {
-    const store = useStore()
     const tagCounts = computed(() => store.getters.tagCounts)
     store.dispatch('tagCounts')
 

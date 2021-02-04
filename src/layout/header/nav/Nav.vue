@@ -19,7 +19,7 @@
 <script>
 import { defineComponent, reactive, computed } from 'vue'
 import { categoryList } from '@/datas'
-import { useStore } from 'vuex'
+import store from '@/store'
 import { logout } from '@/apis/user'
 import $message from '@/components/message'
 import { logoutAfter } from '@/utils'
@@ -27,8 +27,6 @@ import { logoutAfter } from '@/utils'
 export default defineComponent({
   name: 'SNav',
   setup() {
-    const store = useStore()
-
     const userInfo = computed(() => store.getters.userInfo)
 
     const isLogin = computed(() => store.getters.isLogin)
