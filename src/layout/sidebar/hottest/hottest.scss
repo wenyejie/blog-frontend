@@ -1,1 +1,10 @@
-.s-hottest {}
+.s-hottest {
+
+  &--item {
+    list-style: inside decimal;
+    margin-bottom: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

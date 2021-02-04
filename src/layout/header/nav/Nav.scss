@@ -9,6 +9,9 @@
   border-top: 1px solid #ededed;
   border-bottom: 1px solid #ededed;
   margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 44px;
 
   &--list {
     display: flex;
@@ -21,7 +24,6 @@
   }
 
   &--link {
-    line-height: 44px;
     display: block;
     text-transform: uppercase;
 
@@ -34,5 +36,9 @@
       color: #000;
       transform: scale(1.1);
     }
+  }
+
+  &--user {
+
   }
 }

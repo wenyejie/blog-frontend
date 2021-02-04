@@ -36,6 +36,7 @@ import { LoginParams } from '@/statement'
 import encrypt from '@/core/encrypt'
 import { localToken, localUserInfo } from '@/storages'
 import { $success } from '@/components/message'
+import { useStore } from 'vuex'
 
 const DEFAULT_LOGIN_FORM: LoginParams = {
   account: '',
@@ -48,6 +49,7 @@ export default defineComponent({
     const logging = ref(false)
     const loginFormRef = reactive({})
     const loginForm = reactive(Object.assign({}, DEFAULT_LOGIN_FORM))
+    const store = useStore()
 
     const handleLoginSubmit = () => {
       const params = { ...loginForm }
@@ -57,6 +59,7 @@ export default defineComponent({
         .then(response => {
           localToken(response.token)
           localUserInfo(response)
+          store.commit('userInfo', response)
           $success('登录成功!')
         })
         .finally(() => {

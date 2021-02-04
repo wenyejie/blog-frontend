@@ -10,6 +10,7 @@ import { isObject, isArray, isString } from 'wenyejie'
 import { useRouter } from 'vue-router'
 import { AxiosCustomResponse } from '@/statement'
 import { localToken } from '@/storages'
+import { logoutAfter } from '@/utils'
 
 const NETWORK_ERR_MSG = '网络错误!'
 const SERVICE_ERR_MSG = '服务器错误!'
@@ -57,6 +58,8 @@ http.interceptors.response.use(
     }
     // token失效
     if (code === '001002') {
+      logoutAfter()
+      // 跳转到登录页
       useRouter().push('/login')
     }
     return Promise.reject(responseData)

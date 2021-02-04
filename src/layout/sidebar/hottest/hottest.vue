@@ -1,7 +1,11 @@
 <template>
-  <s-sidebar-item title="热门文章">
-    <ol>
-      <li>热门文章</li>
+  <s-sidebar-item class="s-hottest" title="热门文章">
+    <ol class="s-hottest--list">
+      <li class="s-hottest--item" v-for="item in articleList" :key="item._id">
+        <router-link class="s-hottest--link" :to="`/article/${item._id}`" :title="item.title">{{
+          item.title
+        }}</router-link>
+      </li>
     </ol>
   </s-sidebar-item>
 </template>

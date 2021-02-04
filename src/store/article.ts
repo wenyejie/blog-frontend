@@ -15,8 +15,8 @@ const mutations = {
 const actions = {
   // 获取最新的文章列表
   articleLatest({ commit }: any) {
-    getArticleLatest().then((list: any) => {
-      commit('articleLatest', list)
+    getArticleLatest().then((response: any) => {
+      commit('articleLatest', response.list)
     })
   }
 }

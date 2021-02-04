@@ -20,9 +20,7 @@ export default defineComponent({
   components: { SSidebarItem },
   setup() {
     const store = useStore()
-    const articleList = computed(() => {
-      return store.state.article.latest
-    })
+    const articleList = computed(() => store.getters.articleLatest)
     store.dispatch('articleLatest')
 
     return {

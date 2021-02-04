@@ -10,16 +10,36 @@
         <router-link class="s-nav--link" :to="item.to">{{ item.label }}</router-link>
       </li>
     </ul>
+    <span class="s-nav--user" v-if="isLogin"
+      >你好, {{ userInfo.account }}, <a href="javascript:;" @click="handleLogout">登出</a></span
+    >
   </nav>
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, computed } from 'vue'
 import { categoryList } from '@/datas'
+import { useStore } from 'vuex'
+import { logout } from '@/apis/user'
+import $message from '@/components/message'
+import { logoutAfter } from '@/utils'
 
 export default defineComponent({
   name: 'SNav',
   setup() {
+    const store = useStore()
+
+    const userInfo = computed(() => store.getters.userInfo)
+
+    const isLogin = computed(() => store.getters.isLogin)
+
+    const handleLogout = () => {
+      logout().then(() => {
+        logoutAfter()
+        $message.success('登出成功!')
+      })
+    }
+
     const navList = reactive([
       {
         label: 'home',
@@ -35,7 +55,10 @@ export default defineComponent({
       }
     ])
     return {
-      navList
+      isLogin,
+      userInfo,
+      navList,
+      handleLogout
     }
   }
 })

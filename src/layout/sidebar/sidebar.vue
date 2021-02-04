@@ -1,8 +1,8 @@
 <template>
   <aside class="s-sidebar">
-    <s-hottest />
-    <s-tag />
     <s-latest />
+    <s-tag />
+    <s-hottest />
   </aside>
 </template>
 
