@@ -95,7 +95,7 @@ export default defineComponent({
           $message.success('文章发布成功!')
           localArticleEdit(null)
           articleFormRef.value.$el.reset()
-          router.push(`/article${article._id}`)
+          router.push(`/article/${article._id}`)
         },
         err => {
           $message.success(err?.message)
