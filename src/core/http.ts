@@ -49,7 +49,6 @@ http.interceptors.response.use(
       return data
     }
     const { disabledTip } = response.config
-    debugger
     if (
       (isBoolean(disabledTip) && disabledTip !== true) ||
       (isArray(disabledTip) && !(disabledTip as any).includes(code)) ||
