@@ -1,9 +1,3 @@
-/**
- * @author: Storm
- * @date: 2021/01/13
- * @email: wenyejie@foxmail.com
- */
+import { defineAsyncComponent } from 'vue'
 
-export const SInput = () => import(/* webpackChunkName: "s-input" */ './Input.vue')
-
-export default SInput
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-input" */ './Input.vue'))

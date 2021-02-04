@@ -1,5 +1,6 @@
-import message from './message'
-export const SMessage = () => import(/* webpackChunkName: 's-message' */ './message.vue')
+import message, { MessageConstructor } from './message'
+
+export const SMessage = MessageConstructor
 
 export const $message = message
 export const $success = message.success

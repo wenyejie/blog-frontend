@@ -1,33 +1,19 @@
 <template>
   <h1 class="page-title">DEMO</h1>
-  <s-form ref="formRef">
-    <s-input name="name" v-model="formData.name" />
-  </s-form>
-  <s-message message="文章提交成功!" />
+  <!--<s-message message="文章提交成功!" />-->
+  <s-dialog v-model="dialogVisible" title="Dialog title" content="Dialog content" />
   <s-icon type="info" />
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from 'vue'
-import { $success } from '@/components/message'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'demo',
   setup() {
-    const formRef = ref(null)
-    const formData = reactive({
-      name: 'wneyejie'
-    })
-
-    // console.log(SMessage)
-    $success('你好')
-
-    setTimeout(() => {
-      formRef.value.$el.reset()
-    }, 1000)
+    const dialogVisible = ref(true)
 
     return {
-      formRef,
-      formData
+      dialogVisible
     }
   }
 })

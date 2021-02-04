@@ -25,19 +25,21 @@
 
 <script>
 import { defineComponent, computed } from 'vue'
+import SButton from '@/components/button'
+import SBackdrop from '@/components/backdrop'
 import { toCSSUnit } from '../utils'
 export default defineComponent({
   name: 'SDialog',
+  components: {
+    SButton,
+    SBackdrop
+  },
   props: {
+    modelValue: Boolean,
     // 是否拥有背景
     backdrop: {
       type: Boolean,
       default: true
-    },
-    type: {
-      type: String,
-      default: 'default',
-      validator: val => ['info'].includes(val)
     },
     // 弹框标题
     title: String,
@@ -76,6 +78,7 @@ export default defineComponent({
       default: true
     }
   },
+  emits: ['update:modelValue'],
   setup(props) {
     const classes = computed(() => ({
       [`in-${props.position}`]: !!props.position

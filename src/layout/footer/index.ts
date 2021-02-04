@@ -1,9 +1,3 @@
-/**
- * @author: Storm
- * @date: 2021/01/20
- * @email: wenyejie@foxmail.com
- */
+import { defineAsyncComponent } from 'vue'
 
-import SFooter from './Footer.vue'
-
-export default SFooter
+export default defineAsyncComponent(() => import(/* webpackChunkName: 's-footer' */ './Footer.vue'))

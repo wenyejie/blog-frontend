@@ -1,1 +1,2 @@
-export default () => import(/* webpackChunkName: 's-dialog' */ './dialog.vue')
+import { defineAsyncComponent } from 'vue'
+export default defineAsyncComponent(() => import(/* webpackChunkName: 's-dialog' */ './dialog.vue'))

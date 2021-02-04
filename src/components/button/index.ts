@@ -1,9 +1,3 @@
-/**
- * @author: Storm
- * @date: 2021/1/11 0011
- * @email: wenyejie@foxmail.com
- */
+import { defineAsyncComponent } from 'vue'
 
-export const SButton = () => import(/* webpackChunkName: "s-button" */ './Button.vue')
-
-export default SButton
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-button" */ './Button.vue'))

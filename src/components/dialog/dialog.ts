@@ -1,6 +1,6 @@
 import { render, createVNode } from 'vue'
 import { isString } from 'wenyejie'
-import DialogConstructor from './message.vue'
+import DialogConstructor from './dialog.vue'
 
 const instances = []
 

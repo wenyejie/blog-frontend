@@ -1,4 +1,3 @@
 import { defineAsyncComponent } from 'vue'
-const STag = () => import(/* webpackChunkName: 's-tag' */ './tag.vue')
 
-export default defineAsyncComponent(STag)
+export default defineAsyncComponent(() => import(/* webpackChunkName: 's-tag' */ './tag.vue'))

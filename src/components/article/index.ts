@@ -1,9 +1,5 @@
-/**
- * @author: Storm
- * @date: 2021/01/20
- * @email: wenyejie@foxmail.com
- */
+import { defineAsyncComponent } from 'vue'
 
-export const SArticle = () => import(/* webpackChunkName: "s-article" */ './Article.vue')
-
-export default SArticle
+export default defineAsyncComponent(
+  () => import(/* webpackChunkName: "s-article" */ './Article.vue')
+)

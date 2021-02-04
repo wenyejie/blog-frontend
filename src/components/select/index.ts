@@ -1,3 +1,3 @@
-export const SSelect = () => import(/* webpackChunkName: "s-select" */ './Select.vue')
+import { defineAsyncComponent } from 'vue'
 
-export default SSelect
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-select" */ './Select.vue'))

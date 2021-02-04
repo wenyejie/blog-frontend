@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, defineAsyncComponent, onBeforeUnmount, watch, ref } from 'vue'
+import { defineComponent, computed, onBeforeUnmount, watch, ref } from 'vue'
 import SIcon from '../icon'
 
 export default defineComponent({
   name: 'SMessage',
   components: {
-    SIcon: defineAsyncComponent(SIcon)
+    SIcon: SIcon
   },
   props: {
     modelValue: {

@@ -1,3 +1,5 @@
-export const SPagination = () => import(/* webpackChunkName: "s-pagination" */ './Pagination.vue')
+import { defineAsyncComponent } from 'vue'
 
-export default SPagination
+export default defineAsyncComponent(
+  () => import(/* webpackChunkName: "s-pagination" */ './Pagination.vue')
+)

@@ -1,9 +1,3 @@
-/**
- * @author: Storm
- * @date: 2021/01/20
- * @email: wenyejie@foxmail.com
- */
+import { defineAsyncComponent } from 'vue'
 
-export const SEditor = () => import(/* webpackChunkName: "s-editor" */ './Editor.vue')
-
-export default SEditor
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-editor" */ './Editor.vue'))

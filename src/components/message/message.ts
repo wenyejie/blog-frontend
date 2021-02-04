@@ -1,7 +1,9 @@
 import { createApp, defineAsyncComponent, h, ref } from 'vue'
 import { MessageProps, MessageTypes } from './type'
 
-const SMessage = () => import(/* webpackChunkName: 's-message' */ './message.vue')
+export const MessageConstructor = defineAsyncComponent(
+  () => import(/* webpackChunkName: 's-message' */ './message.vue')
+)
 
 let instance: any
 
@@ -31,7 +33,7 @@ const newInstance = (opts: MessageProps) => {
     },
     render() {
       console.log('render', this)
-      return h(defineAsyncComponent(SMessage), {
+      return h(MessageConstructor, {
         modelValue: this.visible,
         type: this.type,
         message: this.message,

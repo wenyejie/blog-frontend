@@ -1,3 +1,3 @@
-import SBody from './body.vue'
+import { defineAsyncComponent } from 'vue'
 
-export default SBody
+export default defineAsyncComponent(() => import(/* webpackChunkName: 's-body' */ './body.vue'))

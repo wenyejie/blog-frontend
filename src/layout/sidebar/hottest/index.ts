@@ -1,4 +1,5 @@
 import { defineAsyncComponent } from 'vue'
-const SHottest = () => import(/* webpackChunkName: 's-hottest' */ './hottest.vue')
 
-export default defineAsyncComponent(SHottest)
+export default defineAsyncComponent(
+  () => import(/* webpackChunkName: 's-hottest' */ './hottest.vue')
+)

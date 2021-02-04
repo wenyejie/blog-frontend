@@ -1,1 +1,2 @@
-export default () => import(/* webpackChunkName: "s-form" */ './Form.vue')
+import { defineAsyncComponent } from 'vue'
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-form" */ './Form.vue'))

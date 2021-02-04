@@ -1,4 +1,3 @@
-import { defineAsyncComponent, defineComponent } from 'vue'
 import SButton from '@/components/button'
 import SInput from '@/components/input'
 import SArticle from '@/components/article'
@@ -11,8 +10,9 @@ import SDialog from '@/components/dialog'
 import SBackdrop from '@/components/backdrop'
 import message, { SMessage } from '@/components/message'
 import SIcon from '@/components/icon'
+import { AnyObject } from '@/statement'
 
-const components: any = {
+const components: AnyObject = {
   SButton,
   SInput,
   SArticle,
@@ -27,16 +27,8 @@ const components: any = {
   SIcon
 }
 
-for (const key in components) {
-  if (components[key].isSync) {
-    components[key] = defineComponent(components[key])
-  } else {
-    components[key] = defineAsyncComponent(components[key])
-  }
-}
-
 export default {
-  install: (app: any) => {
+  install: (app: AnyObject) => {
     for (const key in components) {
       app.component(key, components[key])
     }
