@@ -2,7 +2,7 @@
   <div class="article-edit">
     <h1 class="page-title">{{ articleForm._id ? '编辑' : '新增' }}文章</h1>
 
-    <s-form ref="articleFormRef" name="articleForm" @submit="handleSubmit" @reset="handleReset">
+    <s-form name="articleForm" @submit="handleSubmit" @reset="handleReset">
       <s-form-item label="标题:">
         <s-input name="title" required v-model.trim="articleForm.title" />
       </s-form-item>
@@ -81,8 +81,6 @@ export default defineComponent({
     // 表单
     const articleForm = reactive(Object.assign({}, DEFAULT_ARTICLE_FORM))
 
-    const articleFormRef = ref(null)
-
     const route = useRoute()
 
     const tagList = fetchTagList()
@@ -94,7 +92,6 @@ export default defineComponent({
         article => {
           $message.success('文章发布成功!')
           localArticleEdit(null)
-          articleFormRef.value.$el.reset()
           router.push(`/article/${article._id}`)
         },
         err => {
@@ -107,8 +104,7 @@ export default defineComponent({
       updateArticle(articleForm).then(article => {
         $message.success('文章更新成功!')
         localArticleEdit(null)
-        articleFormRef.value.$el.reset()
-        router.push(`/article${article._id}`)
+        router.push(`/article/${article._id}`)
       })
     }
 
@@ -150,7 +146,6 @@ export default defineComponent({
     }
 
     return {
-      articleFormRef,
       articleForm,
       handleSubmit,
       handleReset,

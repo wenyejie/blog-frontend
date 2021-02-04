@@ -1,8 +1,3 @@
-<!--
- - @author: Storm
- - @date: 2021/01/20
- - @email: wenyejie@foxmail.com
- -->
 <template>
   <s-article v-if="article._id" class="article-detail" :plain="false" :data="article" />
 </template>
@@ -12,6 +7,7 @@ import { defineComponent, reactive, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
 import { setPageTitle } from '@/utils'
+
 export default defineComponent({
   name: 'ArticleDetail',
   setup() {
@@ -29,8 +25,7 @@ export default defineComponent({
             Object.assign(article, result)
             setPageTitle(article.title)
           },
-          error => {
-            alert(error.message)
+          () => {
             useRouter().go(-1)
           }
         )
