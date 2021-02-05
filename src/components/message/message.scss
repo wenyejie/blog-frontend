@@ -13,6 +13,7 @@
   transition: all .3s ease-out;
   display: flex;
   align-items: center;
+  z-index: 2500;
 
   &-enter-from,
   &-leave-to {

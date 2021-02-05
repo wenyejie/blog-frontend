@@ -1,10 +1,25 @@
 .s-dialog {
   width: 420px;
-  position: relative;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
-  border-radius: var(--border-radius);
-  background-color: #fff;
+  position: fixed;
+  z-index: 2001;
+  transition: all .3s ease-out;
+
+  &--content {
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    transition: all .3s ease-out;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+
+    .s-dialog--content {
+      transform: scale(1.1);
+    }
+  }
 
   &.in-center {
     left: 50%;

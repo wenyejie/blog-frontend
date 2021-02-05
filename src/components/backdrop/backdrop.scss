@@ -5,8 +5,14 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, .5);
+  transition: all .3s ease-out;
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
 }
 
-.s-overflow-hidden {
+.s-body-overflow-hidden {
   overflow: hidden;
 }
