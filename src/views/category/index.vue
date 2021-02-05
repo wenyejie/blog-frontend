@@ -6,8 +6,8 @@
         <li class="category--item" v-for="(item, index) in categoryList" :key="item._id">
           <s-input v-model.trim="item.label" />
           <s-button :disabled="item.disabled" @click="handleDeleteCategory(item, index)"
-            >删除</s-button
-          >
+            >删除
+          </s-button>
           <s-button :disabled="item.disabled" @click="handleUpdateCategory(item)">更新</s-button>
         </li>
       </ul>
@@ -19,8 +19,8 @@
         class="category--add--btn"
         :disabled="adding"
         @click="handleAddCategory"
-        >添加</s-button
-      >
+        >添加
+      </s-button>
     </form>
   </div>
 </template>
@@ -109,6 +109,7 @@ export default defineComponent({
   &--list {
     margin: 0 -15px;
   }
+
   &--item {
     margin: 0 15px 15px;
   }
