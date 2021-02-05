@@ -42,10 +42,6 @@ const newInstance = (opts: MessageProps) => {
     }
   }).mount(el)
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  console.log(app, app.visible)
-
   return {
     show(opts: MessageProps) {
       app.type = opts.type

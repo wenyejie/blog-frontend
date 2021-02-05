@@ -109,7 +109,6 @@ const countList = (start, end) => {
   for (; start < end; start++) {
     list.push(start)
   }
-  console.log(start, end, list)
   return list
 }
 /**
