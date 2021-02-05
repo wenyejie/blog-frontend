@@ -11,6 +11,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { getArticleList } from '@/apis/article'
 import { useRoute } from 'vue-router'
+import { setPageTitle } from '@/utils'
 
 export default defineComponent({
   name: 'Category',
@@ -36,6 +37,7 @@ export default defineComponent({
       () => {
         fetchArticleList()
         pageTitle.value = route.params.categoryName
+        setPageTitle(pageTitle.value)
       },
       {
         immediate: true

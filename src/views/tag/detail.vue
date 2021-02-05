@@ -11,6 +11,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import { getArticleList } from '@/apis/article'
 import { useRoute } from 'vue-router'
+import { setPageTitle } from '@/utils'
 
 export default defineComponent({
   name: 'TagDetail',
@@ -36,6 +37,7 @@ export default defineComponent({
       () => {
         pageTitle.value = route.params.tagName
         fetchArticleList()
+        setPageTitle(pageTitle.value)
       },
       {
         immediate: true

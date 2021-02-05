@@ -22,9 +22,7 @@ const categoryRouter: RouteRecordRaw = {
       name: 'categoryDetail',
       component: () =>
         import(/* webpackChunkName: "r-category-detail" */ '@/views/category/detail.vue'),
-      meta: {
-        title: '分类列表'
-      }
+      meta: {}
     }
   ]
 }

@@ -21,9 +21,7 @@ const tagRouter: RouteRecordRaw = {
       path: ':tagName',
       name: 'tagDetail',
       component: () => import(/* webpackChunkName: "r-tag-detail" */ '@/views/tag/detail.vue'),
-      meta: {
-        title: '标签列表'
-      }
+      meta: {}
     }
   ]
 }
