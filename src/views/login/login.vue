@@ -37,6 +37,7 @@ import encrypt from '@/core/encrypt'
 import { localToken, localUserInfo } from '@/storages'
 import message from '@/components/message'
 import store from '@/store'
+import router from '@/router'
 
 const DEFAULT_LOGIN_FORM: LoginParams = {
   account: '',
@@ -60,6 +61,7 @@ export default defineComponent({
           localUserInfo(response)
           store.commit('userInfo', response)
           message.success('登录成功!')
+          router.push('/')
         })
         .finally(() => {
           logging.value = false

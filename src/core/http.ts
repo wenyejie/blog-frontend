@@ -5,7 +5,7 @@
  */
 
 import axios from 'axios'
-import message from '@/components/message'
+import $message from '@/components/message'
 import { isObject, isArray, isString, isBoolean } from 'wenyejie'
 import { useRouter } from 'vue-router'
 import { AxiosCustomResponse } from '@/statement'
@@ -32,8 +32,7 @@ http.interceptors.request.use(
     return config
   },
   (error) => {
-    debugger
-    message.danger((error && error.message) || NETWORK_ERR_MSG)
+    $message.danger((error && error.message) || NETWORK_ERR_MSG)
     return Promise.reject(error)
   }
 )
@@ -50,11 +49,12 @@ http.interceptors.response.use(
     }
     const { disabledTip } = response.config
     if (
+      disabledTip === undefined ||
       (isBoolean(disabledTip) && disabledTip !== true) ||
       (isArray(disabledTip) && !(disabledTip as any).includes(code)) ||
       (isString(disabledTip) && disabledTip !== code)
     ) {
-      message.danger(message || SERVICE_ERR_MSG)
+      $message.danger(message || SERVICE_ERR_MSG)
     }
     // token失效
     if (code === '001002') {
@@ -65,7 +65,7 @@ http.interceptors.response.use(
     return Promise.reject(responseData)
   },
   (error) => {
-    message.danger(error.message || SERVICE_ERR_MSG)
+    $message.danger(error.message || SERVICE_ERR_MSG)
     return Promise.reject(error)
   }
 )
