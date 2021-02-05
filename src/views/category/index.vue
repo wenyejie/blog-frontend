@@ -31,6 +31,7 @@ import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
 import { AnyObject, Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import message from '@/components/message'
+import dialog from '@/components/dialog'
 
 export default defineComponent({
   name: 'Category',
@@ -78,9 +79,11 @@ export default defineComponent({
           response => {
             // 如果分类下有文章并且确认删除
             if (response.code === '005001') {
-              if (window.confirm(response.message)) {
+              dialog(response.message, {
+                title: '文章删除确认'
+              }).then(() => {
                 handleDeleteCategory(item, index, true)
-              }
+              })
             }
           }
         )
