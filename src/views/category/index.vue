@@ -30,7 +30,7 @@ import { defineComponent, ref } from 'vue'
 import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
 import { AnyObject, Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
-import { $success } from '@/components/message'
+import message from '@/components/message'
 
 export default defineComponent({
   name: 'Category',
@@ -45,7 +45,7 @@ export default defineComponent({
       adding.value = true
       addCategory({ label: newCategory.value })
         .then((category: AnyObject) => {
-          $success('添加成功')
+          message.success('添加成功')
           categoryList.push(category)
           newCategory.value = ''
         })
@@ -59,7 +59,7 @@ export default defineComponent({
       item.updating = true
       updateCategory(item)
         .then(() => {
-          $success('更新成功')
+          message.success('更新成功')
         })
         .finally(() => {
           item.updating = false
@@ -73,7 +73,7 @@ export default defineComponent({
         .then(
           () => {
             categoryList.splice(index, 1)
-            $success(`标签"${item.label}"删除成功`)
+            message.success(`标签"${item.label}"删除成功`)
           },
           response => {
             // 如果分类下有文章并且确认删除

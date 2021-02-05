@@ -9,6 +9,7 @@ let instance: any
 
 const newInstance = (opts: MessageProps) => {
   const el = document.createElement('div')
+  el.id = 's-message-wrap'
   document.body.appendChild(el)
 
   const app: any = createApp({
@@ -32,7 +33,6 @@ const newInstance = (opts: MessageProps) => {
       }
     },
     render() {
-      console.log('render', this)
       return h(MessageConstructor, {
         modelValue: this.visible,
         type: this.type,

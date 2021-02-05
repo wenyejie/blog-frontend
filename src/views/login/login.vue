@@ -35,7 +35,7 @@ import { login } from '@/apis/user'
 import { LoginParams } from '@/statement'
 import encrypt from '@/core/encrypt'
 import { localToken, localUserInfo } from '@/storages'
-import { $success } from '@/components/message'
+import message from '@/components/message'
 import store from '@/store'
 
 const DEFAULT_LOGIN_FORM: LoginParams = {
@@ -59,7 +59,7 @@ export default defineComponent({
           localToken(response.token)
           localUserInfo(response)
           store.commit('userInfo', response)
-          $success('登录成功!')
+          message.success('登录成功!')
         })
         .finally(() => {
           logging.value = false

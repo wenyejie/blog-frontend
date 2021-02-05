@@ -1,0 +1,40 @@
+<s-backdrop
+  v-model="visible"
+  :hasBackdrop="hasBackdrop"
+  :zIndex="zIndex - 1"
+  @click="handleBackdrop"
+/>
+<teleport to="body">
+  <transition name="s-dialog" :appear="true" @after-leave="handleAfterLeave">
+    <section v-if="visible" class="s-dialog" :style="styles" :class="classes">
+      <div class="s-dialog--content">
+        <slot name="content">
+          <header v-if="hasHeader || title || $slots.header" class="s-dialog--header">
+            <slot name="header">
+              <h1 class="s-dialog--title">{{ title }}</h1>
+            </slot>
+            <a href="javascript:;" class="s-dialog--close" v-if="hasClose" @click="handleClose"
+            >×</a
+            >
+          </header>
+          <div class="s-dialog--body">
+            <slot>{{ content }}</slot>
+          </div>
+          <footer v-if="hasFooter || $slots.footer" class="s-dialog--footer">
+            <slot name="footer">
+              <slot name="footer-start" />
+              <s-button v-if="hasCancel" @click="handleCancel" size="small"
+              >{{ cancelLabel }}
+              </s-button>
+              <slot name="footer-center" />
+              <s-button v-if="hasOk" @click="handleOk" size="small" type="primary"
+              >{{ okLabel }}
+              </s-button>
+              <slot name="footer-end" />
+            </slot>
+          </footer>
+        </slot>
+      </div>
+    </section>
+  </transition>
+</teleport>
