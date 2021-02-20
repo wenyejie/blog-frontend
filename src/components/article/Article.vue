@@ -10,7 +10,7 @@
         <router-link v-if="plain" :to="`/article/${data._id}`">{{ data.title }}</router-link>
         <template v-else>{{ data.title }}</template>
       </h1>
-      <dl class="s-article--meta" v-if="!plain">
+      <dl class="s-article--meta">
         <dt class="s-article--dt">分类:</dt>
         <dd>
           <router-link
@@ -58,7 +58,9 @@
       </dl>
     </header>
     <div class="s-article--body" v-html="computedContent"></div>
-    <footer class="s-article--footer"></footer>
+    <footer class="s-article--footer" v-if="plain">
+      <router-link v-if="plain" :to="`/article/${data._id}`">阅读更多&gt;&gt;</router-link>
+    </footer>
   </article>
 </template>
 
@@ -86,7 +88,11 @@ export default defineComponent({
   setup(props) {
     const computedContent = computed(() => {
       highlight()
-      return markdown2html(props.data.content)
+      let markdown = props.data.content
+      if (props.plain) {
+        markdown = markdown.substring(0, 300)
+      }
+      return markdown2html(markdown)
     })
 
     const isLogin = computed(() => store.getters.isLogin)
