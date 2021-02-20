@@ -17,7 +17,7 @@ export interface Category {
 export interface Pagination {
   page?: number
   pageSize?: number
-  query?: any
+  query?: AnyObject
 }
 
 export interface AxiosCustomRequestConfig extends AxiosRequestConfig {

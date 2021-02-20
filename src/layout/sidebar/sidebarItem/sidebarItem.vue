@@ -1,6 +1,6 @@
 <template>
   <section class="s-sidebar-item">
-    <h1 class="s-sidebar-item--title">{{ title }}</h1>
+    <h1 class="s-sidebar-item--title" v-if="!!title">{{ title }}</h1>
     <div class="s-sidebar-item--content"><slot /></div>
   </section>
 </template>

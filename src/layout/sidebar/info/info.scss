@@ -1,0 +1,11 @@
+.s-info {
+  &--table {
+    & > tr {
+      & > th {
+        padding-right: .5em;
+        min-width: 45px;
+        text-align: left;
+      }
+    }
+  }
+}
