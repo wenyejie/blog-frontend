@@ -64,7 +64,7 @@ router.beforeEach((to, from, next) => {
     $message.warning('你没有该路由权限, 请先登录')
     return next('/login')
   }
-  setPageTitle(to.meta.title)
+  setPageTitle(to.meta.title as string)
   next()
 })
 
