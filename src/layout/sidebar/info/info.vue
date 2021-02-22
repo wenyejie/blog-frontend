@@ -21,10 +21,10 @@
         <th>爱好:</th>
         <td>写写代码, 玩玩游戏</td>
       </tr>
-      <tr>
+      <!--<tr>
         <th>格言:</th>
         <td>代码即世界. 世界亦代码.</td>
-      </tr>
+      </tr>-->
     </table>
   </s-sidebar-item>
 </template>

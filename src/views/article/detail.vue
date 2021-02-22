@@ -41,8 +41,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss">
-.article-detail {
-}
-</style>
