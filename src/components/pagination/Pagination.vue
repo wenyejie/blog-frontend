@@ -90,7 +90,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, reactive, watch, ref } from 'vue'
+import { computed, defineComponent, watch, ref } from 'vue'
 
 /**
  * 向上取整, 对按钮数的对半
