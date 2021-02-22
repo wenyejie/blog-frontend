@@ -13,6 +13,12 @@
     padding-top: 50px;
   }
 
+  &--header,
+  &--body,
+  &--footer {
+    max-width: 720px;
+  }
+
   &--header {
     margin-bottom: 24px;
   }
@@ -47,7 +53,6 @@
   }
 
   &--body {
-    max-width: 720px;
     font-size: 16px;
     line-height: 32px;
 
@@ -57,7 +62,6 @@
   }
 
   &--footer {
-    max-width: 720px;
     text-align: right;
   }
 }
