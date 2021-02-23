@@ -5,4 +5,8 @@ import router from './router'
 import store from './store'
 import './styles'
 
-createApp(App).use(store).use(router).use(components).mount('#app')
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(components)
+  .mount('#app')

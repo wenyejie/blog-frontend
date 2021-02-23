@@ -1,8 +1,8 @@
 import { createApp, defineAsyncComponent, h, ref } from 'vue'
 import { MessageProps, MessageTypes } from './type'
 
-export const MessageConstructor = defineAsyncComponent(
-  () => import(/* webpackChunkName: 's-message' */ './message.vue')
+export const MessageConstructor = defineAsyncComponent(() =>
+  import(/* webpackChunkName: 's-message' */ './message.vue')
 )
 
 let instance: any
@@ -58,7 +58,7 @@ const getInstance = (opts: MessageProps) => {
 
 const handleMessage = (message = '', opts: MessageProps = {}) => {
   opts.message = message
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     const vm = getInstance(opts)
     opts.ok = resolve
     vm.show(opts)

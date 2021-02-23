@@ -4,8 +4,8 @@ import { dialogProps } from './utils'
 import { AnyObject } from '@/statement'
 import { cachedOne, ban } from 'wenyejie'
 
-export const DialogConstruct = defineAsyncComponent(
-  () => import(/* webpackChunkName: 's-dialog' */ './dialog.vue')
+export const DialogConstruct = defineAsyncComponent(() =>
+  import(/* webpackChunkName: 's-dialog' */ './dialog.vue')
 )
 
 const getRenderProps = (that: AnyObject) => {
@@ -98,16 +98,16 @@ function dialog(content: string, opts: DialogProps): Promise<void> {
   })
 }
 
-dialog.alert = function (content: string, opts: DialogProps = {}) {
+dialog.alert = function(content: string, opts: DialogProps = {}) {
   opts.hasCancel = false
   return dialog(content, opts)
 }
-dialog.confirm = function (content: string, opts: DialogProps = {}) {
+dialog.confirm = function(content: string, opts: DialogProps = {}) {
   opts.hasCancel = true
   return dialog(content, opts)
 }
 
-dialog.prompt = function (content: string, opts: DialogProps = {}) {
+dialog.prompt = function(content: string, opts: DialogProps = {}) {
   return dialog(content, opts)
 }
 

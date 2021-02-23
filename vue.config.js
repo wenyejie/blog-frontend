@@ -1,8 +1,8 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 
 module.exports = {
-  chainWebpack: (config) => {
-    config.plugin('html').tap((args) => {
+  chainWebpack: config => {
+    config.plugin('html').tap(args => {
       args[0].title = process.env.VUE_APP_TITLE
       args[0].author = process.env.VUE_APP_AUTHOR
       args[0].keywords = process.env.VUE_APP_KEYWORDS

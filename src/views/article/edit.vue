@@ -164,7 +164,7 @@ export default defineComponent({
 .article-edit {
   .s-input,
   .s-select {
-    width: 300px;
+    width: 360px;
   }
 }
 </style>
