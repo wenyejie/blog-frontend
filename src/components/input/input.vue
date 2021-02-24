@@ -83,4 +83,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" src="input.scss"></style>
+<style lang="scss" src="./input.scss"></style>

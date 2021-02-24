@@ -1,7 +1,8 @@
 import marked from 'marked'
 import createDOMPurify from 'dompurify'
+import { globalThis } from 'wenyejie'
 
-const DOMPurify = createDOMPurify(window)
+const DOMPurify = createDOMPurify(globalThis)
 
 interface Markdown2htmlOptions {
   [propName: string]: never

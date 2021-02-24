@@ -1,3 +1,4 @@
+import { AnyObject } from '@/statement'
 import SButton from '@/components/button'
 import SInput from '@/components/input'
 import SArticle from '@/components/article'
@@ -10,7 +11,8 @@ import dialog, { SDialog } from '@/components/dialog'
 import SBackdrop from '@/components/backdrop'
 import message, { SMessage } from '@/components/message'
 import SIcon from '@/components/icon'
-import { AnyObject } from '@/statement'
+import SCheckbox from '@/components/checkbox'
+import SCheckboxGroup from '@/components/checkboxGroup'
 
 const components: AnyObject = {
   SButton,
@@ -24,7 +26,9 @@ const components: AnyObject = {
   SDialog,
   SBackdrop,
   SMessage,
-  SIcon
+  SIcon,
+  SCheckbox,
+  SCheckboxGroup
 }
 
 export default {

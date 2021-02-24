@@ -1,3 +1,4 @@
+import { globalThis } from 'wenyejie'
 interface ClickOutside {
   add(callback: EventListenerOrEventListenerObject): void
   remove(callback?: EventListenerOrEventListenerObject): void
@@ -7,13 +8,13 @@ interface ClickOutside {
 export const clickOutside: ClickOutside = {
   add: (callback: EventListenerOrEventListenerObject) => {
     setTimeout(() => {
-      window.addEventListener('click', callback, {
+      globalThis.addEventListener('click', callback, {
         once: true
       })
     })
   },
   remove: (callback: EventListenerOrEventListenerObject) => {
-    window.removeEventListener('click', callback)
+    globalThis.removeEventListener('click', callback)
   }
 }
 
