@@ -5,4 +5,18 @@
   &:hover {
     background-color: var(--info-bgc);
   }
+
+  &.is-active,
+  &.is-disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+
+  &.is-disabled {
+    color: var(--disabled-color);
+  }
+
+  &.is-active {
+    color: var(--primary-color);
+  }
 }

@@ -16,7 +16,7 @@
   li:not(:last-child) {
     margin-right: 10px;
   }
-  &--item,
+  &--item > a,
   &--elevator > input {
     height: 34px;
     line-height: 32px;
@@ -27,18 +27,22 @@
     color: #666;
     border: 1px solid #dddee1;
   }
+
+  &--item > a {
+    display: block;
+  }
   &--item {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     &:not(.disabled):hover {
       border-color: var(--primary-color);
     }
-    &.is-disabled {
+    &.is-disabled > a {
       cursor: not-allowed;
       pointer-events: none;
       color: #ccc;
     }
-    &.is-active {
+    &.is-active > a {
       background-color: #0facf3;
       border-color: #0facf3;
       color: #ffffff;

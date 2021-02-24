@@ -1,11 +1,11 @@
 <template>
-  <dd class="s-option" :class="{ 'is-disabled': disabled }" @click="handleClick">
+  <dd class="s-option" :class="classes" @click="handleClick">
     <slot>{{ label }}</slot>
   </dd>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, inject, computed } from 'vue'
 export default defineComponent({
   name: 'SOption',
   props: {
@@ -22,11 +22,22 @@ export default defineComponent({
   },
   emits: ['click', 'change'],
   setup(props, { emit }) {
+    const selectValue = inject('selectValue')
     const handleClick = () => {
       emit('click', props.value)
       emit('change', { value: props.value, label: props.label })
     }
+
+    const classes = computed(() => {
+      const isActive = (selectValue && (selectValue as any).value) === props.value
+      return {
+        'is-active': isActive,
+        'is-disabled': props.disabled || isActive
+      }
+    })
+
     return {
+      classes,
       handleClick
     }
   }

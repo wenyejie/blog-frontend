@@ -4,17 +4,18 @@
   <s-button @click="handleClick">Toggle Dialog</s-button>
   <s-button @click="handleClick2">Toggle Dialog</s-button>
 
-  <s-select :data="langs" />
-  <s-select :data="langs" />
+  <s-select :data="langs" value-key="value" v-model="demo" />
+  <s-select :data="langs" value-key="value" v-model="demo" />
 </template>
 
 <script>
-import { defineComponent, reactive } from 'vue'
+import { defineComponent, reactive, ref } from 'vue'
 import $dialog from '@/components/dialog'
 export default defineComponent({
   name: 'demo',
   setup() {
     // const dialogVisible = ref(false)
+    const demo = ref('')
 
     const langs = reactive([
       {
@@ -49,6 +50,7 @@ export default defineComponent({
     }
 
     return {
+      demo,
       langs,
       handleClick,
       handleClick2

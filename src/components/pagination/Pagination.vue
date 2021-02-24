@@ -4,23 +4,23 @@
       <li v-if="hasInfo" class="s-pagination--info">
         <template v-if="totalSize">共{{ totalSize }}条;&nbsp;</template>
         <template v-if="innerPageSize">每页{{ innerPageSize }}条;&nbsp;</template>
-        第{{ current + 1 }}页; 共{{ innerTotalPage }}页;
+        第{{ current }}页; 共{{ innerTotalPage }}页;
       </li>
       <li
         v-if="hasFirst"
-        :class="{ 'is-disabled': current === 0 }"
+        :class="{ 'is-disabled': current === 1 }"
         class="s-pagination--item"
-        @click="togglePage(0)"
+        @click="togglePage(1)"
       >
-        {{ firstText }}
+        <router-link :to="generatePath(1)">{{ firstText }}</router-link>
       </li>
       <li
         v-if="hasPrev"
-        :class="{ 'is-disabled': current === 0 }"
+        :class="{ 'is-disabled': current === 1 }"
         class="s-pagination--item"
         @click="togglePage(current - 1)"
       >
-        {{ prevText }}
+        <router-link :to="generatePath(current - 1)">{{ prevText }}</router-link>
       </li>
       <li
         v-if="hasPrevSizer"
@@ -37,7 +37,7 @@
           class="s-pagination--item"
           @click.prevent="togglePage(item)"
         >
-          {{ item + 1 }}
+          <router-link :to="generatePath(item)">{{ item }}</router-link>
         </li>
       </template>
       <li
@@ -45,23 +45,23 @@
         class="s-pagination--sizer s-pagination--item"
         @click="handleSizer(2)"
       >
-        &hellip;
+        <router-link :to="generatePath(2)">&hellip;</router-link>
       </li>
       <li
         v-if="hasNext"
-        :class="{ 'is-disabled': current === innerTotalPage - 1 }"
+        :class="{ 'is-disabled': current === innerTotalPage }"
         class="s-pagination--item"
         @click="togglePage(current + 1)"
       >
-        {{ nextText }}
+        <router-link :to="generatePath(current + 1)">{{ nextText }}</router-link>
       </li>
       <li
         v-if="hasLast"
-        :class="{ 'is-disabled': current === innerTotalPage - 1 }"
+        :class="{ 'is-disabled': current === innerTotalPage }"
         class="s-pagination--item"
-        @click="togglePage(innerTotalPage - 1)"
+        @click="togglePage(innerTotalPage)"
       >
-        {{ lastText }}
+        <router-link :to="generatePath(innerTotalPage)">{{ lastText }}</router-link>
       </li>
       <li v-if="hasPageSize" class="s-pagination--size">
         <select :size="size" v-model="innerPageSize" @change="handlePageSize">
@@ -91,6 +91,7 @@
 
 <script>
 import { computed, defineComponent, watch, ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 /**
  * 向上取整, 对按钮数的对半
@@ -106,7 +107,7 @@ const countHalf = num => Math.ceil(num / 2)
  */
 const countList = (start, end) => {
   const list = []
-  for (; start < end; start++) {
+  for (; start <= end; start++) {
     list.push(start)
   }
   return list
@@ -119,7 +120,7 @@ const countList = (start, end) => {
  */
 const generateList = (current, total, number) => {
   // 起始页, 结束页
-  let start = 0
+  let start = 1
   let end = total
   const half = countHalf(number)
   // 如果总页数低于按钮数
@@ -133,7 +134,7 @@ const generateList = (current, total, number) => {
     start = total - number
   } else {
     // 默认情况
-    start = current + 1 - half
+    start = current - half
     end = current + half
   }
   return countList(start, end)
@@ -265,8 +266,10 @@ export default defineComponent({
       }
     }
   },
-  emits: ['update:modelValue', 'change'],
+  emits: ['update:modelValue', 'update:pageSize', 'change'],
   setup(props, { emit }) {
+    const route = useRoute()
+
     const innerPageSize = ref(props.pageSize)
 
     // 当前页
@@ -308,7 +311,11 @@ export default defineComponent({
     // pageSize变更
     const handlePageSize = () => {
       if (props.disabled) return
-      emit('change', innerPageSize.value)
+      emit('update:pageSize', innerPageSize.value)
+      emit('change', {
+        page: 1,
+        pageSize: innerPageSize.value
+      })
     }
 
     // 点击切换页面
@@ -318,7 +325,10 @@ export default defineComponent({
       if (page < 0 || page >= innerTotalPage.value || page === current.value) return false
       current.value = page
       emit('update:modelValue', page)
-      emit('change', page)
+      emit('change', {
+        page: page,
+        pageSize: innerPageSize.value
+      })
     }
 
     // 启动电梯
@@ -370,6 +380,16 @@ export default defineComponent({
       list.value = countList(start, end)
     }
 
+    const generatePath = page => {
+      if (page <= 0) {
+        page = 1
+      }
+      if (page > innerTotalPage.value) {
+        page = innerTotalPage.value
+      }
+      return { path: route.path, query: { [props.name]: page } }
+    }
+
     // 监听value是否发生变化
     watch(
       () => props.modelValue,
@@ -412,7 +432,8 @@ export default defineComponent({
       handlePageSize,
       togglePage,
       startElevator,
-      handleSizer
+      handleSizer,
+      generatePath
     }
   }
 })
