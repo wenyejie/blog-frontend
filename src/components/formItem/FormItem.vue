@@ -11,7 +11,7 @@
 <script>
 import { defineComponent, inject, computed } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
-import { toCSSUnit } from '../utils.ts'
+import { toCSSUnit } from '@/utils'
 export default defineComponent({
   name: 'SFormItem',
   props: {

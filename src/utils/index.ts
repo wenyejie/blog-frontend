@@ -1,6 +1,18 @@
-import { inBrowser } from 'wenyejie'
+import { inBrowser, isNumber, isString } from 'wenyejie'
 import { localToken, localUserInfo } from '@/storages'
 import store from '@/store'
+const rNumber = /^\d+$/
+
+// 把输入转换为css长度单位
+export const toCSSUnit = (length: string | number | undefined): string => {
+  if (isNumber(length) || rNumber.test(length as string)) {
+    return length + 'px'
+  } else if (isString(length)) {
+    return length as string
+  } else {
+    return ''
+  }
+}
 
 // 设置页面标题
 export const setPageTitle = (title = '') => {

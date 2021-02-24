@@ -4,7 +4,7 @@
 
 <script>
 import { computed, defineComponent } from 'vue'
-import { toCSSUnit } from '../utils'
+import { toCSSUnit } from '@/utils'
 export default defineComponent({
   name: 'SIcon',
   props: {
