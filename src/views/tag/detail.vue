@@ -27,7 +27,7 @@ export default defineComponent({
       getArticleList({ tagName: pageTitle.value }).then(result => {
         articleList.value = result.list
         pageSize.value = result.pageSize
-        page.value = result.page - 1
+        page.value = result.page
         totalSize.value = result.totalSize
       })
     }
