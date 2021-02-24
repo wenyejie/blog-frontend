@@ -1,3 +1,3 @@
 import { defineAsyncComponent } from 'vue'
 
-export default defineAsyncComponent(() => import(/* webpackChunkName: "s-input" */ './Input.vue'))
+export default defineAsyncComponent(() => import(/* webpackChunkName: "s-input" */ './input.vue'))
