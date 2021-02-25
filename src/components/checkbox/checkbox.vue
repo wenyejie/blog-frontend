@@ -50,7 +50,7 @@ export default defineComponent({
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const checkboxIsGroup = inject('checkboxIsGroup', false)
-    const checkboxValue = inject('checkboxValue', [])
+    const checkboxValue = inject('checkboxValue', ref([]))
     const checkboxAddValue = inject('checkboxAddValue', noop)
     const checkboxRemoveValue = inject('checkboxRemoveValue', noop)
     const innerValue = ref(false)
@@ -67,7 +67,7 @@ export default defineComponent({
       () => checkboxValue,
       groupValue => {
         if (checkboxIsGroup) {
-          innerValue.value = groupValue.value.includes(props.value)
+          innerValue.value = groupValue.value.includes(props.value as never)
         }
       },
       {

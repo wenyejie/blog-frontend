@@ -20,11 +20,11 @@ export default defineComponent({
       emit('update:modelValue', innerValue.value)
       emit('change', innerValue.value)
     }
-    const addValue = value => {
+    const addValue = (value: never) => {
       innerValue.value.push(value)
       handleChange()
     }
-    const removeValue = value => {
+    const removeValue = (value: never) => {
       removeVal(innerValue.value, value)
       handleChange()
     }
@@ -37,7 +37,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       value => {
-        innerValue.value = value
+        ;(innerValue.value as unknown[]) = value
       }
     )
   }
