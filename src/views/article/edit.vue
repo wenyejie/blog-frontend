@@ -103,10 +103,10 @@ export default defineComponent({
     }
 
     const handleUpdateArticle = () => {
-      updateArticle(articleForm).then((article: AnyObject) => {
+      updateArticle(articleForm).then(() => {
         $message.success('文章更新成功!')
         localArticleEdit(null)
-        router.push(`/article/${article._id}`)
+        router.push(`/article/${articleForm._id}`)
       })
     }
 
