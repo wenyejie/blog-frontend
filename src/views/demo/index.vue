@@ -1,14 +1,12 @@
 <template>
   <h1 class="page-title">DEMO</h1>
 
-  <p>{{ demo }}</p>
-  <s-checkbox v-model="demo" label="性别" :trueValue="1" :falseValue="2" />
-  <p>{{ langs }}</p>
-  <s-checkbox-group v-model="langs">
-    <s-checkbox :value="1">HTML</s-checkbox>
-    <s-checkbox :value="2">CSS</s-checkbox>
-    <s-checkbox :value="3">JavaScript</s-checkbox>
-  </s-checkbox-group>
+  <s-chosen :data="langs" v-model="demo" multiple placeholder="请选择语言" />
+
+  <div>{{ demo }}</div>
+
+  <s-input />
+  <!--<s-tag label="css" />-->
 </template>
 
 <script>
@@ -20,7 +18,20 @@ export default defineComponent({
     // const dialogVisible = ref(false)
     const demo = ref('')
 
-    const langs = ref([])
+    const langs = reactive([
+      {
+        label: 'HTML',
+        value: 'HTML'
+      },
+      {
+        label: 'CSS',
+        value: 'CSS'
+      },
+      {
+        label: 'JavaScript',
+        value: 'JavaScript'
+      }
+    ])
 
     const handleClick = () => {
       // dialogVisible.value = !dialogVisible.value

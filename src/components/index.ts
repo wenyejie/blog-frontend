@@ -13,6 +13,9 @@ import message, { SMessage } from '@/components/message'
 import SIcon from '@/components/icon'
 import SCheckbox from '@/components/checkbox'
 import SCheckboxGroup from '@/components/checkboxGroup'
+import SChosen from '@/components/chosen'
+import SChosenItem from '@/components/chosenItem'
+import STag from '@/components/tag'
 
 const components: AnyObject = {
   SButton,
@@ -28,7 +31,10 @@ const components: AnyObject = {
   SMessage,
   SIcon,
   SCheckbox,
-  SCheckboxGroup
+  SCheckboxGroup,
+  SChosen,
+  SChosenItem,
+  STag
 }
 
 export default {
