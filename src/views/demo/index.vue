@@ -1,7 +1,7 @@
 <template>
   <h1 class="page-title">DEMO</h1>
 
-  <s-chosen :data="langs" v-model="demo" multiple placeholder="请选择语言" />
+  <s-chosen :data="langs" v-model="demo" placeholder="请选择语言" />
 
   <div>{{ demo }}</div>
 
