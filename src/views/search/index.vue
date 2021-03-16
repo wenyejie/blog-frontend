@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <h1 class="page-title category--title">{{ pageTitle }}</h1>
+    <h1 class="page-title category--title">搜索: {{ keyword }}</h1>
     <s-article v-for="item in articleList" :key="item._id" :data="item" />
     <div class="category--nodata" v-if="articleList.length === 0">
       {{ loading === 1 ? '正在加载中' : '暂无数据' }}...
@@ -16,14 +16,14 @@ import { useRoute } from 'vue-router'
 import { setPageTitle } from '@/utils'
 
 export default defineComponent({
-  name: 'CategoryDetail',
+  name: 'Search',
   setup() {
     const route = useRoute()
     const articleList = ref([])
     const pageSize = ref(10)
     const page = ref(1)
     const totalSize = ref(0)
-    const pageTitle = ref('')
+    const keyword = ref(route.query.keyword || '')
     const loading = ref(0)
 
     const fetchArticleList = () => {
@@ -31,7 +31,7 @@ export default defineComponent({
         return
       }
       loading.value = 1
-      getArticleList({ categoryName: route.params.categoryName }).then(
+      getArticleList({ keyword: keyword.value }).then(
         result => {
           loading.value = 2
           articleList.value = result.list
@@ -46,19 +46,20 @@ export default defineComponent({
     }
 
     watch(
-      () => route.path,
+      () => route.query,
       () => {
         fetchArticleList()
-        pageTitle.value = route.params.categoryName
-        setPageTitle(pageTitle.value)
+        keyword.value = route.query.keyword
+        setPageTitle(keyword.value)
       },
       {
-        immediate: true
+        immediate: true,
+        deep: true
       }
     )
 
     return {
-      pageTitle,
+      keyword,
       page,
       pageSize,
       totalSize,
