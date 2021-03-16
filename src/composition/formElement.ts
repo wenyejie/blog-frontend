@@ -8,6 +8,7 @@ export const propSizeOpts = {
 
 export const formEleDefProps = {
   name: String,
+  title: String,
   disabled: Boolean,
   required: Boolean,
   readonly: Boolean,
