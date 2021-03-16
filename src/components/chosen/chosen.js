@@ -31,7 +31,7 @@ export default defineComponent({
   },
   setup(props, { emit }) {
     // 初始化子项
-    const handleInitItem = (item) => {
+    const handleInitItem = item => {
       return Object.assign(
         {
           $selected: false,
@@ -46,8 +46,8 @@ export default defineComponent({
     }
 
     // 初始化数据
-    const handleInitData = (data) => {
-      return data.map((item) => handleInitItem(item))
+    const handleInitData = data => {
+      return data.map(item => handleInitItem(item))
     }
 
     const innerData = ref(handleInitData(props.data))
@@ -59,13 +59,13 @@ export default defineComponent({
     })
 
     // 移除当前选项
-    const handleClose = (item) => {
+    const handleClose = item => {
       item.$selected = false
     }
 
     watch(
       () => props.data,
-      (val) => {
+      val => {
         if (Array.isArray(val)) {
           innerData.value = handleInitData(val)
         }
