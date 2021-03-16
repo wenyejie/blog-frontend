@@ -1,5 +1,5 @@
 <template>
-  <s-sidebar-item class="s-info" title="个人信息">
+  <s-sidebar-item class="s-info" title="关于我">
     <table class="s-info--table">
       <tr>
         <th>姓名:</th>

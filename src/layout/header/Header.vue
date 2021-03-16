@@ -5,10 +5,14 @@
  -->
 <template>
   <header class="s-header">
-    <hgroup>
-      <h1 class="s-header--title">{{ title }}</h1>
-      <h2 class="s-header--subtitle">{{ subtitle }}</h2>
-    </hgroup>
+    <div class="s-header--top">
+      <hgroup>
+        <h1 class="s-header--title">{{ title }}</h1>
+        <h2 class="s-header--subtitle">{{ subtitle }}</h2>
+      </hgroup>
+
+      <s-input class="s-nav--search" placeholder="请输入关键字" />
+    </div>
 
     <s-nav />
   </header>

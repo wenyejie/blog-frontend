@@ -19,4 +19,19 @@
     font-size: 18px;
     margin-top: 10px;
   }
+
+  &--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &--search {
+    line-height: 20px;
+    margin-right: 15px;
+
+    & > .s-input--inner {
+
+    }
+  }
 }
