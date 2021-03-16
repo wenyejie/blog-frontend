@@ -12,9 +12,8 @@
 <script>
 import { defineComponent, ref, watch } from 'vue'
 import { getArticleList } from '@/apis/article'
-import { useRoute } from 'vue-router'
+import { useRoute, onBeforeRouteLeave } from 'vue-router'
 import { setPageTitle } from '@/utils'
-import message from '@/components/message'
 
 export default defineComponent({
   name: 'Search',
@@ -29,7 +28,6 @@ export default defineComponent({
 
     const fetchArticleList = () => {
       if (!keyword.value) {
-        message.warning('搜索关键字不能为空!')
         return
       }
       if (loading.value === 1) {
@@ -50,7 +48,7 @@ export default defineComponent({
       )
     }
 
-    watch(
+    const stopWatch = watch(
       () => route.query.keyword,
       value => {
         keyword.value = value
@@ -61,6 +59,10 @@ export default defineComponent({
         immediate: true
       }
     )
+
+    onBeforeRouteLeave(() => {
+      stopWatch()
+    })
 
     return {
       keyword,
