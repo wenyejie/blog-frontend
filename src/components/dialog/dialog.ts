@@ -33,7 +33,7 @@ const newInstance = (opts: DialogProps): DialogInstance => {
 
   const data = Object.assign(getDataProps(), ban(opts, 'ok', 'cancel', 'close'))
 
-  const app: any = createApp({
+  const app: AnyObject = createApp({
     data() {
       return data
     },

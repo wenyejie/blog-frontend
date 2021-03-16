@@ -1,11 +1,12 @@
 import { getTagCount } from '@/apis/tag'
+import { AnyObject, Tag } from '@/statement'
 
 const state = {
   counts: []
 }
 
 const mutations = {
-  tagCounts(state: any, list: any) {
+  tagCounts(state: AnyObject, list: Tag[]) {
     if (Array.isArray(list)) {
       state.countList = list
     }
@@ -14,15 +15,15 @@ const mutations = {
 
 const actions = {
   // 获取标签统计
-  tagCounts({ commit }: any) {
-    getTagCount().then((list: any) => {
+  tagCounts({ commit }: AnyObject) {
+    getTagCount().then(list => {
       commit('tagCounts', list)
     })
   }
 }
 
 const getters = {
-  tagCounts(state: any) {
+  tagCounts(state: AnyObject) {
     return state.countList
   }
 }

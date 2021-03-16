@@ -51,7 +51,7 @@ http.interceptors.response.use(
     if (
       disabledTip === undefined ||
       (isBoolean(disabledTip) && disabledTip !== true) ||
-      (isArray(disabledTip) && !(disabledTip as any).includes(code)) ||
+      (isArray(disabledTip) && !(disabledTip as string[]).includes(code)) ||
       (isString(disabledTip) && disabledTip !== code)
     ) {
       $message.danger(message || SERVICE_ERR_MSG)

@@ -26,10 +26,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed, provide, reactive } from 'vue'
+import { defineComponent, ref, watch, computed, provide } from 'vue'
 import { propSizeOpts, formEleDefProps } from '@/composition/formElement'
 import SOption from '../option'
 import clickOutside from '@/utils/clickOutside'
+import { AnyObject } from '@/statement'
 
 export default defineComponent({
   name: 'SSelect',
@@ -113,7 +114,7 @@ export default defineComponent({
       emit('change', innerValue.value)
     }
 
-    const handleClick = (item: any) => {
+    const handleClick = (item: AnyObject) => {
       selectItem.value = item
       innerValue.value = item[props.valueKey]
       innerLabel.value = item[props.labelKey]

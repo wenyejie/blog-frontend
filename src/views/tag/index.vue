@@ -37,9 +37,9 @@ export default defineComponent({
 
     // 添加标签
     const handleAddTag = () => {
-      addTag({ label: newTag.value }).then((tag: any) => {
+      addTag({ label: newTag.value }).then(tag => {
         $message.success('标签添加成功')
-        tagList.push(tag)
+        tagList.push(tag as Tag)
         newTag.value = ''
         changeTagCount()
       })

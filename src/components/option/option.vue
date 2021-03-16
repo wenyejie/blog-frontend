@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue'
+import { AnyObject } from '@/statement'
 export default defineComponent({
   name: 'SOption',
   props: {
@@ -29,7 +30,7 @@ export default defineComponent({
     }
 
     const classes = computed(() => {
-      const isActive = (selectValue && (selectValue as any).value) === props.value
+      const isActive = (selectValue && (selectValue as AnyObject).value) === props.value
       return {
         'is-active': isActive,
         'is-disabled': props.disabled || isActive

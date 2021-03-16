@@ -12,6 +12,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { getArticleList } from '@/apis/article'
+import { AnyObject } from '@/statement'
 
 export default defineComponent({
   name: 'Home',
@@ -25,7 +26,7 @@ export default defineComponent({
       getArticleList({
         page: page.value,
         pageSize: pageSize.value
-      }).then((result: any) => {
+      }).then((result: AnyObject) => {
         articleList.value = result.list
         pageSize.value = Number.parseInt(result.pageSize)
         page.value = Number.parseInt(result.page)

@@ -75,7 +75,7 @@ export default defineComponent({
     ...formEleDefProps
   },
   emits: ['update:modelValue'],
-  setup(props, { emit }) {
+  setup(props) {
     const visible = ref(props.visibility ? 1 : 0)
     const innerInput = ref('')
     const innerPlaceholder = ref(props.placeholder)
@@ -202,7 +202,7 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      value => {
+      () => {
         // TODO
       },
       {

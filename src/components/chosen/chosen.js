@@ -1,4 +1,4 @@
-import { defineComponent, computed, watch, reactive, ref } from 'vue'
+import { defineComponent, computed, watch, ref } from 'vue'
 import SInput from '../input'
 
 export default defineComponent({
@@ -29,7 +29,7 @@ export default defineComponent({
       default: 'disabled'
     }
   },
-  setup(props, { emit }) {
+  setup(props) {
     // 初始化子项
     const handleInitItem = item => {
       return Object.assign(

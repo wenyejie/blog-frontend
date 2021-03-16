@@ -1,18 +1,19 @@
 import { createApp, defineAsyncComponent, h, ref } from 'vue'
 import { MessageProps, MessageTypes } from './type'
+import { AnyObject } from '@/statement'
 
 export const MessageConstructor = defineAsyncComponent(() =>
   import(/* webpackChunkName: 's-message' */ './message.vue')
 )
 
-let instance: any
+let instance: AnyObject
 
 const newInstance = (opts: MessageProps) => {
   const el = document.createElement('div')
   el.id = 's-message-wrap'
   document.body.appendChild(el)
 
-  const app: any = createApp({
+  const app: AnyObject = createApp({
     setup() {
       const visible = ref(false)
       const type = ref(MessageTypes.INFO)

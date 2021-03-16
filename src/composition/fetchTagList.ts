@@ -1,12 +1,12 @@
 import { reactive } from 'vue'
 import { getTagList } from '@/apis/tag'
-import { Tag } from '@/statement'
+import { AnyObject, Tag } from '@/statement'
 
 export default () => {
   const tagList: Tag[] = reactive([])
 
   const fetchTagList = () => {
-    getTagList().then((result: any) => {
+    getTagList().then((result: AnyObject) => {
       tagList.push(...result.list)
     })
   }

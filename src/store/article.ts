@@ -1,11 +1,12 @@
 import { getArticleLatest } from '@/apis/article'
+import { AnyObject } from '@/statement'
 
-const state = {
+const state: AnyObject = {
   latest: []
 }
 
 const mutations = {
-  articleLatest(state: any, list: any) {
+  articleLatest(state: AnyObject, list: unknown[]) {
     if (Array.isArray(list)) {
       state.latest = list
     }
@@ -14,15 +15,15 @@ const mutations = {
 
 const actions = {
   // 获取最新的文章列表
-  articleLatest({ commit }: any) {
-    getArticleLatest().then((response: any) => {
+  articleLatest({ commit }: AnyObject) {
+    getArticleLatest().then((response: AnyObject) => {
       commit('articleLatest', response.list)
     })
   }
 }
 
 const getters = {
-  articleLatest(state: any) {
+  articleLatest(state: AnyObject) {
     return state.latest
   }
 }

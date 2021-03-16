@@ -11,6 +11,6 @@ export interface MessageProps {
   message?: string
   useHtml?: boolean
   duration?: number
-  ok?(): any
-  cancel?(): any
+  ok?(): void
+  cancel?(): void
 }
