@@ -40,4 +40,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" src="./icon.scss"></style>
+<!--<style lang="scss" src="./icon.scss"></style>-->

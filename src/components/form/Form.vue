@@ -46,4 +46,4 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" src="./Form.scss"></style>
+<!--<style lang="scss" src="./Form.scss"></style>-->
