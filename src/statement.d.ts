@@ -29,6 +29,7 @@ export interface AxiosCustomResponse extends AxiosResponse {
 }
 
 export interface AnyObject {
+  // eslint-disable-next-line
   [propName: string]: any
 }
 
