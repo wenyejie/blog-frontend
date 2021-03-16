@@ -1,8 +1,8 @@
 <template>
-  <div class="category">
-    <h1 class="page-title category--title">搜索: {{ keyword }}</h1>
+  <div class="search">
+    <h1 class="page-title search--title">搜索: {{ keyword }}</h1>
     <s-article v-for="item in articleList" :key="item._id" :data="item" />
-    <div class="category--nodata" v-if="articleList.length === 0">
+    <div class="search--nodata" v-if="articleList.length === 0">
       {{ loading === 1 ? '正在加载中' : '暂无数据' }}...
     </div>
     <s-pagination v-model="page" :totalSize="totalSize" v-if="articleList.length" />
@@ -75,7 +75,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.category {
+.search {
   &--title {
     text-transform: uppercase;
   }
