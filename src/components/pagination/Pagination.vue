@@ -6,21 +6,13 @@
         <template v-if="innerPageSize">每页{{ innerPageSize }}条;&nbsp;</template>
         第{{ current }}页; 共{{ innerTotalPage }}页;
       </li>
-      <li
-        v-if="hasFirst"
-        :class="{ 'is-disabled': current === 1 }"
-        class="s-pagination--item"
-        @click="togglePage(1)"
-      >
-        <router-link :to="generatePath(1)">{{ firstText }}</router-link>
+      <li v-if="hasFirst" :class="{ 'is-disabled': current === 1 }" class="s-pagination--item">
+        <a @click.prevent="togglePage(1)" :href="generatePath(1)">{{ firstText }}</a>
       </li>
-      <li
-        v-if="hasPrev"
-        :class="{ 'is-disabled': current === 1 }"
-        class="s-pagination--item"
-        @click="togglePage(current - 1)"
-      >
-        <router-link :to="generatePath(current - 1)">{{ prevText }}</router-link>
+      <li v-if="hasPrev" :class="{ 'is-disabled': current === 1 }" class="s-pagination--item">
+        <a @click.prevent="togglePage(current - 1)" :href="generatePath(current - 1)">{{
+          prevText
+        }}</a>
       </li>
       <li
         v-if="hasPrevSizer"
@@ -35,33 +27,28 @@
           :class="{ 'is-disabled': current === item, 'is-active': current === item }"
           :key="item"
           class="s-pagination--item"
-          @click.prevent="togglePage(item)"
         >
-          <router-link :to="generatePath(item)">{{ item }}</router-link>
+          <a @click.prevent="togglePage(item)" :href="generatePath(item)">{{ item }}</a>
         </li>
       </template>
-      <li
-        v-if="hasNextSizer"
-        class="s-pagination--sizer s-pagination--item"
-        @click="handleSizer(2)"
-      >
-        <router-link :to="generatePath(2)">&hellip;</router-link>
+      <li v-if="hasNextSizer" class="s-pagination--sizer s-pagination--item">
+        <a @click.prevent="handleSizer(2)" :href="generatePath(2)">&hellip;</a>
       </li>
       <li
         v-if="hasNext"
         :class="{ 'is-disabled': current === innerTotalPage }"
         class="s-pagination--item"
-        @click="togglePage(current + 1)"
       >
-        <router-link :to="generatePath(current + 1)">{{ nextText }}</router-link>
+        <a @click.prevent="togglePage(current + 1)" :href="generatePath(current + 1)">{{
+          nextText
+        }}</a>
       </li>
       <li
         v-if="hasLast"
         :class="{ 'is-disabled': current === innerTotalPage }"
         class="s-pagination--item"
-        @click="togglePage(innerTotalPage)"
       >
-        <router-link :to="generatePath(innerTotalPage)">{{ lastText }}</router-link>
+        <a @click.prevent="togglePage(innerTotalPage)" :href="generatePath(innerTotalPage)">{{ lastText }}</a>
       </li>
       <li v-if="hasPageSize" class="s-pagination--size">
         <select :size="size" v-model="innerPageSize" @change="handlePageSize">
@@ -322,7 +309,7 @@ export default defineComponent({
     const togglePage = page => {
       if (props.disabled) return
       // 如果页码小于0或者大于总页数, 或者等于当前页退出函数
-      if (page < 0 || page >= innerTotalPage.value || page === current.value) return false
+      if (page < 0 || page > innerTotalPage.value || page === current.value) return false
       current.value = page
       emit('update:modelValue', page)
       emit('change', {
@@ -387,7 +374,8 @@ export default defineComponent({
       if (page > innerTotalPage.value) {
         page = innerTotalPage.value
       }
-      return { path: route.path, query: { [props.name]: page } }
+      return `${route.path}?${props.name}=${page}`
+      // return { path: route.path, query: { [props.name]: page } }
     }
 
     // 监听value是否发生变化
