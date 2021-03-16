@@ -14,6 +14,7 @@ import { defineComponent, ref, watch } from 'vue'
 import { getArticleList } from '@/apis/article'
 import { useRoute } from 'vue-router'
 import { setPageTitle } from '@/utils'
+import message from '@/components/message'
 
 export default defineComponent({
   name: 'Search',
@@ -27,6 +28,10 @@ export default defineComponent({
     const loading = ref(0)
 
     const fetchArticleList = () => {
+      if (!keyword.value) {
+        message.warning('搜索关键字不能为空!')
+        return
+      }
       if (loading.value === 1) {
         return
       }
@@ -46,15 +51,14 @@ export default defineComponent({
     }
 
     watch(
-      () => route.query,
-      () => {
+      () => route.query.keyword,
+      value => {
+        keyword.value = value
         fetchArticleList()
-        keyword.value = route.query.keyword
-        setPageTitle(keyword.value)
+        setPageTitle(value)
       },
       {
-        immediate: true,
-        deep: true
+        immediate: true
       }
     )
 

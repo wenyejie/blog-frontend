@@ -40,12 +40,16 @@ export default defineComponent({
     const keyword = ref('')
 
     const handleSearch = () => {
+      if (!keyword.value) {
+        return
+      }
       router.push({
         path: 'search',
         query: {
           keyword: keyword.value
         }
       })
+      keyword.value = ''
     }
 
     return {
