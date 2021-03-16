@@ -8,6 +8,19 @@
 .s-input {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+
+  &.has-suffix {
+    .s-input {
+      &--inner {
+        padding-right: 2.2em;
+      }
+    }
+  }
+
+  &--icon {
+    color: var(--placeholder-color);
+  }
 
   &--inner {
     display: block;
@@ -24,6 +37,21 @@
 
     &:focus {
       border-color: var(--primary-color);
+    }
+  }
+
+  &--suffix {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2em;
+
+    &-icon {
+      text-align: center;
     }
   }
 }
