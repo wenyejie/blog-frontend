@@ -7,10 +7,10 @@
 import axios from 'axios'
 import $message from '@/components/message'
 import { isObject, isArray, isString, isBoolean } from 'wenyejie'
-import { useRouter } from 'vue-router'
 import { AxiosCustomResponse } from '@/statement'
 import { localToken } from '@/storages'
 import { logoutAfter } from '@/utils'
+import router from '@/router'
 
 const NETWORK_ERR_MSG = '网络错误!'
 const SERVICE_ERR_MSG = '服务器错误!'
@@ -24,14 +24,14 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(
-  config => {
+  (config) => {
     const token = localToken()
     if (token) {
       config.headers[process.env.VUE_APP_AXIOS_TOKEN_KEY] = token
     }
     return config
   },
-  error => {
+  (error) => {
     $message.danger((error && error.message) || NETWORK_ERR_MSG)
     return Promise.reject(error)
   }
@@ -60,11 +60,11 @@ http.interceptors.response.use(
     if (code === '001002') {
       logoutAfter()
       // 跳转到登录页
-      useRouter().push('/login')
+      router.push('/login')
     }
     return Promise.reject(responseData)
   },
-  error => {
+  (error) => {
     $message.danger(error.message || SERVICE_ERR_MSG)
     return Promise.reject(error)
   }
