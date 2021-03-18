@@ -57,10 +57,12 @@ export default defineComponent({
 
     const handleInput = () => {
       emit('update:modelValue', markdownClean(editorValue.value))
+      emit('input')
     }
 
     const handleChange = () => {
       emit('update:modelValue', markdownClean(editorValue.value))
+      emit('change')
     }
 
     return {
