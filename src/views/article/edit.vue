@@ -27,7 +27,7 @@
       </s-form-item>
 
       <s-form-item label="内容:">
-        <s-editor name="content" required v-model="articleForm.content" />
+        <s-editor name="content" required @input="contentChange" v-model="articleForm.content" />
       </s-form-item>
 
       <s-form-item label="状态:">
@@ -122,6 +122,20 @@ export default defineComponent({
       Object.assign(articleForm, DEFAULT_ARTICLE_FORM)
     }
 
+    // 内容发生变更时, 自动提取标题
+    const contentChange = () => {
+      if (articleForm.title) {
+        return
+      }
+      const regExec = /#\s+.+(?!=\n)/.exec(articleForm.content)
+      if (regExec) {
+        articleForm.title = regExec[0].replace(/#[\n\r]*/, '')
+      } else {
+        return
+      }
+      articleForm.content = articleForm.content.replace(/[\n\r]*#\s+.+(?!=\n)[\n\r]*/, '')
+    }
+
     // 自动存储当前文章
     watch(
       () => articleForm,
@@ -153,6 +167,7 @@ export default defineComponent({
       articleForm,
       handleSubmit,
       handleReset,
+      contentChange,
       tagList,
       categoryList
     }
