@@ -13,6 +13,7 @@
 
       <s-input
         v-model="keyword"
+        name="keyword"
         class="s-nav--search"
         @enter="handleSearch"
         suffix-icon="search"
