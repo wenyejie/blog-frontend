@@ -1,21 +1,27 @@
 import { globalThis } from 'wenyejie'
-interface ClickOutside {
-  add(callback: EventListenerOrEventListenerObject): void
-  remove(callback?: EventListenerOrEventListenerObject): void
+
+const add = (callback: EventListenerOrEventListenerObject) => {
+  setTimeout(() => {
+    globalThis.addEventListener('click', callback, {
+      once: true
+    })
+  }, 0)
 }
 
-// 点击外部
-export const clickOutside: ClickOutside = {
-  add: (callback: EventListenerOrEventListenerObject) => {
-    setTimeout(() => {
-      globalThis.addEventListener('click', callback, {
-        once: true
-      })
-    })
-  },
-  remove: (callback: EventListenerOrEventListenerObject) => {
-    globalThis.removeEventListener('click', callback)
+const remove = (callback: EventListenerOrEventListenerObject) => {
+  globalThis.removeEventListener('click', callback)
+}
+
+const clickOutside = (callback: EventListenerOrEventListenerObject, isAdd: boolean) => {
+  if (isAdd) {
+    add(callback)
+  } else {
+    remove(callback)
   }
 }
+
+clickOutside.add = add
+
+clickOutside.remove = remove
 
 export default clickOutside
