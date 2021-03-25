@@ -129,7 +129,7 @@ export default defineComponent({
       }
       const regExec = /#\s+.+(?!=\n)/.exec(articleForm.content)
       if (regExec) {
-        articleForm.title = regExec[0].replace(/#[\n\r]*/, '')
+        articleForm.title = regExec[0].replace(/^#b[\n\r\s]+b/, '')
       } else {
         return
       }
