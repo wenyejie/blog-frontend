@@ -1,11 +1,15 @@
 <template>
   <h1 class="page-title">DEMO</h1>
 
-  <s-chosen :data="langs" v-model="demo" placeholder="请选择语言" />
+  <!--<s-chosen v-model="demo" filter placeholder="请选择语言">
+    <s-chosen-item value="HTML">HTML</s-chosen-item>
+    <s-chosen-item value="CSS">CSS</s-chosen-item>
+    <s-chosen-item value="JavaScript">JavaScript</s-chosen-item>
+  </s-chosen>-->
 
   <div>{{ demo }}</div>
 
-  <s-input />
+  <!--<s-input />-->
   <!--<s-tag label="css" />-->
 </template>
 

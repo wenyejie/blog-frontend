@@ -1,65 +1,86 @@
 <template>
-  <li class="s-chosen-item" v-show="visible" :class="classes" @click="handleClick">
-    <slot>{{ label }}</slot>
+  <li class="s-chosen-item" :class="classes" @click="handleClick">
+    <slot>{{ innerLabel }}</slot>
   </li>
 </template>
 
 <script>
-import { defineComponent, inject, computed, onBeforeUnmount } from 'vue'
-import { noop } from 'wenyejie'
+import { defineComponent, computed, onBeforeUnmount, reactive, ref, getCurrentInstance } from 'vue'
+import { getParentProxy } from '@/utils'
+
 export default defineComponent({
   name: 'SChosenItem',
   props: {
     value: [String, Number, Boolean],
     label: [String, Number],
-    disabled: {
-      type: Boolean,
-      default: false
-    },
+    disabled: Boolean,
     visible: {
-      type: Boolean,
-      default: false
+      type: [Boolean, undefined],
+      default: undefined
     }
   },
   emits: ['click'],
   setup(props, { slots }) {
-    const chosenAdd = inject('chosenAdd', noop)
-    const chosenRemove = inject('chosenRemove', noop)
-    const chosenSelect = inject('chosenSelect', noop)
+    const instance = getCurrentInstance()
+    const proxy = instance.proxy
 
-    const label = props.label | slots.default || props.value
+    const $parent = getParentProxy(instance, 'SChosen')
 
-    const value = props.value || label
+    if (!$parent) {
+      throw new Error('SChosenItem must be in SChosen')
+    }
 
-    const item = chosenAdd({
-      label,
-      value,
-      disabled: props.disabled,
-      active: false,
+    const innerLabel = computed(() => props.label | slots.default || props.value)
+
+    const innerValue = computed(() => props.value || innerLabel.value)
+
+    const active = ref(
+      $parent.multiple
+        ? $parent.innerValue.includes(innerValue.value)
+        : $parent.innerValue === innerValue.value
+    )
+
+    const inner = reactive({
+      value: innerValue.value,
+      label: innerLabel.value,
+      active: active.value,
       visible: true
     })
 
     const handleClick = () => {
-      chosenSelect(item)
+      active.value = !active.value
+      $parent.handleSelect(instance.proxy, active.value)
     }
 
-    if (item.created) {
-      handleClick()
-    }
-
-    onBeforeUnmount(() => {
-      chosenRemove(item)
+    const innerVisible = computed(() => {
+      if ($parent.innerInput && innerLabel.value.includes($parent.innerInput)) {
+        return false
+      } else {
+        return props.visible
+      }
     })
 
     const classes = computed(() => {
       return {
-        'is-active': item.active,
-        'is-disabled': props.disabled
+        'is-disabled': props.disabled,
+        'is-visible': innerVisible,
+        'is-active': active.value
       }
     })
+
+    $parent.addChild(inner)
+
+    onBeforeUnmount(() => {
+      const index = $parent.children.indexOf(inner)
+      $parent.children.splice(index, 1)
+    })
     return {
+      handleClick,
       classes,
-      handleClick
+      innerVisible,
+      innerLabel,
+      innerValue,
+      active
     }
   }
 })

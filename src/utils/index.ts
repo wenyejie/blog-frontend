@@ -1,6 +1,7 @@
 import { inBrowser, isNumber, isString } from 'wenyejie'
 import { localToken, localUserInfo } from '@/storages'
 import store from '@/store'
+import { ComponentInternalInstance } from '@vue/runtime-core'
 const rNumber = /^\d+$/
 
 // 把输入转换为css长度单位
@@ -28,4 +29,24 @@ export const logoutAfter = () => {
   localUserInfo(null)
   // 移除storage中的token
   localToken(null)
+}
+
+// 获取组件的指定父组件
+export const getParentInstance = (
+  instance: ComponentInternalInstance | null,
+  parentName: string
+) => {
+  while (instance) {
+    if (instance.type.name === parentName) {
+      break
+    }
+    instance = instance.parent
+  }
+  return instance
+}
+
+// 获取父组件的proxy数据
+export const getParentProxy = (instance: ComponentInternalInstance | null, parentName: string) => {
+  const parent = getParentInstance(instance, parentName)
+  return parent ? parent.proxy : parent
 }
