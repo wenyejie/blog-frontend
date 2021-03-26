@@ -65,7 +65,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import store from '@/store'
 import { markdown2html } from '@/core/markdown2html'
@@ -87,7 +87,6 @@ export default defineComponent({
   },
   setup(props) {
     const computedContent = computed(() => {
-      highlight()
       let markdown = props.data.content
       if (props.plain) {
         markdown = markdown.substring(0, 300)
@@ -112,6 +111,10 @@ export default defineComponent({
         useRouter().go(-1)
       })
     }
+
+    onMounted(() => {
+      highlight()
+    })
 
     return {
       isLogin,
