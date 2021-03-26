@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from 'vue'
+import { computed, defineComponent, ref, watch, nextTick } from 'vue'
 import markdown2html, { markdownClean } from '@/core/markdown2html.ts'
 import highlight from '@/core/highlight'
 import { formEleDefProps } from '@/composition/formElement'
@@ -51,11 +51,13 @@ export default defineComponent({
     )
 
     const compiledMarkdown = computed(() => {
-      highlight()
       return markdown2html(editorValue.value)
     })
 
     const handleInput = () => {
+      nextTick().then(() => {
+        highlight()
+      })
       emit('update:modelValue', markdownClean(editorValue.value))
       emit('input')
     }
