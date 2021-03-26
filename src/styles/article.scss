@@ -134,8 +134,9 @@
     margin: 24px 0;
     margin: 1.714285714rem 0;
     overflow: auto;
-    padding: 24px;
-    padding: 1.714285714rem;
+    white-space: pre-wrap;
+    //padding: 24px;
+    //padding: 1.714285714rem;
   }
 
   pre code {
