@@ -61,7 +61,7 @@
     <footer class="s-article--footer" v-if="plain">
       <router-link v-if="plain" :to="`/article/${data._id}`">阅读更多&gt;&gt;</router-link>
     </footer>
-    <s-article-nav class="s-article--nav" v-if="!plain" :data="navList" />
+    <s-article-nav class="s-article--nav" v-if="!plain && navList.length" :data="navList" />
   </article>
 </template>
 
@@ -74,7 +74,7 @@ import { dateFormat } from 'wenyejie'
 import highlight from '@/core/highlight'
 import { deleteArticle } from '@/apis/article'
 import SArticleNav from './articleNav'
-import generateNavByContent from './generateNavByContent.ts'
+import generateNavByContent from './generateNavByContent'
 
 export default defineComponent({
   name: 'SArticle',
