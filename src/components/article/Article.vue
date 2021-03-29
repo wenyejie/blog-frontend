@@ -50,31 +50,35 @@
           <dt>操作:</dt>
           <dd>
             <router-link class="s-article--meta-link" :to="`/article/edit?id=${data._id}`"
-              >编辑</router-link
-            >,
+              >编辑
+            </router-link>
             <a class="s-article--meta-link" href="javascript:;" @click="handleDelete">删除</a>
           </dd>
         </template>
       </dl>
     </header>
-    <div class="s-article--body" v-html="computedContent"></div>
+    <div :ref="el => (refBody = el)" class="s-article--body" v-html="computedContent"></div>
     <footer class="s-article--footer" v-if="plain">
       <router-link v-if="plain" :to="`/article/${data._id}`">阅读更多&gt;&gt;</router-link>
     </footer>
+    <s-article-nav class="s-article--nav" v-if="!plain" :data="navList" />
   </article>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted } from 'vue'
+import { defineComponent, computed, onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import store from '@/store'
 import { markdown2html } from '@/core/markdown2html'
 import { dateFormat } from 'wenyejie'
 import highlight from '@/core/highlight'
 import { deleteArticle } from '@/apis/article'
+import SArticleNav from './articleNav'
+import generateNavByContent from './generateNavByContent.ts'
 
 export default defineComponent({
   name: 'SArticle',
+  components: { SArticleNav },
   props: {
     plain: {
       type: Boolean,
@@ -86,6 +90,9 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const navList = ref([])
+    const refBody = ref(null)
+
     const computedContent = computed(() => {
       let markdown = props.data.content
       if (props.plain) {
@@ -114,6 +121,9 @@ export default defineComponent({
 
     onMounted(() => {
       highlight()
+      if (!props.plain) {
+        navList.value = generateNavByContent(refBody.value)
+      }
     })
 
     return {
@@ -121,6 +131,8 @@ export default defineComponent({
       computedContent,
       updateTime,
       createTime,
+      navList,
+      refBody,
       handleDelete
     }
   }

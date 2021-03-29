@@ -8,6 +8,12 @@
 .s-article {
   margin-top: 50px;
 
+  &--nav {
+    position: fixed;
+    top: 37.5%;
+    left: 850px;
+  }
+
   & + & {
     border-top: 1px solid var(--border-color);
     padding-top: 50px;
