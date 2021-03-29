@@ -9,6 +9,8 @@
       <code>NodeJS</code>, <code>AND SO ON......</code>
     </p>
 
+    <p>Email: <a href="mailto:wenyejie@foxmail.com">wenyejie@foxmail.com</a></p>
+
     <p>
       <code>// TODO</code>
     </p>
