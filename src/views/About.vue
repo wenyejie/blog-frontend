@@ -5,8 +5,8 @@
     <p>一个前端开发工程师</p>
 
     <p>
-      会一点点 <code>HTML</code>, <code>CSS</code>, <code>JavaScript</code>, <code>NodeJS</code>,
-      <code>VUE</code>
+      会一点点 <code>HTML</code>, <code>CSS</code>, <code>JavaScript</code>, <code>VUE</code>,
+      <code>NodeJS</code>, <code>AND SO ON......</code>
     </p>
 
     <p>
