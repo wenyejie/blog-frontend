@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, reactive, ref } from 'vue'
+import { defineComponent, computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import store from '@/store'
 import { markdown2html } from '@/core/markdown2html'
