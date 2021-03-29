@@ -6,7 +6,7 @@
 
     <p>
       会一点点 <code>HTML</code>, <code>CSS</code>, <code>JavaScript</code>, <code>VUE</code>,
-      <code>NodeJS</code>, <code>AND SO ON......</code>
+      <code>NodeJS</code>, <code>And more......</code>
     </p>
 
     <p>Email: <a href="mailto:wenyejie@foxmail.com">wenyejie@foxmail.com</a></p>
