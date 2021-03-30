@@ -1,0 +1,54 @@
+.s-date {
+  display: block;
+  width: 300px;
+  &--top {
+    text-align: center;
+    overflow: hidden;
+  }
+
+  span,
+  .s-icon {
+    line-height: 36px;
+    padding: 0 3px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  .s-icon {
+    padding: 0 12px;
+    &-left,
+    &-doubleleft {
+      float: left;
+    }
+
+    &-right,
+    &-doubleright {
+      float: right;
+    }
+  }
+
+  &--table {
+    width: 100%;
+    th,
+    td {
+      width: 36px;
+      height: 36px;
+      text-align: center;
+      color: var(--minor-color);
+    }
+
+    td {
+      cursor: pointer;
+      &.is-prev,
+      &.is-next {
+        color: var(--placeholder-color);
+      }
+      &.is-current:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+}

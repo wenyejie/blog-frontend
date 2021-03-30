@@ -39,11 +39,14 @@ a {
 code {
   font-size: 87.5%;
   color: #e83e8c;
+  margin: 0 .1em;
 }
 
 kbd {
-  padding: .2rem .4rem;
+  padding: .2em .4em;
+  margin: 0 .1em;
   font-size: 87.5%;
+  line-height: 1;
   color: #fff;
   background-color: #212529;
   border-radius: .2rem;
