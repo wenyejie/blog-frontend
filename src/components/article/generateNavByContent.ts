@@ -17,7 +17,7 @@ const findParent = (prev: any, level: number): any => {
 /**
  * 根据HTML内容生成导航数据
  */
-export default ($el: HTMLDivElement) => {
+export default ($el: HTMLDivElement): any[] => {
   const $hList = $el.querySelectorAll('[id]')
 
   const list = Array.from($hList).map((item) => {

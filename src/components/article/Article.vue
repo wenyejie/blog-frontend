@@ -122,7 +122,9 @@ export default defineComponent({
     onMounted(() => {
       highlight()
       if (!props.plain) {
-        navList.value = generateNavByContent(refBody.value)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        navList.value = generateNavByContent((refBody.value as unknown) as HTMLDivElement)
       }
     })
 
