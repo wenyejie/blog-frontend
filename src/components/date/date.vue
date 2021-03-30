@@ -20,13 +20,13 @@
               'is-prev': subitem.prev,
               'is-next': subitem.next,
               'is-current': subitem.current,
-              'is-today': subitem.value === view,
+              'is-today': subitem.today,
               'is-selected': subitem.selected
             }"
             :key="subitem.value"
             @click="handleClickDay(subitem)"
           >
-            {{ subitem.value }}
+            <span>{{ subitem.value }}</span>
           </td>
         </tr>
       </table>

@@ -4,29 +4,29 @@
   &--top {
     text-align: center;
     overflow: hidden;
-  }
 
-  span,
-  .s-icon {
-    line-height: 36px;
-    padding: 0 3px;
-    cursor: pointer;
+    & > span,
+    & > .s-icon {
+      line-height: 36px;
+      padding: 0 3px;
+      cursor: pointer;
 
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
-
-  .s-icon {
-    padding: 0 12px;
-    &-left,
-    &-doubleleft {
-      float: left;
+      &:hover {
+        color: var(--primary-color);
+      }
     }
 
-    &-right,
-    &-doubleright {
-      float: right;
+    & > .s-icon {
+      padding: 0 12px;
+      &-left,
+      &-doubleleft {
+        float: left;
+      }
+
+      &-right,
+      &-doubleright {
+        float: right;
+      }
     }
   }
 
@@ -42,12 +42,30 @@
 
     td {
       cursor: pointer;
+
+      & > span {
+        border-radius: 50%;
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin: 6px auto;
+        line-height: 24px;
+      }
+
       &.is-prev,
       &.is-next {
         color: var(--placeholder-color);
       }
-      &.is-current:hover {
+      &.is-today > span,
+      &.is-current:not(.is-selected):hover > span {
         color: var(--primary-color);
+      }
+      &.is-today > span {
+        font-weight: bold;
+      }
+      &.is-selected > span {
+        background-color: var(--primary-color);
+        color: #fff;
       }
     }
   }

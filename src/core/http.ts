@@ -24,14 +24,14 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(
-  (config) => {
+  config => {
     const token = localToken()
     if (token) {
       config.headers[process.env.VUE_APP_AXIOS_TOKEN_KEY] = token
     }
     return config
   },
-  (error) => {
+  error => {
     $message.danger((error && error.message) || NETWORK_ERR_MSG)
     return Promise.reject(error)
   }
@@ -64,7 +64,7 @@ http.interceptors.response.use(
     }
     return Promise.reject(responseData)
   },
-  (error) => {
+  error => {
     $message.danger(error.message || SERVICE_ERR_MSG)
     return Promise.reject(error)
   }

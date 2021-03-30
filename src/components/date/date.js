@@ -1,6 +1,6 @@
 import { defineComponent, reactive, ref } from 'vue'
 import { getMonthDayList } from './utils.js'
-import { isDate } from 'wenyejie'
+import { isDate, isSameMonth } from 'wenyejie'
 
 export default defineComponent({
   name: 'SDate',
@@ -44,9 +44,18 @@ export default defineComponent({
 
     // 生成天数
     const generateDays = () => {
-      days.value = getMonthDayList(viewDate.value)
+      days.value = getMonthDayList(viewDate.value, props.modelValue)
       innerYear.value = viewDate.value.getFullYear()
       innerMonth.value = viewDate.value.getMonth()
+      if (isSameMonth(viewDate.value, props.modelValue || null)) {
+        const item = days.value.find(
+          item => item.current && item.value === props.modelValue.getDate()
+        )
+
+        if (item) {
+          item.selected = true
+        }
+      }
     }
 
     // 切换年月
@@ -60,7 +69,7 @@ export default defineComponent({
     }
 
     // 点击天数
-    const handleClickDay = (item) => {
+    const handleClickDay = item => {
       const date = new Date(viewDate.value)
       if (item.current) {
         date.setDate(item.value)
@@ -69,7 +78,12 @@ export default defineComponent({
       } else if (item.next) {
         date.setMonth(date.getMonth() + 1, item.value)
       }
+      days.value.forEach(item => {
+        item.forEach(subitem => (subitem.selected = false))
+      })
+      item.selected = true
       innerDate.value = date
+      console.log(days)
       emit('update:modelValue', innerDate.value)
       emit('change', innerDate.value)
     }

@@ -1,12 +1,14 @@
+import { isSameDay } from 'wenyejie'
+
 // 获取月份天数
-export const getMonthDays = (date) => {
+export const getMonthDays = date => {
   date = new Date(date)
   date.setMonth(date.getMonth() + 1, 0)
   return date.getDate()
 }
 
 // 获取上个月的天数
-export const getPrevMonthDays = (date) => {
+export const getPrevMonthDays = date => {
   date = new Date(date)
   date.setDate(0)
   return date.getDate()
@@ -17,7 +19,7 @@ export const getPrevMonthDays = (date) => {
 // console.log('getMonthDays: ', getMonthDays(date)) // 31
 
 // 获取月份第一天的星期数
-export const getMonthStartWeek = (date) => {
+export const getMonthStartWeek = date => {
   date = new Date(date)
   date.setDate(1)
   return date.getDay()
@@ -26,21 +28,21 @@ export const getMonthStartWeek = (date) => {
 // console.log('getMonthStartDay: ', getMonthStartDay(date)) // 31
 
 // 获取月份最后一天的星期数
-export const getMonthEndWeek = (date) => {
+export const getMonthEndWeek = date => {
   date = new Date(date)
   date.setMonth(date.getMonth() + 1, 0)
   return date.getDay()
 }
 
 // 获取下个月
-export const getPrevMonth = (date) => {
+export const getPrevMonth = date => {
   date = new Date(date)
   date.setDate(0)
   return date
 }
 
 // 获取上个月
-export const getNextMonth = (date) => {
+export const getNextMonth = date => {
   date = new Date(date)
   date.setMonth(date.getMonth(), 1)
   return date
@@ -52,27 +54,32 @@ export const getMonthDayList = (now = new Date()) => {
   const start = getMonthStartWeek(now)
   const days = getMonthDays(now)
   const prevDays = getPrevMonthDays(now)
+  const today = new Date()
 
   // 上月
-  for (let i = 0; i < start; i++) {
+  for (let i = start - 1; i >= 0; i--) {
     data.push({
       value: prevDays - i,
-      prev: true
+      prev: true,
+      selected: false
     })
   }
   // 当月
   for (let i = 1; i <= days; i++) {
     data.push({
       value: i,
-      current: true
+      current: true,
+      today: isSameDay(new Date(now).setDate(i), today),
+      selected: false
     })
   }
   // 下月
   const surplus = 42 - start - days
-  for (let i = 0; i < surplus; i++) {
+  for (let i = 1; i <= surplus; i++) {
     data.push({
       value: i,
-      next: true
+      next: true,
+      selected: false
     })
   }
 

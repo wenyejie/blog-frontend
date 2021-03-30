@@ -71,7 +71,7 @@ export default defineComponent({
     }
 
     // 加入子组件
-    const addChild = (child) => {
+    const addChild = child => {
       children.push(child)
       if (innerValue.value.includes(child.innerValue)) {
         if (props.multiple) {
@@ -82,18 +82,18 @@ export default defineComponent({
 
     watch(
       () => children,
-      (list) => {
+      list => {
         if (props.multiple) {
-          innerValue.value = list.filter((item) => item.active).map((item) => item.innerValue)
+          innerValue.value = list.filter(item => item.active).map(item => item.innerValue)
         } else {
-          innerValue.value = (list.find((item) => item.active) || {}).innerValue
+          innerValue.value = (list.find(item => item.active) || {}).innerValue
         }
       },
       { deep: true }
     )
 
     // 移除子组件
-    const removeChild = (child) => {
+    const removeChild = child => {
       const index = children.indexOf(child)
       children.splice(index, 1)
       if (innerValue.value.includes(child.innerValue)) {

@@ -8,7 +8,7 @@ import router from '@/router'
  * @param num 按钮数
  * @return {number}
  */
-const countHalf = (num) => Math.ceil(num / 2)
+const countHalf = num => Math.ceil(num / 2)
 /**
  * 根据参数起始值, 和结束值计算分页列表
  * @param start
@@ -54,7 +54,7 @@ const generateList = (current, total, number) => {
  * @param val
  * @return {boolean}
  */
-const validator = (val) => val >= 0
+const validator = val => val >= 0
 
 export default defineComponent({
   name: 'SPagination',
@@ -229,7 +229,7 @@ export default defineComponent({
     }
 
     // 点击切换页面
-    const togglePage = (page) => {
+    const togglePage = page => {
       if (props.disabled) return
       // 如果页码小于0或者大于总页数, 或者等于当前页退出函数
       if (page < 0 || page > innerTotalPage.value || page === current.value) return false
@@ -286,7 +286,7 @@ export default defineComponent({
      * 切换筛选器
      * @param type 类型 1:prev, 2:next
      */
-    const handleSizer = (type) => {
+    const handleSizer = type => {
       if (props.disabled) return
       // 起始值, 结束值
       let start = 0
@@ -304,7 +304,7 @@ export default defineComponent({
       list.value = countList(start, end)
     }
 
-    const generatePath = (page) => {
+    const generatePath = page => {
       if (page <= 0) {
         page = 1
       }
@@ -319,7 +319,7 @@ export default defineComponent({
     // 监听value是否发生变化
     watch(
       () => props.modelValue,
-      (val) => {
+      val => {
         if (!Number.isSafeInteger(val)) return
         current.value = val
         buildList()

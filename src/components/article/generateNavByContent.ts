@@ -20,7 +20,7 @@ const findParent = (prev: any, level: number): any => {
 export default ($el: HTMLDivElement): any[] => {
   const $hList = $el.querySelectorAll('[id]')
 
-  const list = Array.from($hList).map((item) => {
+  const list = Array.from($hList).map(item => {
     return {
       level: +item.tagName.replace(/[a-zA-Z]/g, ''),
       id: item.id,
