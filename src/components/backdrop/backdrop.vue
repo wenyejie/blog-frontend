@@ -1,7 +1,7 @@
 <template>
   <teleport to="body">
     <transition name="s-backdrop" :appear="true">
-      <div class="s-backdrop" v-if="visible" @click.self="$emit('click')" :style="styles"></div>
+      <div class="s-backdrop" v-show="visible" @click.self="$emit('click')" :style="styles"></div>
     </transition>
   </teleport>
 </template>

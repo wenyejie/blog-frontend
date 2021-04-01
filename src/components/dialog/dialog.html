@@ -6,7 +6,7 @@
 />
 <teleport to="body">
   <transition name="s-dialog" :appear="true" @after-leave="handleAfterLeave">
-    <section v-if="visible" class="s-dialog" :style="styles" :class="classes">
+    <section v-show="visible" class="s-dialog" :style="styles" :class="classes">
       <div class="s-dialog--content">
         <slot name="content">
           <header v-if="hasHeader || title || $slots.header" class="s-dialog--header">
