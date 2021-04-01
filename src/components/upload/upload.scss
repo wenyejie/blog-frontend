@@ -1,0 +1,13 @@
+.s-upload {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  &--inner {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    width: 0;
+    height: 0;
+  }
+}
