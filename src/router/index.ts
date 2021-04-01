@@ -3,6 +3,7 @@ import { setPageTitle } from '@/utils'
 import articleRouter from './article'
 import categoryRouter from './category'
 import tagRouter from './tag'
+import uploadRouter from './upload'
 import store from '@/store'
 import $message from '@/components/message'
 
@@ -36,6 +37,7 @@ const routes: Array<RouteRecordRaw> = [
   articleRouter,
   categoryRouter,
   tagRouter,
+  uploadRouter,
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',

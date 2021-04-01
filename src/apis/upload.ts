@@ -1,5 +1,5 @@
 import http from '@/core/http'
-import { AxiosCustomRequestConfig } from '@/statement'
+import { AnyObject, AxiosCustomRequestConfig } from '@/statement'
 
 interface UploadSingleData {
   file: File
@@ -8,7 +8,14 @@ interface UploadSingleData {
 // 单个上传地址
 export const uploadSingleAction = '/upload/single'
 
-// 上传单个文件
-export const uploadSingle = (data: UploadSingleData, config?: AxiosCustomRequestConfig) => {
-  return http.post(uploadSingleAction, data, config)
+// 获取上传列表
+export const getUploadList = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
+  config.params = data
+  return http.get('/upload/list', config)
+}
+
+// 删除上传
+export const deleteUpload = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
+  config.data = data
+  return http.delete('/upload/delete', config)
 }
