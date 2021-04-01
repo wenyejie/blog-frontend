@@ -6,9 +6,12 @@
       <div class="upload--img">
         <img :src="`/${item.path}`" :alt="item.alt" />
       </div>
-      <s-button class="upload--delete" type="danger" @click="handleDelete(item, index)"
-        >删除</s-button
-      >
+      <div class="upload--op">
+        <s-input readonly :modelValue="item.path" />
+        <s-button class="upload--delete" type="danger" @click="handleDelete(item, index)"
+          >删除</s-button
+        >
+      </div>
     </li>
   </ul>
 </template>
@@ -76,8 +79,14 @@ export default defineComponent({
     }
   }
 
-  &--delete {
+  &--op {
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &--delete {
+    margin-top: 20px;
   }
 }
 </style>
