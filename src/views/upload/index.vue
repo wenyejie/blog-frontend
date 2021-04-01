@@ -37,6 +37,7 @@ export default defineComponent({
       dialog.confirm('确定要删除图片?').then(() => {
         deleteUpload({ _id: item._id }).then(() => {
           message.success('删除成功')
+          list.value.splice(index, 1)
         })
       })
     }
