@@ -1,6 +1,6 @@
 <template>
   <article class="about">
-    <h1 class="page-title">ABOUT ME</h1>
+    <h1 class="page-title">ABOUT</h1>
 
     <p>一个前端开发工程师</p>
 
