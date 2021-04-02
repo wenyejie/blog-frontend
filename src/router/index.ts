@@ -4,6 +4,7 @@ import articleRouter from './article'
 import categoryRouter from './category'
 import tagRouter from './tag'
 import uploadRouter from './upload'
+import monthRouter from './month'
 import store from '@/store'
 import $message from '@/components/message'
 
@@ -38,6 +39,7 @@ const routes: Array<RouteRecordRaw> = [
   categoryRouter,
   tagRouter,
   uploadRouter,
+  monthRouter,
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',
