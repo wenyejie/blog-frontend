@@ -1,0 +1,13 @@
+.s-month {
+  &--count {
+    font-weight: bold;
+    &::before {
+      content: '(';
+      font-weight: normal;
+    }
+    &::after {
+      content: ')';
+      font-weight: normal;
+    }
+  }
+}

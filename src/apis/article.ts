@@ -34,6 +34,12 @@ export const deleteArticle = (data?: AnyObject, config: AxiosCustomRequestConfig
   return http.delete('/article/delete', config)
 }
 
+// 更新文章
 export const updateArticle = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
   return http.put('/article/update', data, config)
+}
+
+export const getArticleCountByMonth = (data?: AnyObject, config: AxiosCustomRequestConfig = {}) => {
+  config.params = data
+  return http.get('/article/countByMonth', config)
 }
