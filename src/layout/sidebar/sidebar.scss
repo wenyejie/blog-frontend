@@ -1,4 +1,14 @@
 .s-sidebar {
   margin-left: 30px;
   width: 360px;
+
+  &--list {
+    & > li {
+      list-style: inside decimal;
+      margin-bottom: 10px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
 }

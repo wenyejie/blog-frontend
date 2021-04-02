@@ -16,7 +16,7 @@ import store from '@/store'
 import SSidebarItem from '../sidebarItem'
 
 export default defineComponent({
-  name: 'STag',
+  name: 'SidebarTag',
   components: { SSidebarItem },
   setup() {
     const tagCounts = computed(() => store.getters.tagCounts)
