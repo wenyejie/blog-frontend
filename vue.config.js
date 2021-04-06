@@ -20,11 +20,13 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugin('html').tap(args => {
-      args[0].title = process.env.VUE_APP_TITLE
-      args[0].author = process.env.VUE_APP_AUTHOR
-      args[0].keywords = process.env.VUE_APP_KEYWORDS
-      args[0].description = process.env.VUE_APP_DESCRIPTION
-      args[0].iconfontLink = process.env.VUE_APP_ICON_FONT
+      Object.assign(args[0], {
+        title: process.env.VUE_APP_TITLE,
+        author: process.env.VUE_APP_AUTHOR,
+        keywords: process.env.VUE_APP_KEYWORDS,
+        description: process.env.VUE_APP_DESCRIPTION,
+        iconFontLink: process.env.VUE_APP_ICON_FONT
+      })
       return args
     })
   },
