@@ -30,6 +30,7 @@ export default defineComponent({
     const pageSize = ref(10)
     const page = ref(1)
     const totalSize = ref(0)
+    const loading = ref(0)
 
     const handlePagination = () => {
       const data = {
@@ -41,13 +42,20 @@ export default defineComponent({
         data[key] = props.data[key]
       }
 
-      getArticleList(data).then(result => {
-        articleList.value = result.list
-        pageSize.value = Number.parseInt(result.pageSize)
-        page.value = Number.parseInt(result.page)
-        totalSize.value = result.totalSize
-        emit('success', result)
-      })
+      loading.value = 1
+      getArticleList(data).then(
+        result => {
+          loading.value = 2
+          articleList.value = result.list
+          pageSize.value = Number.parseInt(result.pageSize)
+          page.value = Number.parseInt(result.page)
+          totalSize.value = result.totalSize
+          emit('success', result)
+        },
+        () => {
+          loading.value = 3
+        }
+      )
     }
 
     watch(
@@ -63,6 +71,7 @@ export default defineComponent({
 
     return {
       articleList,
+      loading,
       page,
       pageSize,
       totalSize,
