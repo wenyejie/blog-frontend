@@ -13,13 +13,12 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const data = computed(() => {
+      setPageTitle(`${route.params.year}年${route.params.month}月`)
       return {
         year: +route.params.year,
         month: +route.params.month
       }
     })
-
-    setPageTitle(`${route.params.year}年${route.params.month}月`)
 
     return {
       data
