@@ -1,5 +1,8 @@
 <template>
   <s-article v-for="item in articleList" :key="item._id" :data="item" />
+  <p v-if="articleList.length === 0">
+    {{ loading === 1 ? '正在加载中...' : '暂无数据' }}
+  </p>
   <s-pagination
     v-model="page"
     :pageSize="pageSize"
