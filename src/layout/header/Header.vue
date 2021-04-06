@@ -45,7 +45,7 @@ export default defineComponent({
         return
       }
       router.push({
-        path: 'search',
+        path: '/search',
         query: {
           keyword: keyword.value
         }
