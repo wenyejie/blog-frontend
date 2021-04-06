@@ -1,9 +1,10 @@
 <template>
   <s-article v-for="item in articleList" :key="item._id" :data="item" />
-  <p v-if="articleList.length === 0">
+  <p class="s-article-list--status" v-if="loading !== 0" v-show="articleList.length === 0">
     {{ loading === 1 ? '正在加载中...' : '暂无数据' }}
   </p>
   <s-pagination
+    class="s-article-list--pagination"
     v-model="page"
     :pageSize="pageSize"
     :totalSize="totalSize"
@@ -80,3 +81,14 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss">
+.s-article-list {
+  &--status {
+    padding: 50px 0;
+  }
+  &--pagination {
+    margin-top: 50px;
+  }
+}
+</style>
