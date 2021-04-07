@@ -67,6 +67,7 @@ export default defineComponent({
           config.headers[key] = props.headers[key]
         }
       }
+      config.headers['Content-type'] = 'multiple/form-data'
       await emit('before-upload', { formData, config })
       return http[props.method](props.action, formData, config).then(response => {
         emit('success', response)
