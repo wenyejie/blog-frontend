@@ -1,11 +1,13 @@
 <template>
   <h1 class="page-title">上传管理</h1>
 
+  <s-upload><s-button>上传文件</s-button></s-upload>
+
   <ul class="upload--list">
     <li class="upload--item" v-for="item in list" :key="item._id">
-      <div class="upload--img">
+      <a class="upload--img" :href="`/${item.path}`" target="_blank">
         <img :src="`/${item.path}`" :alt="item.alt" />
-      </div>
+      </a>
       <div class="upload--op">
         <s-input readonly :modelValue="item.path" />
         <s-button class="upload--delete" type="danger" @click="handleDelete(item, index)"
@@ -57,7 +59,7 @@ export default defineComponent({
   &--list {
     display: flex;
     flex-wrap: wrap;
-    margin: -15px;
+    margin: 30px -15px -15px;
   }
 
   &--item {

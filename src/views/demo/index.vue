@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 import SDate from '@/components/date'
 import SUpload from '@/components/upload'
 export default defineComponent({

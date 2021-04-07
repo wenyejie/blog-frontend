@@ -17,6 +17,7 @@ import SCheckboxGroup from '@/components/checkboxGroup'
 // import SChosenItem from '@/components/chosenItem'
 import STag from '@/components/tag'
 import SArticleList from '@/components/articleList'
+import SUpload from '@/components/upload'
 
 const components: AnyObject = {
   SButton,
@@ -36,7 +37,8 @@ const components: AnyObject = {
   // SChosen,
   // SChosenItem,
   STag,
-  SArticleList
+  SArticleList,
+  SUpload
 }
 
 export default {
