@@ -10,9 +10,10 @@
 
   &--nav {
     position: fixed;
-    top: 37.5%;
+    top: 50%;
     left: 850px;
     width: 360px;
+    transform: translateY(-50%);
   }
 
   & + & {
