@@ -32,8 +32,8 @@ export default defineComponent({
   border-radius: var(--border-radius);
   min-width: 1200px;
   display: grid;
-  grid-template-columns: repeat(24, 4.1666666666666664%);
-  grid-column-gap: 0;
+  grid-template-columns: repeat(24, 1fr);
+  grid-column-gap: 30px;
 }
 
 .s-header {
@@ -44,7 +44,6 @@ export default defineComponent({
 }
 .s-sidebar {
   grid-column: 19 / 25;
-  margin-left: 30px;
 }
 .s-footer {
   grid-column: 1 / 25;
