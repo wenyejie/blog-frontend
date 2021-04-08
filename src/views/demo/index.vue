@@ -10,10 +10,9 @@
 <script>
 import { defineComponent, ref } from 'vue'
 import SDate from '@/components/date'
-import SUpload from '@/components/upload'
 export default defineComponent({
   name: 'demo',
-  components: { SDate, SUpload },
+  components: { SDate },
   setup() {
     const demo = ref()
 

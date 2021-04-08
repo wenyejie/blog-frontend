@@ -40,11 +40,20 @@ export default defineComponent({
 
   &--item {
     margin-top: 0.5em;
-    & > a::before {
-      content: attr(data-deep);
-      display: inline-block;
-      padding-right: 0.5em;
-      min-width: 1em;
+    width: 100%;
+    display: block;
+    & > a {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      max-width: 100%;
+      white-space: nowrap;
+      display: block;
+      &::before {
+        content: attr(data-deep);
+        display: inline-block;
+        padding-right: 0.5em;
+        min-width: 1em;
+      }
     }
 
     .s-article-nav {
