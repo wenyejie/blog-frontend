@@ -5,6 +5,6 @@
 <script>
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'SMain'
+  name: 'Main'
 })
 </script>
