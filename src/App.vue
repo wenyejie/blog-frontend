@@ -25,7 +25,7 @@ export default defineComponent({
 
 <style lang="scss">
 #app {
-  background-color: #fff;
+  background-color: var(--light-color);
   margin: 50px 25px;
   padding: 0 40px;
   box-shadow: 0 2px 6px rgba(100, 100, 100, 0.3);
