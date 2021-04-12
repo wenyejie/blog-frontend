@@ -45,7 +45,7 @@
     &.is-active > a {
       background-color: #0facf3;
       border-color: #0facf3;
-      color: #ffffff;
+      color: var(--light-color);
     }
   }
   &--sizer {

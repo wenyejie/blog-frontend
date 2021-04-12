@@ -27,14 +27,14 @@
     width: 1em;
     height: 1em;
     border: 1px solid var(--border-color);
-    background-color: #fff;
+    background-color: var(--light-color);
     transition: all .3s ease;
     position: relative;
 
     &::before {
       box-sizing: content-box;
       content: "";
-      border: 1px solid #fff;
+      border: 1px solid var(--light-color);
       border-left: 0;
       border-top: 0;
       height: .5em;
