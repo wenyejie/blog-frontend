@@ -74,6 +74,10 @@ router.beforeEach((to, from, next) => {
     return next('/login')
   }
   setPageTitle(to.meta.title as string)
+
+  // eslint-disable-next-line
+  // @ts-ignore
+  window.MtaH5.pgv()
   next()
 })
 
