@@ -77,7 +77,7 @@ router.beforeEach((to, from, next) => {
 
   // eslint-disable-next-line
   // @ts-ignore
-  window?.MtaH5?.pgv()
+  window.MtaH5 && window.MtaH5.pgv()
   next()
 })
 
