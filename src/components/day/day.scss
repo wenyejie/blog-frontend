@@ -1,0 +1,38 @@
+.s-day {
+  th,
+  td {
+    width: 36px;
+    height: 36px;
+    text-align: center;
+    color: var(--minor-color);
+  }
+
+  td {
+    cursor: pointer;
+    color: var(--placeholder-color);
+
+    & > span {
+      border-radius: 50%;
+      display: block;
+      width: 24px;
+      height: 24px;
+      margin: 6px auto;
+      line-height: 24px;
+    }
+
+    &.is-current {
+      color: var(--minor-color);
+    }
+    &.is-today > span,
+    &.is-current:not(.is-active):hover > span {
+      color: var(--primary-color);
+    }
+    &.is-today > span {
+      font-weight: bold;
+    }
+    &.is-active > span {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+    }
+  }
+}
