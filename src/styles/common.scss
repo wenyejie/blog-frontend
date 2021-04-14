@@ -4,7 +4,7 @@ html {
   touch-action: manipulation;
 }
 body {
-  font: 14px/1.4285714285714286 Arial, "Helvetica Neue", Helvetica, "PingFang SC", "PingFangSC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+  font: var(--font-size-major)/1.4285714285714286 Arial, "Helvetica Neue", Helvetica, "PingFang SC", "PingFangSC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
   color: var(--major-color);
   background-color: #e6e6e6;
   -webkit-font-smoothing: antialiased;
