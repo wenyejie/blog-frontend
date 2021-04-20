@@ -6,7 +6,7 @@
         :href="`#${item.id}`"
         >{{ item.title }}</a
       >
-      <s-article-nav v-if="item.children" :data="item.children" :parentIndex="item.level + 1" />
+      <s-article-nav v-if="item.children" :data="item.children" :parentIndex="index + 1" />
     </li>
   </ul>
 </template>
