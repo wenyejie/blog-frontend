@@ -1,10 +1,12 @@
 <template>
   <ul class="s-article-nav">
     <li v-for="(item, index) in data" :key="item.title" class="s-article-nav--item">
-      <a :data-deep="`${deep > 1 ? deep + '.' : ''}${index + 1}`" :href="`#${item.id}`">{{
-        item.title
-      }}</a>
-      <s-article-nav v-if="item.children" :data="item.children" :deep="deep + 1" />
+      <a
+        :data-deep="`${parentIndex > 1 ? parentIndex + '.' : ''}${index + 1}`"
+        :href="`#${item.id}`"
+        >{{ item.title }}</a
+      >
+      <s-article-nav v-if="item.children" :data="item.children" :parentIndex="item.level + 1" />
     </li>
   </ul>
 </template>
@@ -18,7 +20,7 @@ export default defineComponent({
       type: Object,
       default: () => ({})
     },
-    deep: {
+    parentIndex: {
       type: Number,
       default: 1
     }
