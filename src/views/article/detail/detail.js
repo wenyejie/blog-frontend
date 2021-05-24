@@ -1,15 +1,12 @@
-<template>
-  <s-article v-if="article._id" class="article-detail" :plain="false" :data="article" />
-</template>
-
-<script>
 import { defineComponent, reactive, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
 import { setPageTitle } from '@/utils'
+import ArticleDetailComment from './comment.vue'
 
 export default defineComponent({
   name: 'ArticleDetail',
+  components: { ArticleDetailComment },
   setup() {
     const route = useRoute()
     const article = reactive({})
@@ -40,4 +37,3 @@ export default defineComponent({
     }
   }
 })
-</script>

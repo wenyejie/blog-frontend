@@ -1,13 +1,7 @@
 <template>
-  <div></div>
+  <div class="s-comment">Comment</div>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'SComment',
-  props: {}
-})
-</script>
+<script src="./comment.js"></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" src="./comment.scss"></style>

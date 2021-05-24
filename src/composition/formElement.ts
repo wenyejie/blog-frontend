@@ -12,10 +12,7 @@ export const formEleDefProps = {
   disabled: Boolean,
   required: Boolean,
   readonly: Boolean,
-  placeholder: {
-    type: String,
-    default: ''
-  },
+  placeholder: String,
   autofocus: Boolean,
   autocomplete: {
     type: String,

@@ -1,17 +1,7 @@
-<template>
-  <div class="s-form-item" :class="classes">
-    <div v-if="innerHasLabel" class="s-form-item--label" :style="labelStyles">
-      <slot name="label">{{ label }}</slot>
-    </div>
-    <div class="s-form-item--content"><slot /></div>
-    <div class="s-form-item--message" v-if="$slots.message || innerMessage">{{ innerMessage }}</div>
-  </div>
-</template>
-
-<script>
-import { defineComponent, inject, computed } from 'vue'
+import { defineComponent, inject, computed, ref } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
-import { toCSSUnit } from '@/utils'
+import { isUndefined, toCSSUnit } from 'wenyejie'
+
 export default defineComponent({
   name: 'SFormItem',
   props: {
@@ -27,13 +17,15 @@ export default defineComponent({
       type: [Number, String]
     },
     size: propSizeOpts,
-    message: String
+    message: String,
+    showMessage: Boolean
   },
   setup(props, { slots }) {
-    const formLabelWidth = inject('formLabelWidth')
-    const formLabelPosition = inject('formLabelPosition')
-    const formSize = inject('formSize')
-    const formHasLabel = inject('formHasLabel')
+    const formLabelWidth = inject('formLabelWidth', ref(''))
+    const formLabelPosition = inject('formLabelPosition', ref(''))
+    const formSize = inject('formSize', ref(''))
+    const formHasLabel = inject('formHasLabel', ref(''))
+    const formShowMessage = inject('formShowMessage', ref(false))
 
     const innerHasLabel = computed(() => {
       return (
@@ -63,6 +55,13 @@ export default defineComponent({
       return ''
     })
 
+    const innerShowMessage = computed(() => {
+      if (isUndefined(props.showMessage)) {
+        return formShowMessage.value
+      }
+      return props.showMessage || slots.message || innerMessage
+    })
+
     const labelStyles = computed(() => {
       return {
         width: toCSSUnit(innerLabelWidth.value)
@@ -80,10 +79,8 @@ export default defineComponent({
       classes,
       labelStyles,
       innerMessage,
-      innerHasLabel
+      innerHasLabel,
+      innerShowMessage
     }
   }
 })
-</script>
-
-<style lang="scss" src="./FormItem.scss"></style>

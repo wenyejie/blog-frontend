@@ -15,12 +15,23 @@
     vertical-align: middle;
   }
 
+  &--label + &--content {
+    margin-left: .75em;
+  }
+
   &--label {
     line-height: 36px;
-    margin-right: .75em;
   }
 
   &--content {
     flex: 1;
+    position: relative;
+  }
+
+  &--message {
+    position: absolute;
+    color: var(--danger-color);
+    font-size: var(--font-size-mini);
+    margin-top: .25em;
   }
 }

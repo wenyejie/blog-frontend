@@ -18,6 +18,7 @@ import SCheckboxGroup from '@/components/checkboxGroup'
 import STag from '@/components/tag'
 import SArticleList from '@/components/articleList'
 import SUpload from '@/components/upload'
+import STextarea from '@/components/textarea'
 
 const components: AnyObject = {
   SButton,
@@ -38,7 +39,8 @@ const components: AnyObject = {
   // SChosenItem,
   STag,
   SArticleList,
-  SUpload
+  SUpload,
+  STextarea
 }
 
 export default {

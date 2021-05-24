@@ -1,6 +1,8 @@
 <template>
   <h1 class="page-title">DEMO</h1>
 
+  <s-comment />
+
   <s-date v-model="demo" />
   <s-year />
   <div>{{ demo }}</div>
@@ -12,9 +14,10 @@
 import { defineComponent, ref } from 'vue'
 import SDate from '@/components/date'
 import SYear from '@/components/year'
+import SComment from '@/components/comment'
 export default defineComponent({
   name: 'demo',
-  components: { SDate, SYear },
+  components: { SDate, SYear, SComment },
   setup() {
     const demo = ref()
 

@@ -4,7 +4,7 @@
 import { defineComponent, computed, ref, watch } from 'vue'
 import SButton from '@/components/button'
 import SBackdrop from '@/components/backdrop'
-import { toCSSUnit } from '@/utils'
+import { toCSSUnit } from 'wenyejie'
 import { dialogProps } from './utils'
 
 export default defineComponent({

@@ -16,8 +16,7 @@ const articleRouter: RouteRecordRaw = {
     {
       path: ':id',
       name: 'articleDetail',
-      component: () =>
-        import(/* webpackChunkName: "r-article-detail" */ '@/views/article/detail.vue'),
+      component: () => import(/* webpackChunkName: "r-article-detail" */ '@/views/article/detail'),
       meta: {}
     },
     {
