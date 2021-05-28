@@ -17,8 +17,12 @@
   font-size: var(--font-size-major);
   line-height: 1;
 
-  & + & {
-    margin-left: 10px;
+  & + &:not(.is-block) {
+    margin-left: 1em;
+  }
+
+  & + &:is(.is-block) {
+    margin-top: 1em;
   }
 
   &:hover, &:focus {
@@ -114,6 +118,17 @@
       background-color: var(--success-light-color);
       border-color: var(--success-light-color);
     }
+
+    &.is-plain {
+      background-color: #fff;
+      color: var(--success-color);
+
+      &:focus,
+      &:hover {
+        background-color: var(--success-color);
+        color: #ffff;
+      }
+    }
   }
 
   &--danger {
@@ -125,6 +140,17 @@
     &:hover {
       background-color: var(--danger-light-color);
       border-color: var(--danger-light-color);
+    }
+
+    &.is-plain {
+      background-color: #fff;
+      color: var(--danger-light-color);
+
+      &:focus,
+      &:hover {
+        background-color: var(--danger-color);
+        color: #ffff;
+      }
     }
   }
 
