@@ -72,7 +72,7 @@ export const getCurrentMonthList = date => {
   const year = date.getFullYear()
   const month = date.getMonth()
   const list = []
-  for (let i = 1; i < days; i++) {
+  for (let i = 1; i <= days; i++) {
     date.setDate(i)
     list.push({
       week: date.getDate(),
