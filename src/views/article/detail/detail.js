@@ -2,7 +2,7 @@ import { defineComponent, reactive, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getArticleDetail } from '@/apis/article'
 import { setPageTitle } from '@/utils'
-import ArticleDetailComment from './comment.vue'
+import ArticleDetailComment from './comment'
 
 export default defineComponent({
   name: 'ArticleDetail',

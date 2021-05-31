@@ -1,4 +1,4 @@
-import { defineComponent, inject, computed, ref } from 'vue'
+import { defineComponent, inject, computed, provide, reactive } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
 import { isUndefined, toCSSUnit } from 'wenyejie'
 
@@ -21,30 +21,27 @@ export default defineComponent({
     showMessage: Boolean
   },
   setup(props, { slots }) {
-    const formLabelWidth = inject('formLabelWidth', ref(''))
-    const formLabelPosition = inject('formLabelPosition', ref(''))
-    const formSize = inject('formSize', ref(''))
-    const formHasLabel = inject('formHasLabel', ref(''))
-    const formShowMessage = inject('formShowMessage', ref(false))
+    const form = inject('sFormProvide')
+    const validity = reactive({})
 
     const innerHasLabel = computed(() => {
       return (
         props.label ||
         slots.label ||
         props.hasLabel ||
-        (props.hasLabel === undefined && formHasLabel.value)
+        (props.hasLabel === undefined && form.hasLabel)
       )
     })
 
     const innerLabelWidth = computed(() => {
-      return props.labelWidth || formLabelWidth.value
+      return props.labelWidth || form.labelWidth
     })
 
     const innerSize = computed(() => {
       if (props.size) {
         return props.size
       } else {
-        return formSize.value
+        return form.size
       }
     })
 
@@ -57,7 +54,7 @@ export default defineComponent({
 
     const innerShowMessage = computed(() => {
       if (isUndefined(props.showMessage)) {
-        return formShowMessage.value
+        return form.showMessage
       }
       return props.showMessage || slots.message || innerMessage
     })
@@ -70,12 +67,24 @@ export default defineComponent({
 
     const classes = computed(() => {
       return {
-        [`in-${formLabelPosition.value}`]: !!formLabelPosition.value,
+        [`in-${form.labelPosition}`]: !!form.labelPosition,
         [`is-${innerSize.value}`]: !!innerSize.value
       }
     })
 
+    const updateValidity = data => {
+      Object.assign(validity, data)
+    }
+
+    provide(
+      'sFormItemProvide',
+      reactive({
+        updateValidity
+      })
+    )
+
     return {
+      validity,
       classes,
       labelStyles,
       innerMessage,

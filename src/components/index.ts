@@ -19,6 +19,7 @@ import STag from '@/components/tag'
 import SArticleList from '@/components/articleList'
 import SUpload from '@/components/upload'
 import STextarea from '@/components/textarea'
+import SComment from '@/components/comment'
 
 const components: AnyObject = {
   SButton,
@@ -40,7 +41,8 @@ const components: AnyObject = {
   STag,
   SArticleList,
   SUpload,
-  STextarea
+  STextarea,
+  SComment
 }
 
 export default {

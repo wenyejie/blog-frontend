@@ -1,5 +1,5 @@
-import { computed, reactive } from 'vue'
-import { hyphenate } from 'wenyejie'
+import { computed, reactive, inject, onMounted } from 'vue'
+import { hyphenate, isFunction } from 'wenyejie'
 
 // interface FormElementValidity {
 //   badInput?: boolean
@@ -32,6 +32,9 @@ const defaultValidity = {
 }
 
 export default () => {
+  const form = inject('sFormProvide', reactive({}))
+  const formItem = inject('sFormItemProvide', reactive({}))
+
   const validity = reactive({ ...defaultValidity })
 
   const validityClasses = computed(() => {
@@ -54,6 +57,14 @@ export default () => {
       validity[key] = data[key]
     }
     validity.invalid = !validity.valid
+
+    if (isFunction(formItem.updateValidity)) {
+      formItem.updateValidity(validity)
+    }
+
+    if (isFunction(form.updateValidity)) {
+      form.updateValidity(validity)
+    }
   }
 
   return {

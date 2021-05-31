@@ -1,4 +1,4 @@
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 import { formEleDefProps } from '@/composition/formElement'
 import formElementValidity from '@/composition/formElementValidity'
 
@@ -31,7 +31,16 @@ export default defineComponent({
   emits: ['update:modelValue', 'input', 'change'],
   setup(props, { emit }) {
     const innerValue = ref('')
+    const refTextarea = ref()
     const { validity, updateValidity, validityClasses } = formElementValidity()
+
+    watch(
+      () => props.modelValue,
+      value => {
+        innerValue.value = value
+        updateValidity(refTextarea.value.validity)
+      }
+    )
 
     const classes = computed(() => {
       return {
@@ -49,17 +58,17 @@ export default defineComponent({
     })
 
     const handleInput = event => {
-      updateValidity(event.target.validity)
       emit('update:modelValue', innerValue.value)
-      emit('input')
+      emit('input', event)
     }
 
-    const handleChange = () => {
-      emit('change')
+    const handleChange = event => {
+      emit('change', event)
     }
 
     return {
       validity,
+      refTextarea,
       innerValue,
       classes,
       textareaStyles,

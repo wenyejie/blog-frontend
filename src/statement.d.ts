@@ -6,6 +6,17 @@ export interface Tag {
   count?: number
 }
 
+export interface Comment {
+  _id?: number
+  nickname?: string
+  email?: string
+  website?: string
+  content?: string
+  articleId?: number
+  page?: number
+  pageSize?: number
+}
+
 export interface Category {
   _id?: number
   label?: string

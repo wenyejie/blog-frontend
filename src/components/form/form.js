@@ -1,5 +1,6 @@
-import { defineComponent, provide, ref } from 'vue'
+import { defineComponent, provide, reactive, ref, toRefs } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
+import { removeItemByProp } from 'wenyejie'
 
 export default defineComponent({
   name: 'SForm',
@@ -28,25 +29,44 @@ export default defineComponent({
   setup(props, { emit }) {
     const refForm = ref()
 
-    const handleSubmit = event => {
-      emit('submit', event)
-      event.preventDefault()
-    }
+    // 表单组件
+    const formComponents = []
 
     const checkValidity = () => {
       return refForm.value.checkValidity()
     }
 
-    provide('formLabelWidth', ref(props.labelWidth))
-    provide('formLabelPosition', ref(props.labelPosition))
-    provide('formSize', ref(props.size))
-    provide('formHasLabel', ref(props.hasLabel))
-    provide('formShowMessage', ref(props.showMessage))
+    const handleSubmit = event => {
+      emit('submit', event)
+      event.preventDefault()
+    }
+
+    const addFormComponent = component => {
+      formComponents.push(component)
+    }
+
+    const removeFormComponent = component => {
+      // removeItemByProp(formComponents, '_uid', )
+    }
+
+    const reset = () => {
+      refForm.value.reset()
+    }
+
+    provide(
+      'sFormProvide',
+      reactive({
+        ...toRefs(props),
+        addFormComponent,
+        removeFormComponent
+      })
+    )
 
     return {
       handleSubmit,
       checkValidity,
-      refForm
+      refForm,
+      reset
     }
   }
 })

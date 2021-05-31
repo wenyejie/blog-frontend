@@ -2,6 +2,7 @@
   <div class="s-textarea" :class="classes">
     <textarea
       class="s-textarea--inner"
+      ref="refTextarea"
       v-model="innerValue"
       :name="name"
       :disabled="disabled"

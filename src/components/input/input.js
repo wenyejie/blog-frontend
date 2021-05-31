@@ -1,6 +1,6 @@
 import { defineComponent, computed, ref, watch } from 'vue'
 import { propSizeOpts, formEleDefProps } from '@/composition/formElement'
-import formElementValidityState from '@/composition/formElementValidity'
+import formElementValidity from '@/composition/formElementValidity'
 import SIcon from '../icon'
 import { isRegExp } from 'wenyejie'
 
@@ -32,9 +32,7 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'input', 'change', 'suffixClick', 'enter'],
   setup(props, { emit, slots }) {
-    const { updateValidity, validity, validityClasses } = formElementValidityState()
-
-    console.log(validityClasses)
+    const { updateValidity, validity, validityClasses } = formElementValidity()
 
     const classes = computed(() => [
       CLS_NAME,
@@ -60,12 +58,11 @@ export default defineComponent({
       () => props.modelValue,
       value => {
         innerValue.value = value
+        updateValidity(refInput.value.validity)
       }
     )
 
     const handleInput = event => {
-      updateValidity(refInput.value.validity)
-      console.log(validity)
       emit('update:modelValue', innerValue.value)
       emit('input', event)
     }

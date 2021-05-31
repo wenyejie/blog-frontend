@@ -22,7 +22,7 @@
     "vue": "^3.0.11",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",
-    "wenyejie": "^1.18.4"
+    "wenyejie": "^1.19.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
