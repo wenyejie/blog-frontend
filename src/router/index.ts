@@ -5,6 +5,7 @@ import categoryRouter from './category'
 import tagRouter from './tag'
 import uploadRouter from './upload'
 import monthRouter from './month'
+import commentRouter from './comment'
 import store from '@/store'
 import $message from '@/components/message'
 
@@ -40,6 +41,7 @@ const routes: Array<RouteRecordRaw> = [
   tagRouter,
   uploadRouter,
   monthRouter,
+  commentRouter,
   {
     path: '/:pathMatch(.*)*',
     name: 'error404',
@@ -74,10 +76,6 @@ router.beforeEach((to, from, next) => {
     return next('/login')
   }
   setPageTitle(to.meta.title as string)
-
-  // eslint-disable-next-line
-  // @ts-ignore
-  window.MtaH5 && window.MtaH5.pgv()
   next()
 })
 
