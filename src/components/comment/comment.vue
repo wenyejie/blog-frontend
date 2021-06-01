@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <p v-if="loading !== 0" v-show="list.length === 0">
+    <p class="s-comment--nodata" v-if="loading !== 0" v-show="list.length === 0">
       {{ loading === 1 ? '正在加载中...' : '暂无数据' }}
     </p>
 
