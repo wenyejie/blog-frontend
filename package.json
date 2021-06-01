@@ -1,6 +1,6 @@
 {
   "name": "blog-frontend",
-  "version": "1.1.0",
+  "version": "1.20.0",
   "description": "个人博客的前端",
   "private": true,
   "scripts": {
@@ -22,7 +22,7 @@
     "vue": "^3.0.11",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0",
-    "wenyejie": "^1.19.1"
+    "wenyejie": "^1.19.5"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",
