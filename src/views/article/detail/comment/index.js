@@ -1,5 +1,5 @@
 import { defineAsyncComponent } from 'vue'
 
 export default defineAsyncComponent(() =>
-  import(/* webpackChunkName: 'ad-comment' */ './comment.vue')
+  import(/* webpackChunkName: 'article-detail-comment' */ './comment.vue')
 )
