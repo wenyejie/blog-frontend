@@ -1,4 +1,4 @@
-import { defineComponent, computed, watch, ref, reactive, onMounted } from 'vue'
+import { defineComponent, computed, watch, ref, reactive } from 'vue'
 import SInput from '../input'
 import SChosenItem from '../chosenItem'
 import clickOutside from '@/utils/clickOutside'
@@ -36,7 +36,7 @@ export default defineComponent({
     placeholder: String
   },
   emits: ['update:modelValue', 'change'],
-  setup(props, { emit }) {
+  setup(props) {
     const visible = ref(false)
     const innerInput = ref('')
     const innerPlaceholder = ref(props.placeholder)

@@ -22,7 +22,7 @@ export default defineComponent({
   emits: ['click'],
   setup(props, { slots }) {
     const instance = getCurrentInstance()
-    const proxy = instance.proxy
+    // const proxy = instance.proxy
 
     const $parent = getParentProxy(instance, 'SChosen')
 

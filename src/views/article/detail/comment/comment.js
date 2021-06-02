@@ -1,6 +1,6 @@
 import { defineComponent, reactive, ref } from 'vue'
 import { rEmail } from 'wenyejie'
-import { addComment, getCommentList } from '@/apis/comment'
+import { addComment } from '@/apis/comment'
 import $message from '@/components/message'
 
 export default defineComponent({

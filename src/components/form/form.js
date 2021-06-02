@@ -1,6 +1,6 @@
 import { defineComponent, provide, reactive, ref, toRefs } from 'vue'
 import { propSizeOpts } from '@/composition/formElement'
-import { removeItemByProp } from 'wenyejie'
+// import { removeItemByProp } from 'wenyejie'
 
 export default defineComponent({
   name: 'SForm',
@@ -46,6 +46,7 @@ export default defineComponent({
     }
 
     const removeFormComponent = component => {
+      console.log(component, formComponents)
       // removeItemByProp(formComponents, '_uid', )
     }
 

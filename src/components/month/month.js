@@ -1,5 +1,5 @@
 import { defineComponent, ref, computed, watch, reactive } from 'vue'
-import { isDate, isSameYear } from 'wenyejie'
+import { isDate } from 'wenyejie'
 
 export default defineComponent({
   name: 'SMonth',
