@@ -10,7 +10,7 @@ module.exports = {
     if (isProd) {
       config.plugins.push(
         new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
+          filename: '[path][base].gz',
           algorithm: 'gzip',
           threshold: 10240,
           minRatio: 0.8
