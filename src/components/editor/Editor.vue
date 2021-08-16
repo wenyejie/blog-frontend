@@ -21,9 +21,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { computed, defineComponent, ref, watch, nextTick } from 'vue'
-import markdown2html, { markdownClean } from '@/core/markdown2html.ts'
+import markdown2html, { markdownClean } from '@/core/markdown2html.js'
 import highlight from '@/core/highlight'
 import { formEleDefProps } from '@/composition/formElement'
 
@@ -42,7 +42,7 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (value: string) => {
+      value => {
         editorValue.value = value
       },
       {

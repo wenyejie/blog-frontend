@@ -6,7 +6,7 @@
   </teleport>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed, onBeforeUnmount, ref, watch } from 'vue'
 
 export default defineComponent({
@@ -40,7 +40,7 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (val: boolean) => {
+      val => {
         visible.value = val
       }
     )

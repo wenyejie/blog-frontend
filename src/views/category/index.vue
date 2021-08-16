@@ -25,10 +25,9 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import { addCategory, updateCategory, deleteCategory } from '@/apis/category'
-import { AnyObject, Category } from '@/statement'
 import fetchCategoryList from '@/composition/fetchCategoryList'
 import message from '@/components/message'
 import dialog from '@/components/dialog'
@@ -45,7 +44,7 @@ export default defineComponent({
     const handleAddCategory = () => {
       adding.value = true
       addCategory({ label: newCategory.value })
-        .then((category: AnyObject) => {
+        .then(category => {
           message.success('添加成功')
           categoryList.push(category)
           newCategory.value = ''
@@ -56,7 +55,7 @@ export default defineComponent({
     }
 
     // 更新分类
-    const handleUpdateCategory = (item: Category) => {
+    const handleUpdateCategory = item => {
       item.updating = true
       updateCategory(item)
         .then(() => {
@@ -68,7 +67,7 @@ export default defineComponent({
     }
 
     // 删除分类
-    const handleDeleteCategory = (item: Category, index: number, reconfirm = false) => {
+    const handleDeleteCategory = (item, index, reconfirm = false) => {
       item.deleting = true
       deleteCategory({ _id: item._id, reconfirm }, { disabledTip: '005001' })
         .then(

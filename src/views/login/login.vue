@@ -29,17 +29,16 @@
   </s-form>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref, reactive } from 'vue'
 import { login } from '@/apis/user'
-import { LoginParams } from '@/statement'
 import encrypt from '@/core/encrypt'
 import { localToken, localUserInfo } from '@/storages'
 import message from '@/components/message'
 import store from '@/store'
 import router from '@/router'
 
-const DEFAULT_LOGIN_FORM: LoginParams = {
+const DEFAULT_LOGIN_FORM = {
   account: '',
   password: ''
 }

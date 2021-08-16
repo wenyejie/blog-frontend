@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'

@@ -3,7 +3,7 @@
   <s-article-list :data="data" />
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { setPageTitle } from '@/utils'

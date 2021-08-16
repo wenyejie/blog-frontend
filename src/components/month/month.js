@@ -1,87 +1,92 @@
-import { defineComponent, ref, computed, watch, reactive } from 'vue'
-import { isDate } from 'wenyejie'
+import { defineComponent, ref, computed, reactive } from 'vue'
+import { toNewDate } from 'wenyejie'
+
+const defaultMonthList = [
+  {
+    cn: '一',
+    month: 0
+  },
+  {
+    cn: '二',
+    month: 1
+  },
+  {
+    cn: '三',
+    month: 2
+  },
+  {
+    cn: '四',
+    month: 3
+  },
+  {
+    cn: '五',
+    month: 4
+  },
+  {
+    cn: '六',
+    month: 5
+  },
+  {
+    cn: '七',
+    month: 6
+  },
+  {
+    cn: '八',
+    month: 7
+  },
+  {
+    cn: '九',
+    month: 8
+  },
+  {
+    cn: '十',
+    month: 9
+  },
+  {
+    cn: '十一',
+    month: 10
+  },
+  {
+    cn: '十二',
+    month: 11
+  }
+]
 
 export default defineComponent({
   name: 'SMonth',
   props: {
     modelValue: {
       type: Date
-    },
-    viewValue: {
-      type: Date,
-      default: () => new Date()
     }
   },
   emits: ['update:modelValue', 'change', 'switch'],
   setup(props, { emit }) {
-    const innerDate = ref(props.modelValue)
-    const viewDate = ref(props.viewValue)
-    const monthCNs = reactive([
-      '一',
-      '二',
-      '三',
-      '四',
-      '五',
-      '六',
-      '七',
-      '八',
-      '九',
-      '十',
-      '十一',
-      '十二'
-    ])
-    const list = ref([])
-    const handleSwitch = year => {
-      viewDate.value.setFullYear(viewDate.value.getFullYear() + year)
+    const innerDate = ref(toNewDate(props.modelValue))
+    const viewDate = ref(toNewDate(props.modelValue))
+    const monthList = reactive(defaultMonthList)
 
-      viewDate.value = new Date(viewDate.value)
-    }
+    const innerYear = computed(() => {
+      return innerDate.value.getFullYear()
+    })
+    const innerMonth = computed(() => {
+      return innerDate.value.getMonth()
+    })
 
-    const generateList = () => {
-      const months = []
-      for (let i = 0; i < 12; i++) {
-        months.push(i)
-      }
-      list.value = months
-    }
-
-    const handleClick = month => {
-      viewDate.value.setMonth(month)
-      innerDate.value = new Date(viewDate.value)
-      emit('update:modelValue', innerDate.value)
-      emit('change', innerDate.value)
-      emit('switch', 'day')
-    }
-
-    const year = computed(() => {
+    const viewYear = computed(() => {
       return viewDate.value.getFullYear()
     })
 
-    const month = computed(() => {
-      return viewDate.value.getMonth()
-    })
-
-    const innerYear = computed(() => {
-      return isDate(props.modelValue) ? props.modelValue.getFullYear() : 0
-    })
-
-    watch(() => props.viewValue, generateList, {
-      immediate: true,
-      deep: true
-    })
-
-    watch(() => props.modelValue, generateList, {
-      immediate: true,
-      deep: true
-    })
+    const handleClick = item => {
+      const date = toNewDate(viewDate)
+      date.setMonth(item.month)
+      emit('update:modelValue', date)
+    }
 
     return {
-      list,
-      month,
-      year,
+      monthList,
       innerYear,
-      monthCNs,
-      handleSwitch,
+      innerMonth,
+      viewYear,
       handleClick
     }
   }

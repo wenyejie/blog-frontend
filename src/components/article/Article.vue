@@ -65,7 +65,7 @@
   </article>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import store from '@/store'
@@ -122,9 +122,7 @@ export default defineComponent({
     onMounted(() => {
       highlight()
       if (!props.plain) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
-        navList.value = generateNavByContent((refBody.value as unknown) as HTMLDivElement)
+        navList.value = generateNavByContent(refBody.value)
       }
     })
 

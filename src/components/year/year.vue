@@ -12,6 +12,7 @@
           class="s-datetime--item"
           :class="{ 'is-active': item === innerYear }"
           :key="item"
+          @click="handleClick(item)"
         >
           {{ item }}
         </li>
@@ -22,5 +23,5 @@
 
 <script src="./year.js"></script>
 
-<style lang="scss" src="./year.scss"></style>
 <style lang="scss" src="../../styles/datetime.scss"></style>
+<style lang="scss" src="./year.scss"></style>

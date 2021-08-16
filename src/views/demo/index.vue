@@ -1,28 +1,33 @@
 <template>
   <h1 class="page-title">DEMO</h1>
 
-  <s-comment />
-
-  <s-date v-model="demo" />
-  <s-year />
+  <s-day v-model="demo" />
+  <s-year v-model="demo" />
+  <s-month v-model="demo" />
   <div>{{ demo }}</div>
 
-  <s-upload>上传文件</s-upload>
+  <button type="button" @click="handleClick">Change Date</button>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue'
-import SDate from '@/components/date'
+import SDay from '@/components/day'
 import SYear from '@/components/year'
-import SComment from '@/components/comment'
+import SMonth from '@/components/month'
+
 export default defineComponent({
   name: 'demo',
-  components: { SDate, SYear, SComment },
+  components: { SDay, SYear, SMonth },
   setup() {
-    const demo = ref()
+    const demo = ref(new Date(2020, 3, 2))
+
+    const handleClick = () => {
+      demo.value = new Date()
+    }
 
     return {
-      demo
+      demo,
+      handleClick
     }
   }
 })

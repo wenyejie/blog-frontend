@@ -45,8 +45,8 @@ export default defineComponent({
       formComponents.push(component)
     }
 
-    const removeFormComponent = component => {
-      console.log(component, formComponents)
+    const removeFormComponent = () => {
+      // console.log(component, formComponents)
       // removeItemByProp(formComponents, '_uid', )
     }
 

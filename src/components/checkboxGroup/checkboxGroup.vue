@@ -2,7 +2,7 @@
   <div class="s-checkbox-group"><slot /></div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, watch, ref, provide } from 'vue'
 import { removeVal } from 'wenyejie'
 export default defineComponent({
@@ -20,11 +20,11 @@ export default defineComponent({
       emit('update:modelValue', innerValue.value)
       emit('change', innerValue.value)
     }
-    const addValue = (value: never) => {
+    const addValue = value => {
       innerValue.value.push(value)
       handleChange()
     }
-    const removeValue = (value: never) => {
+    const removeValue = value => {
       removeVal(innerValue.value, value)
       handleChange()
     }
@@ -37,7 +37,7 @@ export default defineComponent({
     watch(
       () => props.modelValue,
       value => {
-        ;(innerValue.value as unknown[]) = value
+        innerValue.value = value
       }
     )
   }

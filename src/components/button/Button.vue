@@ -9,7 +9,7 @@
   </button>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed } from 'vue'
 import { formEleDefProps, propSizeOpts } from '@/composition/formElement'
 
@@ -20,14 +20,14 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      validator: (val: string) => {
+      validator: val => {
         return ['primary', 'success', 'warning', 'danger', 'info'].includes(val)
       }
     },
     nativeType: {
       type: String,
       default: 'button',
-      validator: (val: string) => {
+      validator: val => {
         return ['button', 'submit', 'reset'].includes(val)
       }
     },

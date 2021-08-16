@@ -1,6 +1,6 @@
 <template src="./dialog.html"></template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed, ref, watch } from 'vue'
 import SButton from '@/components/button'
 import SBackdrop from '@/components/backdrop'
@@ -29,7 +29,7 @@ export default defineComponent({
     }))
     watch(
       () => props.modelValue,
-      (val: boolean) => {
+      val => {
         visible.value = val
       }
     )

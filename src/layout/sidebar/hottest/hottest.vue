@@ -8,17 +8,16 @@
   </s-sidebar-item>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import { getArticleHottest } from '@/apis/article'
-import { AnyObject } from '@/statement'
 import SSidebarItem from '../sidebarItem'
 export default defineComponent({
   name: 'SHottest',
   components: { SSidebarItem },
   setup() {
     const articleList = ref([])
-    getArticleHottest().then((response: AnyObject) => {
+    getArticleHottest().then(response => {
       articleList.value = response.list
     })
     return {

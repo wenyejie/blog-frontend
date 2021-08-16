@@ -25,12 +25,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref, watch, computed, provide } from 'vue'
 import { propSizeOpts, formEleDefProps } from '@/composition/formElement'
 import SOption from '../option'
 import clickOutside from '@/utils/clickOutside'
-import { AnyObject } from '@/statement'
 
 export default defineComponent({
   name: 'SSelect',
@@ -114,7 +113,7 @@ export default defineComponent({
       emit('change', innerValue.value)
     }
 
-    const handleClick = (item: AnyObject) => {
+    const handleClick = item => {
       selectItem.value = item
       innerValue.value = item[props.valueKey]
       innerLabel.value = item[props.labelKey]

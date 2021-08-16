@@ -18,7 +18,7 @@
   </label>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref, watch, inject } from 'vue'
 import { formEleDefProps } from '@/composition/formElement'
 import { noop } from 'wenyejie'
@@ -67,7 +67,7 @@ export default defineComponent({
       () => checkboxValue,
       groupValue => {
         if (checkboxIsGroup) {
-          innerValue.value = groupValue.value.includes(props.value as never)
+          innerValue.value = groupValue.value.includes(props.value)
         }
       },
       {

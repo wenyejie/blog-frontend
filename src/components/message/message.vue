@@ -10,7 +10,7 @@
   </transition>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, computed, onBeforeUnmount, watch, ref } from 'vue'
 import SIcon from '../icon'
 
@@ -27,7 +27,7 @@ export default defineComponent({
     type: {
       type: String,
       default: 'info',
-      validator: (val: string) => {
+      validator: val => {
         return ['info', 'success', 'danger', 'warning'].includes(val)
       }
     },
@@ -63,7 +63,7 @@ export default defineComponent({
 
     watch(
       () => props.modelValue,
-      (val: boolean) => {
+      val => {
         innerVisible.value = val
         if (innerVisible.value) {
           startCountdown()

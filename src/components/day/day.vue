@@ -3,8 +3,8 @@
     <div class="s-datetime--tool">
       <s-icon type="doubleleft" @click="handleSwitch(-1)" />
       <s-icon type="left" @click="handleSwitch(0, -1)" />
-      <span class="s-datetime--tool--btn" @click="handleSwitchYear">{{ year }}年</span>
-      <span class="s-datetime--tool--btn" @click="handleSwitchMonth">{{ month + 1 }}月</span>
+      <span class="s-datetime--tool--btn" @click="handleSwitchYear">{{ viewYear }}年</span>
+      <span class="s-datetime--tool--btn" @click="handleSwitchMonth">{{ viewMonth }}月</span>
       <s-icon type="doubleright" @click="handleSwitch(1)" />
       <s-icon type="right" @click="handleSwitch(0, 1)" />
     </div>
@@ -35,5 +35,5 @@
 
 <script src="./day.js"></script>
 
-<style lang="scss" src="./day.scss"></style>
 <style lang="scss" src="../../styles/datetime.scss"></style>
+<style lang="scss" src="./day.scss"></style>

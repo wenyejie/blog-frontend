@@ -1,5 +1,5 @@
 import { computed, reactive, inject } from 'vue'
-import { hyphenate, isFunction } from 'wenyejie'
+import { hyphenate, isFunction, hasOwn } from 'wenyejie'
 
 // interface FormElementValidity {
 //   badInput?: boolean
@@ -42,7 +42,7 @@ export default () => {
       'is-invalid': !validity.valid
     }
     for (const key in validity) {
-      if (validity[key]) {
+      if (hasOwn(validity, key) && validity[key]) {
         result['is-' + hyphenate(key)] = true
       }
     }
@@ -52,8 +52,6 @@ export default () => {
 
   const updateValidity = (data = {}) => {
     for (const key in data) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-      // @ts-ignore
       validity[key] = data[key]
     }
     validity.invalid = !validity.valid

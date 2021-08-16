@@ -17,11 +17,10 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import { addTag, updateTag, deleteTag } from '@/apis/tag'
 import fetchTagList from '@/composition/fetchTagList'
-import { Tag } from '@/statement'
 import $message from '@/components/message'
 import store from '@/store'
 
@@ -39,14 +38,14 @@ export default defineComponent({
     const handleAddTag = () => {
       addTag({ label: newTag.value }).then(tag => {
         $message.success('标签添加成功')
-        tagList.push(tag as Tag)
+        tagList.push(tag)
         newTag.value = ''
         changeTagCount()
       })
     }
 
     // 更新标签
-    const handleUpdateTag = (item: Tag) => {
+    const handleUpdateTag = item => {
       updateTag(item).then(() => {
         $message.success('标签更新成功')
         changeTagCount()
@@ -54,7 +53,7 @@ export default defineComponent({
     }
 
     // 删除标签
-    const handleDeleteTag = (item: Tag, index: number) => {
+    const handleDeleteTag = (item, index) => {
       deleteTag(item).then(() => {
         $message.success('标签删除成功')
         tagList.splice(index, 1)

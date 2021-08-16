@@ -5,7 +5,7 @@
   <s-footer />
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import SHeader from '@/layout/header'
 import SFooter from '@/layout/footer'
