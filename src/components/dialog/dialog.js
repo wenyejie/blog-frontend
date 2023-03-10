@@ -92,16 +92,16 @@ function dialog(content, opts) {
   })
 }
 
-dialog.alert = function(content, opts = {}) {
+dialog.alert = function (content, opts = {}) {
   opts.hasCancel = false
   return dialog(content, opts)
 }
-dialog.confirm = function(content, opts = {}) {
+dialog.confirm = function (content, opts = {}) {
   opts.hasCancel = true
   return dialog(content, opts)
 }
 
-dialog.prompt = function(content, opts = {}) {
+dialog.prompt = function (content, opts = {}) {
   return dialog(content, opts)
 }
 

@@ -8,7 +8,7 @@
   <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
   <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
   <link rel="icon" href="<%= BASE_URL %>favicon.png">
-  <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.iconFontLink %>">
+  <link rel="preload" as="font" importance="low" href="<%= htmlWebpackPlugin.options.iconFontLink %>">
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>

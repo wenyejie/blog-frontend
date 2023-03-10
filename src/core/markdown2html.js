@@ -1,4 +1,4 @@
-import marked from 'marked'
+import { marked } from 'marked'
 // import createDOMPurify from 'dompurify'
 // import { globalThis } from 'wenyejie'
 

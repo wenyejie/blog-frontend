@@ -10,7 +10,8 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-explicit-any': 0
+    'no-explicit-any': 0,
+    'vue/multi-word-component-names': 0 // 关闭驼峰命名规则
   },
   overrides: [
     {

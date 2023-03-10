@@ -6,8 +6,4 @@ import store from './store'
 import './styles'
 import './core/statistic.js'
 
-createApp(App)
-  .use(store)
-  .use(router)
-  .use(components)
-  .mount('#app')
+createApp(App).use(store).use(router).use(components).mount('#app')

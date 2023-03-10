@@ -1,6 +1,10 @@
 # blog-frontend
 
-# type
+## 候选文章
+
+https://blog.csdn.net/genziisme/article/details/122305275
+
+## type
 
 message: {
   type: [String, Object] as PropType<string | MessageVM>,
@@ -16,6 +20,11 @@ interface SquareConfig {
   width?: number;
   [propName: string]: any;
 }
+
+## typescript
+
+"@typescript-eslint/eslint-plugin": "^2.34.0",
+"@typescript-eslint/parser": "^2.34.0",
 
 ## service-worker
 

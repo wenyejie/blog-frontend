@@ -14,7 +14,8 @@
           :key="item[valueKey]"
           :disabled="item[disabledKey]"
           :value="item[valueKey]"
-          >{{ item[labelKey] }}
+        >
+          {{ item[labelKey] }}
         </option>
       </template>
     </slot>
